@@ -3,8 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primaire SEO -->
     <title>TriStack: Webapps & AI voor lokale ondernemers · België</title>
-    <meta name="description" content="TriStack bouwt slimme webapplicaties en AI-oplossingen voor kleine lokale ondernemers. Afspraaksystemen, klantbeheer, automatisering en meer. Gevestigd in België.">
+    <meta name="description" content="TriStack bouwt software op maat voor kappers, loodgieters, horeca en andere lokale ondernemers in België. Online boeken, offertes, automatisering. Geen licenties, vaste prijs.">
+    <meta name="keywords" content="webapplicatie op maat België, software lokale ondernemer, online boekingssysteem kapper, offertetool loodgieter, AI automatisering kleine zaak">
+    <meta name="author" content="TriStack">
+    <link rel="canonical" href="https://tristack.be/">
+
+    <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://tristack.be/">
+    <meta property="og:title"       content="TriStack: Software op maat voor lokale ondernemers">
+    <meta property="og:description" content="Wij bouwen digitale tools die jouw dagelijks werk makkelijker maken. Op maat, zonder gedoe, vaste prijs.">
+    <meta property="og:image"       content="https://tristack.be/og-image.jpg">
+    <meta property="og:locale"      content="nl_BE">
+    <meta property="og:site_name"   content="TriStack">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="TriStack: Software op maat voor lokale ondernemers">
+    <meta name="twitter:description" content="Wij bouwen digitale tools die jouw dagelijks werk makkelijker maken. Op maat, zonder gedoe, vaste prijs.">
+    <meta name="twitter:image"       content="https://tristack.be/og-image.jpg">
+
+    <!-- Structured Data (LocalBusiness) -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "TriStack",
+            "description": "Webapplicaties en AI-automatisering voor lokale ondernemers in België.",
+            "url": "https://tristack.be",
+            "email": "hello@tristack.be",
+            "areaServed": ["BE", "NL", "LU"],
+            "serviceType": ["Webontwikkeling", "AI-automatisering", "Software op maat"],
+            "inLanguage": "nl"
+        }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,7 +99,7 @@
             </h1>
 
             <p class="hero-sub">
-                Kapper, loodgieter, salon of restaurant — wij bouwen digitale tools die jouw
+                Kapper, loodgieter, salon of restaurant: wij bouwen digitale tools die jouw
                 dagelijks werk makkelijker maken. Op maat, zonder gedoe.
             </p>
 
@@ -491,25 +526,90 @@
 </section>
 
 
-<!-- CTA -->
-<section class="cta-sec" id="contact">
-    <div class="cta-img-wrap" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1400&h=700&fit=crop" alt="" width="1400" height="700">
-        <div class="cta-overlay"></div>
-    </div>
-    <div class="wrap-sm cta-content">
-        <h2 class="reveal">Klaar om jouw zaak te digitaliseren?</h2>
-        <p class="reveal">Boek een gratis gesprek van 30 minuten. Geen verkooppraatje, gewoon een eerlijk gesprek over wat jij nodig hebt en wat het kost.</p>
-        <div class="cta-btns reveal">
-            <a href="mailto:hello@tristack.be" class="btn-primary">
-                Boek gratis gesprek
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </a>
-            <a href="mailto:hello@tristack.be" class="btn-ghost">hello@tristack.be</a>
+<!-- CONTACT -->
+<section class="contact-sec" id="contact">
+    <div class="wrap">
+        <div class="contact-inner">
+
+            <!-- Links: tekst -->
+            <div class="contact-left reveal">
+                <p class="sec-label">Contact</p>
+                <h2>Vertel ons over jouw zaak</h2>
+                <p class="contact-sub">Vul het formulier in en we nemen binnen 24 uur contact op. Geen verplichtingen, gewoon een eerlijk gesprek.</p>
+
+                <ul class="contact-perks">
+                    <li>
+                        <span class="perk-icon" aria-hidden="true">⏱</span>
+                        Reactie binnen 24 uur
+                    </li>
+                    <li>
+                        <span class="perk-icon" aria-hidden="true">💬</span>
+                        Gratis gesprek van 30 minuten
+                    </li>
+                    <li>
+                        <span class="perk-icon" aria-hidden="true">📋</span>
+                        Vrijblijvende offerte achteraf
+                    </li>
+                </ul>
+
+                <a href="mailto:hello@tristack.be" class="contact-mail">hello@tristack.be</a>
+            </div>
+
+            <!-- Rechts: formulier -->
+            <div class="contact-right reveal">
+                <div class="cf" id="cf">
+                    <!-- Stap 1: formulier -->
+                    <div id="cf-form">
+                        <div class="cf-row">
+                            <div class="cf-field">
+                                <label for="cf-naam">Naam</label>
+                                <input type="text" id="cf-naam" placeholder="Jan Janssen" autocomplete="name">
+                            </div>
+                            <div class="cf-field">
+                                <label for="cf-tel">Telefoonnummer</label>
+                                <input type="tel" id="cf-tel" placeholder="+32 470 00 00 00" autocomplete="tel">
+                            </div>
+                        </div>
+                        <div class="cf-field">
+                            <label for="cf-email">E-mailadres</label>
+                            <input type="email" id="cf-email" placeholder="jan@jouwzaak.be" autocomplete="email">
+                        </div>
+                        <div class="cf-field">
+                            <label for="cf-sector">Wat voor zaak heb je?</label>
+                            <select id="cf-sector">
+                                <option value="" disabled selected>Kies een sector</option>
+                                <option>Kapper / schoonheidssalon</option>
+                                <option>Loodgieter / installateur</option>
+                                <option>Restaurant / horeca</option>
+                                <option>Garage / autohandel</option>
+                                <option>Tandarts / zorgverlener</option>
+                                <option>Andere</option>
+                            </select>
+                        </div>
+                        <div class="cf-field">
+                            <label for="cf-bericht">Wat wil je aanpakken?</label>
+                            <textarea id="cf-bericht" rows="4" placeholder="Bv. ik verlies veel tijd aan telefonische afspraken en wil dat automatiseren..."></textarea>
+                        </div>
+                        <p class="cf-error" id="cf-error" role="alert" aria-live="polite"></p>
+                        <button class="cf-submit" id="cf-submit" type="button">
+                            Verstuur bericht
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <p class="cf-note">Geen spam. Jouw gegevens worden enkel gebruikt om je te contacteren.</p>
+                    </div>
+
+                    <!-- Stap 2: bevestiging -->
+                    <div id="cf-thanks" hidden>
+                        <div class="cf-thanks-icon" aria-hidden="true">✓</div>
+                        <h3>Bericht ontvangen!</h3>
+                        <p>We nemen binnen 24 uur contact op via e-mail of telefoon.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <p class="cta-note reveal">Geen verplichtingen · Gemiddelde responstijd &lt; 24u</p>
     </div>
 </section>
 
@@ -561,6 +661,46 @@
 <button class="scr-top" id="scrtop" aria-label="Scroll naar boven">↑</button>
 
 <script type="module" src="js/main.js"></script>
+
+<script>
+    // Contactformulier
+    (function () {
+        const submit = document.getElementById('cf-submit');
+        if (!submit) return;
+
+        submit.addEventListener('click', function () {
+            const naam    = document.getElementById('cf-naam').value.trim();
+            const tel     = document.getElementById('cf-tel').value.trim();
+            const email   = document.getElementById('cf-email').value.trim();
+            const sector  = document.getElementById('cf-sector').value;
+            const bericht = document.getElementById('cf-bericht').value.trim();
+            const error   = document.getElementById('cf-error');
+
+            // Validatie
+            if (!naam)    { toonFout('Vul je naam in.'); return; }
+            if (!email || !email.includes('@')) { toonFout('Vul een geldig e-mailadres in.'); return; }
+            if (!sector)  { toonFout('Kies een sector.'); return; }
+            if (!bericht) { toonFout('Vertel ons kort wat je wil aanpakken.'); return; }
+
+            error.textContent = '';
+
+            // Laadstatus
+            submit.disabled = true;
+            submit.textContent = 'Even geduld...';
+
+            // Simulatie (vervang door echte backend/Formspree/Netlify Forms)
+            setTimeout(function () {
+                document.getElementById('cf-form').hidden = true;
+                document.getElementById('cf-thanks').hidden = false;
+            }, 900);
+
+            function toonFout(msg) {
+                error.textContent = msg;
+                error.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        });
+    })();
+</script>
 
 </body>
 </html>
