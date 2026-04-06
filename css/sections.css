@@ -426,9 +426,9 @@
 
 .price-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    max-width: 980px;
+    max-width: 720px;
     margin: 56px auto 0;
     align-items: start;
 }
@@ -532,6 +532,16 @@
 }
 .pc-featured .pc-feats li { color: rgba(255,255,255,.7); }
 .pc-featured .pc-feats li::before { color: #4ADE80; }
+
+.pc-note {
+    font-size: 13px;
+    color: var(--ink-faint);
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding-top: 4px;
+}
+.pc-featured .pc-note { color: rgba(255,255,255,.45); }
 
 .pc-btn {
     width: 100%;
