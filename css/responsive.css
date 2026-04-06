@@ -43,10 +43,16 @@
 }
 
 /* Contact */
-@media (max-width: 1024px) {
-    .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+@media (max-width: 1200px) {
+    .contact-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .contact-left  { grid-column: 1 / -1; }
+}
+@media (max-width: 768px) {
+    .contact-inner { grid-template-columns: 1fr; gap: 28px; }
+    .contact-left  { grid-column: auto; }
 }
 @media (max-width: 480px) {
     .cf-row        { grid-template-columns: 1fr; }
     .cf            { padding: 24px; }
+    .cal-card      { padding: 20px; }
 }

@@ -594,11 +594,11 @@
     <div class="wrap">
         <div class="contact-inner">
 
-            <!-- Links: tekst -->
+            <!-- Links: tekst + perks -->
             <div class="contact-left reveal">
                 <p class="sec-label">Contact</p>
                 <h2>Vertel ons over jouw zaak</h2>
-                <p class="contact-sub">Vul het formulier in en we nemen binnen 24 uur contact op. Geen verplichtingen, gewoon een eerlijk gesprek.</p>
+                <p class="contact-sub">Vul het formulier in of kies een moment in de kalender. We nemen binnen 24 uur contact op.</p>
 
                 <ul class="contact-perks">
                     <li>
@@ -618,10 +618,30 @@
                 <a href="mailto:hello@tristack.be" class="contact-mail">hello@tristack.be</a>
             </div>
 
+            <!-- Midden: kalender -->
+            <div class="contact-cal reveal">
+                <div class="cal-card">
+                    <div class="cal-header">
+                        <div>
+                            <p class="cal-month" id="cal-month-label"></p>
+                            <p class="cal-duration">30 min gesprek · gratis</p>
+                        </div>
+                        <div class="cal-nav">
+                            <button class="cal-nav-btn" id="cal-prev" aria-label="Vorige maand">&#8592;</button>
+                            <button class="cal-nav-btn" id="cal-next" aria-label="Volgende maand">&#8594;</button>
+                        </div>
+                    </div>
+                    <div class="cal-grid" id="cal-grid"></div>
+                    <div class="cal-footer" id="cal-footer" hidden>
+                        <p class="cal-selected-txt" id="cal-selected-txt"></p>
+                        <a href="mailto:hello@tristack.be" class="cal-book-btn" id="cal-book-btn">Bevestig dit moment →</a>
+                    </div>
+                </div>
+            </div>
+
             <!-- Rechts: formulier -->
             <div class="contact-right reveal">
                 <div class="cf" id="cf">
-                    <!-- Stap 1: formulier -->
                     <div id="cf-form">
                         <div class="cf-row">
                             <div class="cf-field">
@@ -773,5 +793,83 @@
     })();
 </script>
 
+<script>
+    // Kalender
+    (function () {
+        var days = ['zo','ma','di','wo','do','vr','za'];
+        var months = ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+        var today = new Date();
+        var current = new Date(today.getFullYear(), today.getMonth(), 1);
+        var selected = null;
+
+        function render() {
+            var grid = document.getElementById('cal-grid');
+            var label = document.getElementById('cal-month-label');
+            var footer = document.getElementById('cal-footer');
+            var selTxt = document.getElementById('cal-selected-txt');
+            var bookBtn = document.getElementById('cal-book-btn');
+            if (!grid) return;
+
+            var yr = current.getFullYear();
+            var mo = current.getMonth();
+            label.textContent = months[mo] + ' ' + yr;
+
+            var firstDay = new Date(yr, mo, 1).getDay();
+            var daysInMonth = new Date(yr, mo + 1, 0).getDate();
+
+            var html = '';
+            days.forEach(function(d) {
+                html += '<div class="cal-day-name">' + d + '</div>';
+            });
+
+            for (var i = 0; i < firstDay; i++) {
+                html += '<div class="cal-day cal-empty"></div>';
+            }
+
+            for (var d = 1; d <= daysInMonth; d++) {
+                var date = new Date(yr, mo, d);
+                var isPast = date < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+                var isToday = date.toDateString() === today.toDateString();
+                var isSel = selected && date.toDateString() === selected.toDateString();
+                var cls = 'cal-day';
+                if (isPast) cls += ' cal-past';
+                if (isToday) cls += ' cal-today';
+                if (isSel) cls += ' cal-selected';
+                html += '<div class="' + cls + '" data-date="' + date.toISOString() + '">' + d + '</div>';
+            }
+
+            grid.innerHTML = html;
+
+            grid.querySelectorAll('.cal-day:not(.cal-past):not(.cal-empty)').forEach(function(el) {
+                el.addEventListener('click', function() {
+                    selected = new Date(el.getAttribute('data-date'));
+                    render();
+                });
+            });
+
+            if (selected) {
+                footer.hidden = false;
+                var dayName = ['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'][selected.getDay()];
+                selTxt.textContent = dayName + ' ' + selected.getDate() + ' ' + months[selected.getMonth()];
+                bookBtn.href = 'mailto:hello@tristack.be?subject=Gesprek%20boeken%20' + encodeURIComponent(selTxt.textContent);
+            } else {
+                footer.hidden = true;
+            }
+        }
+
+        document.getElementById('cal-prev').addEventListener('click', function() {
+            current.setMonth(current.getMonth() - 1);
+            selected = null;
+            render();
+        });
+        document.getElementById('cal-next').addEventListener('click', function() {
+            current.setMonth(current.getMonth() + 1);
+            selected = null;
+            render();
+        });
+
+        render();
+    })();
+</script>
 </body>
 </html>
