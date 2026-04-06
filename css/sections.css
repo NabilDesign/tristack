@@ -60,6 +60,24 @@
     cursor: default;
 }
 
+/* Uitgelichte hoofddiensten (Full-Stack & AI) */
+.svc--featured {
+    border-color: var(--blue-faint2);
+    background: var(--blue-faint);
+}
+.svc--featured .svc-icon {
+    background: var(--blue-faint2);
+}
+
+/* Uitgelichte hoofddiensten */
+.svc--featured {
+    border-color: var(--blue-faint2);
+    background: var(--blue-faint);
+}
+.svc--featured .svc-icon {
+    background: var(--blue-faint2);
+}
+
 /* Gekleurde top-rand bij hover */
 .svc::after {
     content: '';
