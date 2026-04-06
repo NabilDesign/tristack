@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projecten &middot; TriStack</title>
+    <meta name="description" content="Drie projecten die TriStack bouwde voor echte klanten.">
+    <link rel="canonical" href="https://tristack.be/projecten">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231A1A1A'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='14' fill='%232563EB'>TS</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/projecten.css">
+</head>
+<body>
+
+<nav class="nav" id="nav">
+    <div class="nav-inner">
+        <a href="index.html" class="logo">Tri<span class="logo-accent">Stack</span></a>
+        <div class="nav-links">
+            <a href="index.html#diensten" class="nav-a">Diensten</a>
+            <a href="index.html#werkwijze" class="nav-a">Werkwijze</a>
+            <a href="over-ons.html" class="nav-a">Over ons</a>
+            <a href="projecten.html" class="nav-a" aria-current="page">Projecten</a>
+            <a href="skills.html" class="nav-a">Skills</a>
+            <a href="index.html#prijzen" class="nav-a">Prijzen</a>
+            <a href="index.html#contact" class="nav-cta">Gratis gesprek &rarr;</a>
+        </div>
+        <div class="hamburger" id="ham" role="button" aria-label="Menu openen" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+<div class="mob-menu" id="mob" role="navigation">
+    <a href="index.html#diensten" class="nav-a">Diensten</a>
+    <a href="index.html#werkwijze" class="nav-a">Werkwijze</a>
+    <a href="over-ons.html" class="nav-a">Over ons</a>
+    <a href="skills.html" class="nav-a">Skills</a>
+    <a href="projecten.html" class="nav-a">Projecten</a>
+    <a href="index.html#prijzen" class="nav-a">Prijzen</a>
+    <a href="index.html#contact" class="nav-cta">Gratis gesprek &rarr;</a>
+</div>
+
+
+<!-- HERO -->
+<header class="hero-projects">
+    <p class="sec-label reveal">Onze projecten</p>
+    <h1 class="reveal">Drie klanten.<br><em>Drie oplossingen.</em></h1>
+    <p class="hero-projects-lead reveal">Geen showcase van mooie interfaces. Elk project begon met een echt probleem &mdash; dit is wat we ervoor bouwden.</p>
+</header>
+
+
+<!-- PROJECTEN -->
+<div class="projects-list">
+
+    <!-- PROJECT 01 — RUGCRAFT -->
+    <div class="project-item" id="rugcraft">
+        <div class="project-row" role="button" tabindex="0" aria-expanded="false" onclick="toggleProject(this)">
+            <span class="row-num">01</span>
+            <div class="row-center">
+                <p class="row-name">RugCraft</p>
+                <p class="row-problem">Een tapijthandelaar wiens klanten online bestelden maar niks konden inschatten hoe het er thuis zou uitzien.</p>
+            </div>
+            <div class="row-right">
+                <div class="row-tags">
+                    <span class="row-tag">E-commerce</span>
+                    <span class="row-tag">App</span>
+                    <span class="row-tag">AR</span>
+                </div>
+                <div class="row-toggle">+</div>
+            </div>
+        </div>
+        <div class="project-detail">
+            <div class="project-detail-inner">
+                <div class="screenshot-wrap">
+                    <div class="project-screenshot">
+                        <div class="screenshot-chrome">
+                            <div class="chrome-dot"></div>
+                            <div class="chrome-dot"></div>
+                            <div class="chrome-dot"></div>
+                            <div class="chrome-bar"></div>
+                        </div>
+                        <img class="screenshot-img" src="images/projecten/rugcraftSite.png" alt="RugCraft website screenshot">
+                    </div>
+                    <div class="project-screenshot screenshot-app">
+                        <img class="screenshot-img" src="images/projecten/rugcraftApp.jpeg" alt="RugCraft app screenshot" style="object-position: top center;">
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="info-label">Wat we bouwden</span>
+                    <p class="info-desc">Webshop met volledige catalogus en <strong>mobiele app met AR-preview</strong>: klanten richten hun camera op de vloer en zien het tapijt live op schaal staan. Beide platforms op &eacute;&eacute;n backend met accounts, favorieten en orderopvolging.</p>
+                    <div class="built-list">
+                        <div class="built-row">
+                            <span class="built-name">Webshop &amp; catalogus</span>
+                            <span class="built-note">Stripe, filter, accounts</span>
+                        </div>
+                        <div class="built-row">
+                            <span class="built-name">AR-preview app</span>
+                            <span class="built-note">iOS &amp; Android</span>
+                        </div>
+                        <div class="built-row">
+                            <span class="built-name">Backend &amp; database</span>
+                            <span class="built-note">Web en app gesynchroniseerd</span>
+                        </div>
+                    </div>
+                    <span class="info-label">Tech stack</span>
+                    <div class="tech-pills">
+                        <span class="tech-pill">React</span>
+                        <span class="tech-pill">React Native</span>
+                        <span class="tech-pill">Node.js</span>
+                        <span class="tech-pill">AR Kit / AR Core</span>
+                        <span class="tech-pill">PostgreSQL</span>
+                        <span class="tech-pill">Stripe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- PROJECT 02 — AHASDESIGNS -->
+    <div class="project-item" id="ahasdesigns">
+        <div class="project-row" role="button" tabindex="0" aria-expanded="false" onclick="toggleProject(this)">
+            <span class="row-num">02</span>
+            <div class="row-center">
+                <p class="row-name">AhasDesigns</p>
+                <p class="row-problem">Een agency die bedrijven en freelancers samenbracht maar alles via losse mails en WhatsApp liet verlopen.</p>
+            </div>
+            <div class="row-right">
+                <div class="row-tags">
+                    <span class="row-tag">Platform</span>
+                    <span class="row-tag">App</span>
+                    <span class="row-tag">Projectbeheer</span>
+                </div>
+                <div class="row-toggle">+</div>
+            </div>
+        </div>
+        <div class="project-detail">
+            <div class="project-detail-inner">
+                <div class="project-screenshot">
+                    <!-- Vervang door: <img class="screenshot-img" src="images/projecten/ahas-screenshot.png" alt="AhasDesigns screenshot"> -->
+                    <div class="screenshot-chrome">
+                        <div class="chrome-dot"></div>
+                        <div class="chrome-dot"></div>
+                        <div class="chrome-dot"></div>
+                        <div class="chrome-bar"></div>
+                    </div>
+                    <div class="screenshot-placeholder">
+                        <div class="sp-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                        </div>
+                        <span class="sp-text">Screenshot toevoegen</span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <span class="info-label">Wat we bouwden</span>
+                    <p class="info-desc">Webapplicatie waar bedrijven freelancers zoeken en contacteren. Daarna loopt alles via de <strong>mobiele app</strong>: projecten aanmaken, taken toewijzen, real-time chatten en uren bijhouden via een klok-in systeem.</p>
+                    <div class="built-list">
+                        <div class="built-row">
+                            <span class="built-name">Matchmaking platform</span>
+                            <span class="built-note">Profielen, zoeken, contact</span>
+                        </div>
+                        <div class="built-row">
+                            <span class="built-name">Projectbeheer &amp; taken</span>
+                            <span class="built-note">Toewijzen, opvolgen</span>
+                        </div>
+                        <div class="built-row">
+                            <span class="built-name">Real-time chat</span>
+                            <span class="built-note">In-app communicatie</span>
+                        </div>
+                        <div class="built-row">
+                            <span class="built-name">Klok-in systeem</span>
+                            <span class="built-note">Uren, transparant</span>
+                        </div>
+                    </div>
+                    <span class="info-label">Tech stack</span>
+                    <div class="tech-pills">
+                        <span class="tech-pill">React</span>
+                        <span class="tech-pill">React Native</span>
+                        <span class="tech-pill">Node.js</span>
+                        <span class="tech-pill">Socket.io</span>
+                        <span class="tech-pill">PostgreSQL</span>
+                        <span class="tech-pill">Firebase</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- PROJECT 03 — ZAHIRADESIGNS -->
+    <div class="project-item" id="zahiradesigns">
+        <div class="project-row" role="button" tabindex="0" aria-expanded="false" onclick="toggleProject(this)">
+            <span class="row-num">03</span>
+            <div class="row-center">
+                <p class="row-name">ZahiraDesigns</p>
+                <p class="row-problem">Een handmade crochet business die online bestond via een generieke template die ze zelf niet kon aanpassen.</p>
+            </div>
+            <div class="row-right">
+                <div class="row-tags">
+                    <span class="row-tag">Website</span>
+                    <span class="row-tag">Webshop</span>
+                    <span class="row-tag">CMS</span>
+                </div>
+                <div class="row-toggle">+</div>
+            </div>
+        </div>
+        <div class="project-detail">
+            <div class="project-detail-inner">
+                <div class="project-screenshot">
+                    <div class="screenshot-chrome">
+                        <div class="chrome-dot"></div>
+                        <div class="chrome-dot"></div>
+                        <div class="chrome-dot"></div>
+                        <div class="chrome-bar"></div>
+                    </div>
+                    <img class="screenshot-img" src="images/projecten/ZahiraDesignsSite.png" alt="ZahiraDesigns website screenshot" style="padding-top: 32px;">
+                </div>
+                <div class="project-info">
+                    <span class="info-label">Wat we bouwden</span>
+                    <p class="info-desc">Een sfeervolle merkwebsite die haar stijl weerspiegelt &mdash; geen template. Klanten bekijken de collectie en bestellen direct. Via het <strong>CMS beheert Zahira alles zelf</strong>: producten, prijzen, foto's, zonder technische kennis.</p>
+                    <div class="built-list">
+                        <div class="built-row">
+                            <span class="built-name">Merkwebsite op maat</span>
+                            <span class="built-note">Ontworpen rond haar stijl</span>
+                        </div>
+                        <div class="built-row">
+                            <span class="built-name">Webshop</span>
+                            <span class="built-note">Collectie, bestellen, Stripe</span>
+                        </div>
+                        <div class="built-row">
+                            <span class="built-name">Zelfbeheerbaar CMS</span>
+                            <span class="built-note">Geen technische kennis nodig</span>
+                        </div>
+                    </div>
+                    <span class="info-label">Tech stack</span>
+                    <div class="tech-pills">
+                        <span class="tech-pill">Next.js</span>
+                        <span class="tech-pill">React</span>
+                        <span class="tech-pill">Tailwind CSS</span>
+                        <span class="tech-pill">Sanity CMS</span>
+                        <span class="tech-pill">Stripe</span>
+                        <span class="tech-pill">Vercel</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- OUTRO -->
+<section class="outro">
+    <div class="outro-inner reveal">
+        <p class="sec-label">Jij hierna?</p>
+        <h2>Vertel ons wat je nodig hebt.</h2>
+        <p>Elk project begon met een gesprek. Geen presentatie, geen offerte op dag &eacute;&eacute;n &mdash; gewoon luisteren wat er speelt.</p>
+        <div class="outro-btns">
+            <a href="index.html#contact" class="btn-primary">
+                Boek een gesprek
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="over-ons.html" class="btn-ghost">Leer ons kennen</a>
+        </div>
+    </div>
+</section>
+
+<button class="scr-top" id="scrtop" aria-label="Scroll naar boven">&#8593;</button>
+<script type="module" src="js/main.js"></script>
+<script>
+    function toggleProject(btn) {
+        var item = btn.closest('.project-item');
+        var isOpen = item.classList.contains('open');
+        // sluit alle andere
+        document.querySelectorAll('.project-item.open').forEach(function(el) {
+            el.classList.remove('open');
+            el.querySelector('.project-row').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+            item.classList.add('open');
+            btn.setAttribute('aria-expanded', 'true');
+            // scroll het item in beeld
+            setTimeout(function() {
+                item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        }
+    }
+    // keyboard toegankelijkheid
+    document.querySelectorAll('.project-row').forEach(function(row) {
+        row.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleProject(row);
+            }
+        });
+    });
+</script>
+</body>
+</html>

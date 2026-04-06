@@ -1,0 +1,402 @@
+/* ============================================================
+   PROJECTEN.CSS — Drie echte projecten, screenshots centraal
+   ============================================================ */
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.hero-projects {
+    padding: 160px 5% 100px;
+    border-bottom: 1px solid var(--border);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-projects .sec-label { margin-bottom: 24px; }
+
+.hero-projects h1 {
+    font-size: clamp(44px, 6vw, 82px);
+    font-weight: 800;
+    letter-spacing: -0.055em;
+    line-height: 1.0;
+    color: var(--ink);
+    margin-bottom: 20px;
+    max-width: 720px;
+}
+.hero-projects h1 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink-soft);
+}
+.hero-projects-lead {
+    font-size: 17px;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    max-width: 480px;
+}
+
+
+/* ── Project lijst ──────────────────────────────────────────── */
+.projects-list {
+    border-top: 1px solid var(--border);
+}
+
+.project-item {
+    border-bottom: 1px solid var(--border);
+    background: #fff;
+}
+.project-item:nth-child(even) {
+    background: var(--surface);
+}
+
+
+/* ── Project rij — klikbare header ─────────────────────────── */
+.project-row {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    gap: 40px;
+    align-items: center;
+    min-height: 96px;
+    cursor: pointer;
+    transition: background .2s;
+}
+.project-row:hover {
+    background: rgba(0,0,0,0.02);
+}
+.project-item:nth-child(even) .project-row:hover {
+    background: rgba(0,0,0,0.02);
+}
+
+.row-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+}
+
+.row-center {}
+
+.row-name {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: clamp(20px, 2.2vw, 28px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    margin-bottom: 4px;
+}
+
+.row-problem {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 560px;
+}
+
+.row-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.row-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.row-tag {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink-faint);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 3px;
+}
+
+.row-toggle {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-faint);
+    font-size: 16px;
+    flex-shrink: 0;
+    transition: transform .3s, background .2s, color .2s, border-color .2s;
+    background: var(--page);
+    line-height: 1;
+}
+.project-item:nth-child(even) .row-toggle {
+    background: #fff;
+}
+.project-item.open .row-toggle {
+    transform: rotate(45deg);
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+}
+
+
+/* ── Uitklapbaar detail ─────────────────────────────────────── */
+.project-detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .5s cubic-bezier(.22,1,.36,1);
+}
+.project-item.open .project-detail {
+    max-height: 1000px;
+}
+
+.project-detail-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5% 72px;
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 72px;
+    align-items: start;
+}
+
+/* Screenshot wrapper — normaal één, of dual voor site + app */
+.screenshot-wrap {
+    display: grid;
+    grid-template-columns: 1fr 180px;
+    gap: 12px;
+    align-items: start;
+}
+
+/* Screenshot — het hart van het detail */
+.project-screenshot {
+    position: relative;
+    border-radius: var(--r14);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    aspect-ratio: 16 / 10;
+}
+
+/* App screenshot — smal accent, portretformaat */
+.screenshot-app {
+    aspect-ratio: 9 / 19 !important;
+    border-radius: var(--r20) !important;
+}
+
+.screenshot-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+}
+
+/* Placeholder als er nog geen screenshot is */
+.screenshot-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.sp-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--r10);
+    border: 1.5px dashed var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ink-faint);
+}
+
+.sp-text {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+}
+
+/* Browser chrome bovenaan de screenshot */
+.screenshot-chrome {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 32px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    gap: 6px;
+}
+.chrome-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border);
+}
+.chrome-bar {
+    flex: 1;
+    height: 16px;
+    background: var(--border);
+    border-radius: 3px;
+    margin: 0 12px;
+    opacity: 0.5;
+}
+
+/* Info kolom rechts */
+.project-info {}
+
+.info-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: block;
+    margin-bottom: 14px;
+}
+
+.info-desc {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.85;
+    margin-bottom: 32px;
+}
+.info-desc strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+/* Wat gebouwd — strakke lijst */
+.built-list {
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+}
+
+.built-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+}
+.built-row:last-child { border-bottom: none; }
+
+.built-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.built-note {
+    font-size: 12px;
+    color: var(--ink-faint);
+    text-align: right;
+}
+
+/* Tech stack */
+.tech-stack {}
+
+.tech-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tech-pill {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-mid);
+    border: 1px solid var(--border);
+    padding: 4px 11px;
+    border-radius: 3px;
+    background: var(--page);
+}
+.project-item:nth-child(even) .tech-pill {
+    background: #fff;
+}
+
+
+/* ── Outro ──────────────────────────────────────────────────── */
+.outro {
+    background: var(--ink);
+    padding: 120px 0;
+}
+
+.outro-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.outro-inner .sec-label {
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 20px;
+}
+
+.outro-inner h2 {
+    font-size: clamp(26px, 3vw, 42px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.outro-inner p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.9;
+}
+
+.outro-btns {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.outro-inner .btn-primary {
+    background: #fff;
+    color: var(--ink);
+}
+.outro-inner .btn-primary:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .project-detail-inner   { grid-template-columns: 1fr; gap: 40px; }
+    .project-info           { order: -1; }
+}
+
+@media (max-width: 768px) {
+    .hero-projects          { padding: 120px 5% 64px; }
+    .project-row            { grid-template-columns: 48px 1fr auto; gap: 16px; min-height: 80px; }
+    .row-tags               { display: none; }
+    .nav-links              { display: none; }
+    .hamburger              { display: flex; }
+    .project-item.open .project-detail { max-height: 1800px; }
+    .screenshot-app         { width: 96px; }
+}
+
+@media (max-width: 480px) {
+    .project-row            { grid-template-columns: 1fr auto; }
+    .row-num                { display: none; }
+    .outro-btns             { flex-direction: column; }
+}

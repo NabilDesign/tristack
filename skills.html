@@ -3,278 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skills & Certificaten · TriStack</title>
-    <meta name="description" content="Onze technische skills en certificaten. TriStack combineert frontend, backend, AI en security-kennis om betrouwbare software te bouwen voor lokale ondernemers.">
+    <title>Skills &amp; Mensen &middot; TriStack</title>
+    <meta name="description" content="De mensen achter TriStack &mdash; drie developers met elk hun eigen expertise.">
     <link rel="canonical" href="https://tristack.be/skills">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231A1A1A'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='14' fill='%232563EB'>TS</text></svg>">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/nav.css">
-
-    <style>
-        /* ── Hero ─────────────────────────────────────────────── */
-        .hero-skills {
-            padding: 140px 0 80px;
-            background: var(--page);
-            border-bottom: 1px solid var(--border);
-        }
-        .hero-skills-inner {
-            max-width: 720px;
-            margin: 0 auto;
-            padding: 0 5%;
-        }
-        .hero-skills .sec-label { margin-bottom: 20px; }
-        .hero-skills h1 {
-            font-size: clamp(36px, 4.5vw, 60px);
-            font-weight: 800;
-            color: var(--ink);
-            line-height: 1.08;
-            letter-spacing: -0.04em;
-            margin-bottom: 28px;
-        }
-        .hero-skills h1 em {
-            font-style: italic;
-            font-weight: 400;
-        }
-        .hero-skills-lead {
-            font-size: 19px;
-            color: var(--ink-soft);
-            line-height: 1.8;
-            max-width: 580px;
-        }
-
-        /* ── Per-persoon secties ──────────────────────────────── */
-        .person-section {
-            padding: 96px 0;
-            background: #fff;
-            border-bottom: 1px solid var(--border);
-        }
-        .person-section:nth-child(even) { background: var(--surface); }
-
-        .person-inner {
-            max-width: 1160px;
-            margin: 0 auto;
-            padding: 0 5%;
-        }
-
-        .person-header {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            margin-bottom: 48px;
-        }
-
-        .person-avatar {
-            width: 64px;
-            height: 64px;
-            border-radius: var(--r14);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 24px;
-            font-weight: 800;
-            flex-shrink: 0;
-        }
-        .av-ahmed  { background: var(--accent-bg); color: var(--accent); }
-        .av-nabil  { background: var(--ink); color: #60A5FA; }
-        .av-anass  { background: #F5F3FF; color: #6D28D9; }
-
-        .person-meta h2 {
-            font-size: clamp(24px, 2.4vw, 34px);
-            margin-bottom: 4px;
-        }
-        .person-role {
-            font-size: 15px;
-            color: var(--ink-soft);
-        }
-        .person-bio {
-            font-size: 16px;
-            color: var(--ink-mid);
-            line-height: 1.8;
-            max-width: 620px;
-            margin-bottom: 40px;
-        }
-
-        .person-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 48px;
-        }
-
-        .person-col h3 {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--ink);
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--border);
-        }
-
-        .person-skill-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .person-skill {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 16px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--r10);
-        }
-        .person-section:nth-child(even) .person-skill {
-            background: #fff;
-        }
-        .person-skill-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--ink);
-        }
-        .person-skill-level {
-            font-size: 12px;
-            font-weight: 500;
-            color: var(--ink-faint);
-            background: var(--page);
-            padding: 3px 10px;
-            border-radius: var(--r6);
-            border: 1px solid var(--border);
-        }
-
-        .cert-mini {
-            display: flex;
-            gap: 16px;
-            align-items: flex-start;
-            padding: 16px;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--r10);
-        }
-        .person-section:nth-child(even) .cert-mini {
-            background: #fff;
-        }
-        .cert-mini-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: var(--r8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 18px;
-        }
-        .cert-mini h4 {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--ink);
-            margin-bottom: 2px;
-            line-height: 1.3;
-        }
-        .cert-mini-org {
-            font-size: 12px;
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        /* Placeholder styling */
-        .placeholder-hint {
-            font-size: 13px;
-            color: var(--ink-faint);
-            font-style: italic;
-            padding: 12px 16px;
-            background: var(--surface);
-            border: 1.5px dashed var(--border);
-            border-radius: var(--r10);
-            text-align: center;
-        }
-        .person-section:nth-child(even) .placeholder-hint {
-            background: #fff;
-        }
-
-        /* ── Toolbox strip ────────────────────────────────────── */
-        .toolbox {
-            padding: 72px 0;
-            background: var(--surface);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-        .toolbox-inner {
-            max-width: 1160px;
-            margin: 0 auto;
-            padding: 0 5%;
-            text-align: center;
-        }
-        .toolbox-inner h2 {
-            font-size: clamp(20px, 2vw, 28px);
-            margin-bottom: 12px;
-        }
-        .toolbox-inner > p {
-            font-size: 15px;
-            color: var(--ink-soft);
-            margin-bottom: 36px;
-        }
-        .tool-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-        }
-        .tool-list span {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--ink-mid);
-            background: #fff;
-            border: 1.5px solid var(--border);
-            padding: 10px 20px;
-            border-radius: var(--r10);
-            transition: border-color .2s, transform .2s;
-        }
-        .tool-list span:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        /* ── Outro / CTA ──────────────────────────────────────── */
-        .outro { background: #fff; padding: 96px 0; border-top: 1px solid var(--border); }
-        .outro-inner { max-width: 620px; margin: 0 auto; padding: 0 5%; }
-        .outro-inner h2 {
-            font-size: clamp(22px, 2.4vw, 34px);
-            font-weight: 700;
-            margin-bottom: 18px;
-            line-height: 1.2;
-        }
-        .outro-inner p {
-            font-size: 16px;
-            color: var(--ink-soft);
-            line-height: 1.85;
-            margin-bottom: 14px;
-        }
-        .outro-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
-
-        /* ── Responsive ───────────────────────────────────────── */
-        @media (max-width: 1024px) {
-            .person-columns { grid-template-columns: 1fr; gap: 32px; }
-        }
-        @media (max-width: 768px) {
-            .hero-skills { padding: 110px 0 60px; }
-            .nav-links   { display: none; }
-            .hamburger   { display: flex; }
-            .person-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-        }
-        @media (max-width: 480px) {
-            .outro-btns  { flex-direction: column; }
-        }
-    </style>
+    <link rel="stylesheet" href="css/skills.css">
 </head>
 <body>
 
@@ -285,9 +23,10 @@
             <a href="index.html#diensten" class="nav-a">Diensten</a>
             <a href="index.html#werkwijze" class="nav-a">Werkwijze</a>
             <a href="over-ons.html" class="nav-a">Over ons</a>
+            <a href="projecten.html" class="nav-a">Projecten</a>
             <a href="skills.html" class="nav-a" aria-current="page">Skills</a>
             <a href="index.html#prijzen" class="nav-a">Prijzen</a>
-            <a href="index.html#contact" class="nav-cta">Gratis gesprek →</a>
+            <a href="index.html#contact" class="nav-cta">Gratis gesprek &rarr;</a>
         </div>
         <div class="hamburger" id="ham" role="button" aria-label="Menu openen" aria-expanded="false">
             <span></span><span></span><span></span>
@@ -300,94 +39,116 @@
     <a href="index.html#werkwijze" class="nav-a">Werkwijze</a>
     <a href="over-ons.html" class="nav-a">Over ons</a>
     <a href="skills.html" class="nav-a">Skills</a>
+    <a href="projecten.html" class="nav-a">Projecten</a>
     <a href="index.html#prijzen" class="nav-a">Prijzen</a>
-    <a href="index.html#contact" class="nav-cta">Gratis gesprek →</a>
+    <a href="index.html#contact" class="nav-cta">Gratis gesprek &rarr;</a>
 </div>
 
 
 <!-- HERO -->
 <header class="hero-skills">
     <div class="hero-skills-inner">
-        <p class="sec-label">Skills & Certificaten</p>
-        <h1>Wat wij<br>in huis <em>hebben.</em></h1>
-        <p class="hero-skills-lead">Drie mensen, elk met hun eigen expertise. Dit is wat ieder van ons meebrengt — en de certificaten die het bewijzen.</p>
+        <div class="hero-left">
+            <p class="sec-label reveal">Skills &amp; Mensen</p>
+            <h1 class="reveal">Wie wij<br>zijn <em>&amp; wat<br>we kunnen.</em></h1>
+        </div>
+        <div class="hero-right reveal">
+            <p>Drie mensen, elk met een eigen focus. Geen algemeen bureau &mdash; specifieke expertise, gecombineerd waar het telt.</p>
+            <nav class="person-jumps" aria-label="Naar persoon">
+                <a href="#ahmed" class="person-jump">
+                    <div class="pj-left">
+                        <span class="pj-num">01</span>
+                        <span class="pj-name">Ahmed</span>
+                        <span class="pj-role">Frontend &middot; Design &middot; Databanken</span>
+                    </div>
+                    <span class="pj-arrow">&#8599;</span>
+                </a>
+                <a href="#nabil" class="person-jump">
+                    <div class="pj-left">
+                        <span class="pj-num">02</span>
+                        <span class="pj-name">Nabil</span>
+                        <span class="pj-role">Cybersecurity &middot; Pentesting</span>
+                    </div>
+                    <span class="pj-arrow">&#8599;</span>
+                </a>
+                <a href="#anass" class="person-jump">
+                    <div class="pj-left">
+                        <span class="pj-num">03</span>
+                        <span class="pj-name">Anass</span>
+                        <span class="pj-role">Applicaties &middot; AI-integratie</span>
+                    </div>
+                    <span class="pj-arrow">&#8599;</span>
+                </a>
+            </nav>
+        </div>
     </div>
 </header>
 
 
-<!-- ============================================================
-     AHMED
-     ============================================================ -->
+<!-- AHMED -->
 <section class="person-section" id="ahmed">
     <div class="person-inner">
 
-        <div class="person-header reveal">
-            <div class="person-avatar av-ahmed">A</div>
-            <div class="person-meta">
-                <h2>Ahmed</h2>
-                <p class="person-role">Frontend, Design & Databanken</p>
+        <div class="person-head reveal">
+            <div class="person-head-left">
+                <span class="person-index">01</span>
+                <h2 class="person-name">Ahmed</h2>
+            </div>
+            <div class="person-head-right">
+                <p class="person-discipline">Frontend &middot; Design &middot; Databanken</p>
+                <p class="person-bio">[Ahmed, schrijf hier iets over jezelf. Wat drijft je? Wat vind je leuk aan bouwen? 2&ndash;3 zinnen, persoonlijk en direct.]</p>
+                <div class="person-tags">
+                    <span class="person-tag">[Hobby 1]</span>
+                    <span class="person-tag">[Hobby 2]</span>
+                    <span class="person-tag">[Hobby 3]</span>
+                </div>
             </div>
         </div>
 
-        <!-- TODO: Ahmed, vul hier je eigen bio in -->
-        <p class="person-bio reveal">
-            [Schrijf hier een korte intro over jezelf. Wat drijft je? Waar ben je goed in? Wat vind je leuk aan dit werk? 2-3 zinnen is genoeg.]
-        </p>
-
-        <div class="person-columns">
-            <div class="person-col reveal">
-                <h3>Skills</h3>
-                <div class="person-skill-list">
-                    <!-- TODO: Ahmed, pas deze skills aan naar jouw echte skills -->
-                    <div class="person-skill">
-                        <span class="person-skill-name">[Skill 1, bv. HTML & CSS]</span>
-                        <span class="person-skill-level">[Niveau, bv. Gevorderd]</span>
+        <div class="person-body">
+            <div class="reveal">
+                <span class="col-title">Skills</span>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <span class="skill-name">[HTML &amp; CSS]</span>
+                        <span class="skill-level">[Niveau]</span>
                     </div>
-                    <div class="person-skill">
-                        <span class="person-skill-name">[Skill 2, bv. JavaScript]</span>
-                        <span class="person-skill-level">[Niveau]</span>
+                    <div class="skill-item">
+                        <span class="skill-name">[JavaScript]</span>
+                        <span class="skill-level">[Niveau]</span>
                     </div>
-                    <div class="person-skill">
-                        <span class="person-skill-name">[Skill 3, bv. React]</span>
-                        <span class="person-skill-level">[Niveau]</span>
+                    <div class="skill-item">
+                        <span class="skill-name">[React]</span>
+                        <span class="skill-level">[Niveau]</span>
                     </div>
-                    <div class="person-skill">
-                        <span class="person-skill-name">[Skill 4, bv. SQL]</span>
-                        <span class="person-skill-level">[Niveau]</span>
+                    <div class="skill-item">
+                        <span class="skill-name">[SQL / Databanken]</span>
+                        <span class="skill-level">[Niveau]</span>
                     </div>
-                    <div class="person-skill">
-                        <span class="person-skill-name">[Skill 5, bv. Figma]</span>
-                        <span class="person-skill-level">[Niveau]</span>
+                    <div class="skill-item">
+                        <span class="skill-name">[Figma / Design]</span>
+                        <span class="skill-level">[Niveau]</span>
                     </div>
-                    <!-- Kopieer bovenstaand blok om meer skills toe te voegen -->
-                    <p class="placeholder-hint">↑ Vervang de placeholders met je echte skills en niveaus</p>
                 </div>
             </div>
-
-            <div class="person-col reveal">
-                <h3>Certificaten</h3>
-                <div class="person-skill-list">
-                    <!-- TODO: Ahmed, voeg je echte certificaten toe -->
-                    <div class="cert-mini">
-                        <div class="cert-mini-icon si-blue">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                        </div>
+            <div class="reveal">
+                <span class="col-title">Certificaten</span>
+                <div class="cert-list">
+                    <div class="cert-item">
                         <div>
-                            <h4>[Certificaat naam, bv. Meta Front-End Developer]</h4>
-                            <p class="cert-mini-org">[Organisatie, bv. Meta / Coursera]</p>
+                            <p class="cert-name">[Certificaat naam]</p>
+                            <p class="cert-org">[Organisatie &middot; Jaar]</p>
                         </div>
+                        <span class="cert-status pending">Behaald</span>
                     </div>
-                    <div class="cert-mini">
-                        <div class="cert-mini-icon si-green">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-                        </div>
+                    <div class="cert-item">
                         <div>
-                            <h4>[Certificaat naam]</h4>
-                            <p class="cert-mini-org">[Organisatie]</p>
+                            <p class="cert-name">[Certificaat naam]</p>
+                            <p class="cert-org">[Organisatie &middot; Jaar]</p>
                         </div>
+                        <span class="cert-status pending">Behaald</span>
                     </div>
-                    <!-- Kopieer bovenstaand blok om meer certificaten toe te voegen -->
-                    <p class="placeholder-hint">↑ Vervang met je echte certificaten</p>
+                    <p class="cert-placeholder">Voeg je echte certificaten toe</p>
                 </div>
             </div>
         </div>
@@ -396,77 +157,71 @@
 </section>
 
 
-<!-- ============================================================
-     NABIL
-     ============================================================ -->
+<!-- NABIL -->
 <section class="person-section" id="nabil">
     <div class="person-inner">
 
-        <div class="person-header reveal">
-            <div class="person-avatar av-nabil">N</div>
-            <div class="person-meta">
-                <h2>Nabil</h2>
-                <p class="person-role">Cybersecurity & Backend</p>
+        <div class="person-head reveal">
+            <div class="person-head-left">
+                <span class="person-index">02</span>
+                <h2 class="person-name">Nabil</h2>
+            </div>
+            <div class="person-head-right">
+                <p class="person-discipline">Freelance Penetration Tester &middot; Cybersecurity</p>
+                <p class="person-bio">Ik ben Nabil, 22 jaar. Cybersecurity is mijn vak en mijn passie. Als freelance penetration tester zoek ik <strong>zwakke plekken in systemen op voordat kwaadwillenden dat doen</strong>. Wat mij drijft is klanten echt helpen &mdash; als ik zie dat technologie hun werk eenvoudiger maakt, ben ik op mijn best.</p>
+                <div class="person-tags">
+                    <span class="person-tag">Sporten</span>
+                    <span class="person-tag">Vissen</span>
+                    <span class="person-tag">Klanten helpen</span>
+                    <span class="person-tag">Security research</span>
+                </div>
             </div>
         </div>
 
-        <!-- TODO: Nabil, vul hier je eigen bio in -->
-        <p class="person-bio reveal">
-            [Schrijf hier een korte intro over jezelf. Wat drijft je? Waar ben je goed in? Wat vind je leuk aan dit werk? 2-3 zinnen is genoeg.]
-        </p>
-
-        <div class="person-columns">
-            <div class="person-col reveal">
-                <h3>Skills</h3>
-                <div class="person-skill-list">
-                    <!-- TODO: Nabil, pas deze skills aan -->
-                    <div class="person-skill">
-                        <span class="person-skill-name">[Skill 1, bv. Pentesting]</span>
-                        <span class="person-skill-level">[Niveau]</span>
+        <div class="person-body">
+            <div class="reveal">
+                <span class="col-title">Skills</span>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <span class="skill-name">Pentesting</span>
+                        <span class="skill-level">Gevorderd</span>
                     </div>
-                    <div class="person-skill">
-                        <span class="person-skill-name">[Skill 2, bv. Linux]</span>
-                        <span class="person-skill-level">[Niveau]</span>
+                    <div class="skill-item">
+                        <span class="skill-name">Netwerken</span>
+                        <span class="skill-level">Gevorderd</span>
                     </div>
-                    <div class="person-skill">
-                        <span class="person-skill-name">[Skill 3, bv. Netwerken]</span>
-                        <span class="person-skill-level">[Niveau]</span>
+                    <div class="skill-item">
+                        <span class="skill-name">Linux</span>
+                        <span class="skill-level">Gevorderd</span>
                     </div>
-                    <div class="person-skill">
-                        <span class="person-skill-name">[Skill 4, bv. Python]</span>
-                        <span class="person-skill-level">[Niveau]</span>
+                    <div class="skill-item">
+                        <span class="skill-name">Systemen beveiligen</span>
+                        <span class="skill-level">Gevorderd</span>
                     </div>
-                    <div class="person-skill">
-                        <span class="person-skill-name">[Skill 5, bv. API's]</span>
-                        <span class="person-skill-level">[Niveau]</span>
+                    <div class="skill-item">
+                        <span class="skill-name">Databanken beheren</span>
+                        <span class="skill-level">Competent</span>
                     </div>
-                    <p class="placeholder-hint">↑ Vervang de placeholders met je echte skills en niveaus</p>
                 </div>
             </div>
-
-            <div class="person-col reveal">
-                <h3>Certificaten</h3>
-                <div class="person-skill-list">
-                    <!-- TODO: Nabil, voeg je echte certificaten toe -->
-                    <div class="cert-mini">
-                        <div class="cert-mini-icon si-dark">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                        </div>
+            <div class="reveal">
+                <span class="col-title">Certificaten &amp; Ervaring</span>
+                <div class="cert-list">
+                    <div class="cert-item">
                         <div>
-                            <h4>[Certificaat naam, bv. CompTIA Security+]</h4>
-                            <p class="cert-mini-org">[Organisatie, bv. CompTIA]</p>
+                            <p class="cert-name">Freelance Penetration Tester</p>
+                            <p class="cert-org">Zelfstandig</p>
                         </div>
+                        <span class="cert-status active">Actief</span>
                     </div>
-                    <div class="cert-mini">
-                        <div class="cert-mini-icon si-slate">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                        </div>
+                    <div class="cert-item">
                         <div>
-                            <h4>[Certificaat naam]</h4>
-                            <p class="cert-mini-org">[Organisatie]</p>
+                            <p class="cert-name">[Certificaat naam]</p>
+                            <p class="cert-org">[Organisatie &middot; Jaar]</p>
                         </div>
+                        <span class="cert-status pending">Behaald</span>
                     </div>
-                    <p class="placeholder-hint">↑ Vervang met je echte certificaten</p>
+                    <p class="cert-placeholder">Voeg je andere certificaten toe</p>
                 </div>
             </div>
         </div>
@@ -475,77 +230,70 @@
 </section>
 
 
-<!-- ============================================================
-     ANASS
-     ============================================================ -->
+<!-- ANASS -->
 <section class="person-section" id="anass">
     <div class="person-inner">
 
-        <div class="person-header reveal">
-            <div class="person-avatar av-anass">A</div>
-            <div class="person-meta">
-                <h2>Anass</h2>
-                <p class="person-role">Applicaties & AI-integratie</p>
+        <div class="person-head reveal">
+            <div class="person-head-left">
+                <span class="person-index">03</span>
+                <h2 class="person-name">Anass</h2>
+            </div>
+            <div class="person-head-right">
+                <p class="person-discipline">Applicaties &middot; AI-integratie</p>
+                <p class="person-bio">[Anass, schrijf hier iets over jezelf. Wat fascineert je aan AI en automatisering? Wat bouw je het liefst? 2&ndash;3 zinnen, persoonlijk en direct.]</p>
+                <div class="person-tags">
+                    <span class="person-tag">[Hobby 1]</span>
+                    <span class="person-tag">[Hobby 2]</span>
+                    <span class="person-tag">[Hobby 3]</span>
+                </div>
             </div>
         </div>
 
-        <!-- TODO: Anass, vul hier je eigen bio in -->
-        <p class="person-bio reveal">
-            [Schrijf hier een korte intro over jezelf. Wat drijft je? Waar ben je goed in? Wat vind je leuk aan dit werk? 2-3 zinnen is genoeg.]
-        </p>
-
-        <div class="person-columns">
-            <div class="person-col reveal">
-                <h3>Skills</h3>
-                <div class="person-skill-list">
-                    <!-- TODO: Anass, pas deze skills aan -->
-                    <div class="person-skill">
-                        <span class="person-skill-name">[Skill 1, bv. .NET / C#]</span>
-                        <span class="person-skill-level">[Niveau]</span>
+        <div class="person-body">
+            <div class="reveal">
+                <span class="col-title">Skills</span>
+                <div class="skill-list">
+                    <div class="skill-item">
+                        <span class="skill-name">[.NET / C#]</span>
+                        <span class="skill-level">[Niveau]</span>
                     </div>
-                    <div class="person-skill">
-                        <span class="person-skill-name">[Skill 2, bv. Python]</span>
-                        <span class="person-skill-level">[Niveau]</span>
+                    <div class="skill-item">
+                        <span class="skill-name">[Python]</span>
+                        <span class="skill-level">[Niveau]</span>
                     </div>
-                    <div class="person-skill">
-                        <span class="person-skill-name">[Skill 3, bv. AI-integratie]</span>
-                        <span class="person-skill-level">[Niveau]</span>
+                    <div class="skill-item">
+                        <span class="skill-name">[AI-integratie]</span>
+                        <span class="skill-level">[Niveau]</span>
                     </div>
-                    <div class="person-skill">
-                        <span class="person-skill-name">[Skill 4, bv. Automatisering]</span>
-                        <span class="person-skill-level">[Niveau]</span>
+                    <div class="skill-item">
+                        <span class="skill-name">[Automatisering]</span>
+                        <span class="skill-level">[Niveau]</span>
                     </div>
-                    <div class="person-skill">
-                        <span class="person-skill-name">[Skill 5, bv. API-koppelingen]</span>
-                        <span class="person-skill-level">[Niveau]</span>
+                    <div class="skill-item">
+                        <span class="skill-name">[API-koppelingen]</span>
+                        <span class="skill-level">[Niveau]</span>
                     </div>
-                    <p class="placeholder-hint">↑ Vervang de placeholders met je echte skills en niveaus</p>
                 </div>
             </div>
-
-            <div class="person-col reveal">
-                <h3>Certificaten</h3>
-                <div class="person-skill-list">
-                    <!-- TODO: Anass, voeg je echte certificaten toe -->
-                    <div class="cert-mini">
-                        <div class="cert-mini-icon si-purple">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-                        </div>
+            <div class="reveal">
+                <span class="col-title">Certificaten</span>
+                <div class="cert-list">
+                    <div class="cert-item">
                         <div>
-                            <h4>[Certificaat naam, bv. IBM AI Engineering]</h4>
-                            <p class="cert-mini-org">[Organisatie, bv. IBM / Coursera]</p>
+                            <p class="cert-name">[Certificaat naam]</p>
+                            <p class="cert-org">[Organisatie &middot; Jaar]</p>
                         </div>
+                        <span class="cert-status pending">Behaald</span>
                     </div>
-                    <div class="cert-mini">
-                        <div class="cert-mini-icon si-orange">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                        </div>
+                    <div class="cert-item">
                         <div>
-                            <h4>[Certificaat naam]</h4>
-                            <p class="cert-mini-org">[Organisatie]</p>
+                            <p class="cert-name">[Certificaat naam]</p>
+                            <p class="cert-org">[Organisatie &middot; Jaar]</p>
                         </div>
+                        <span class="cert-status pending">Behaald</span>
                     </div>
-                    <p class="placeholder-hint">↑ Vervang met je echte certificaten</p>
+                    <p class="cert-placeholder">Voeg je echte certificaten toe</p>
                 </div>
             </div>
         </div>
@@ -554,11 +302,13 @@
 </section>
 
 
-<!-- TOOLBOX -->
+<!-- TOOLBOX — donkere sectie -->
 <section class="toolbox">
     <div class="toolbox-inner reveal">
-        <h2>Onze toolbox</h2>
-        <p>De technologieën en tools waar we dagelijks mee werken.</p>
+        <div class="toolbox-left">
+            <h2>Onze<br>toolbox.</h2>
+            <p>De technologie&euml;n en tools waar we dagelijks mee bouwen.</p>
+        </div>
         <div class="tool-list">
             <span>React</span>
             <span>Node.js</span>
@@ -575,32 +325,31 @@
             <span>Vercel</span>
             <span>Stripe</span>
             <span>WhatsApp API</span>
+            <span>React Native</span>
+            <span>Socket.io</span>
+            <span>Tailwind CSS</span>
         </div>
     </div>
 </section>
 
 
-<!-- OUTRO / CTA -->
+<!-- OUTRO -->
 <section class="outro" id="gesprek">
     <div class="outro-inner reveal">
         <p class="sec-label">Overtuigd?</p>
-        <h2>Laten we kijken wat we voor jouw zaak kunnen bouwen.</h2>
-        <p>Geen verkooppraatje. Gewoon een gesprek van 30 minuten waarin we luisteren naar hoe jouw zaak werkt en vertellen wat er mogelijk is.</p>
+        <h2>Laten we kijken wat we voor jouw zaak kunnen doen.</h2>
+        <p>Geen verkooppraatje. Gewoon een gesprek van 30 minuten &mdash; we luisteren naar hoe jouw zaak werkt en vertellen eerlijk wat er mogelijk is.</p>
         <div class="outro-btns">
             <a href="index.html#contact" class="btn-primary">
                 Boek een gesprek
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </a>
-            <a href="index.html" class="btn-secondary">Terug naar home</a>
+            <a href="projecten.html" class="btn-secondary">Bekijk onze projecten</a>
         </div>
     </div>
 </section>
 
-
-<button class="scr-top" id="scrtop" aria-label="Scroll naar boven">↑</button>
+<button class="scr-top" id="scrtop" aria-label="Scroll naar boven">&#8593;</button>
 <script type="module" src="js/main.js"></script>
-
 </body>
 </html>
