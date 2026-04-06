@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TriStack — MVP-ontwikkeling, AI &amp; Cybersecurity · België</title>
+    <meta name="description" content="TriStack bouwt jouw digitaal product in 8–12 weken. Full-stack development, cybersecurity en AI-integratie in één team. Gevestigd in België.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+
+    <!-- Stijlen (volgorde is belangrijk) -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<!-- ── NAVIGATIE ──────────────────────────────────────────── -->
+<nav class="nav" id="nav">
+    <div class="nav-inner">
+        <a href="#" class="logo">
+            Tri<span class="logo-blue">Stack</span><span class="logo-dot"></span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#diensten" class="nav-a">Diensten</a>
+            <a href="#werkwijze" class="nav-a">Werkwijze</a>
+            <a href="#cases"    class="nav-a">Cases</a>
+            <a href="#prijzen"  class="nav-a">Prijzen</a>
+            <a href="#contact"  class="nav-cta">
+                Gratis gesprek
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Hamburger (mobiel) -->
+        <div class="hamburger" id="ham" role="button" aria-label="Menu openen" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobiel menu -->
+<div class="mob-menu" id="mob" role="navigation" aria-label="Mobiel menu">
+    <a href="#diensten" class="nav-a">Diensten</a>
+    <a href="#werkwijze" class="nav-a">Werkwijze</a>
+    <a href="#cases"    class="nav-a">Cases</a>
+    <a href="#prijzen"  class="nav-a">Prijzen</a>
+    <a href="#contact"  class="nav-cta">Gratis gesprek →</a>
+</div>
+
+
+<!-- ── HERO ───────────────────────────────────────────────── -->
+<section class="hero" id="top">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="hero-glow"  aria-hidden="true"></div>
+
+    <div class="hero-inner">
+        <!-- Tekst-kolom -->
+        <div style="animation: fadeUp .8s .1s both">
+            <div class="hero-badge">
+                <span class="badge-dot" aria-hidden="true"></span>
+                Beschikbaar voor nieuwe projecten
+            </div>
+
+            <h1>
+                Wij bouwen jouw digitaal product.
+                <em>Snel, veilig en klaar voor groei.</em>
+            </h1>
+
+            <p class="hero-sub">
+                Van MVP tot volledig platform — TriStack combineert development,
+                cybersecurity en AI-integratie in één team. Bureaukwaliteit, startup-tempo.
+            </p>
+
+            <div class="hero-btns">
+                <a href="#contact" class="btn btn-blue btn-lg">
+                    Boek een gratis gesprek
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <a href="#werkwijze" class="btn btn-ghost btn-lg">Bekijk onze aanpak</a>
+            </div>
+
+            <div class="hero-trust">
+                <div class="avatars" aria-hidden="true">
+                    <div class="av">SV</div>
+                    <div class="av">PM</div>
+                    <div class="av">LH</div>
+                </div>
+                <div class="trust-txt">
+                    <strong>+12 founders</strong>
+                    kozen TriStack voor hun product
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel-kolom -->
+        <div class="hero-panel">
+            <div class="panel-card">
+                <div class="p-icon dev" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.5 7L3 10l3.5 3M13.5 7L17 10l-3.5 3M11.5 5l-3 10" stroke="#60A5FA" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="p-title">Full-Stack Development</div>
+                    <div class="p-sub">Schaalbare architectuur, van API tot interface</div>
+                </div>
+            </div>
+
+            <div class="panel-card">
+                <div class="p-icon sec" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 2L4 4.5V9c0 3.5 2.5 6.5 6 7.5 3.5-1 6-4 6-7.5V4.5L10 2z" stroke="#34D399" stroke-width="1.6" stroke-linejoin="round"/>
+                        <path d="M7.5 10l2 2 3-3" stroke="#34D399" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="p-title">Cybersecurity &amp; GDPR</div>
+                    <div class="p-sub">Beveiliging ingebouwd, niet achteraf toegevoegd</div>
+                </div>
+            </div>
+
+            <div class="panel-card">
+                <div class="p-icon ai" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="10" cy="10" r="3" stroke="#A78BFA" stroke-width="1.6"/>
+                        <path d="M10 3v2M10 15v2M3 10h2M15 10h2M5.05 5.05l1.41 1.41M13.54 13.54l1.41 1.41M5.05 14.95l1.41-1.41M13.54 6.46l1.41-1.41" stroke="#A78BFA" stroke-width="1.6" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="p-title">AI-integratie &amp; UX</div>
+                    <div class="p-sub">Slimme functies die écht waarde toevoegen</div>
+                </div>
+            </div>
+
+            <div class="panel-stats">
+                <div class="ps">
+                    <div class="ps-num">8–12</div>
+                    <div class="ps-lbl">Weken tot MVP</div>
+                </div>
+                <div class="ps">
+                    <div class="ps-num">3</div>
+                    <div class="ps-lbl">Specialisten</div>
+                </div>
+                <div class="ps">
+                    <div class="ps-num">100%</div>
+                    <div class="ps-lbl">GDPR-conform</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ── SOCIAL PROOF ───────────────────────────────────────── -->
+<div class="proof" aria-label="Vertrouwd door">
+    <div class="wrap">
+        <p class="proof-lbl">Vertrouwd door vroegefase bedrijven in België</p>
+        <div class="proof-logos">
+            <span class="proof-logo">Startit@KBC</span>
+            <span class="proof-logo">imec.istart</span>
+            <span class="proof-logo">B-Hive</span>
+            <span class="proof-logo">FinTech Belgium</span>
+            <span class="proof-logo">Digital Wallonia</span>
+        </div>
+    </div>
+</div>
+
+
+<!-- ── DIENSTEN ───────────────────────────────────────────── -->
+<section class="services" id="diensten">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <div class="lbl">Diensten</div>
+            <h2 class="sec-h2">Alles wat je nodig hebt om te bouwen en te schalen</h2>
+            <p class="sec-p">
+                Geen losse freelancers, geen bureau dat je doorgeeft aan juniors.
+                Drie specialisten die samen jouw product van concept tot productie brengen.
+            </p>
+        </div>
+
+        <div class="svc-grid">
+            <!-- Dienst 1 -->
+            <article class="svc reveal">
+                <div class="svc-icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M7 8L3 11l4 3M15 8l4 3-4 3M13 5l-4 12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3 class="svc-title">MVP-ontwikkeling</h3>
+                <p class="svc-desc">
+                    Van idee naar werkend product in 8 tot 12 weken. Wij bouwen de kern die je
+                    nodig hebt om te valideren, investeerders te overtuigen en eerste gebruikers
+                    aan boord te halen.
+                </p>
+                <div class="chips" aria-label="Technologieën">
+                    <span class="chip">Next.js</span>
+                    <span class="chip">Supabase</span>
+                    <span class="chip">Vercel</span>
+                    <span class="chip">TypeScript</span>
+                </div>
+                <div class="svc-price">
+                    Vanaf&nbsp;<strong>€ 5.000</strong>&nbsp;— vaste prijs, vaste scope
+                </div>
+            </article>
+
+            <!-- Dienst 2 -->
+            <article class="svc reveal">
+                <div class="svc-icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="3.5" stroke="currentColor" stroke-width="1.7"/><path d="M11 3v2M11 17v2M3 11h2M17 11h2M5.46 5.46l1.41 1.41M15.13 15.13l1.41 1.41M5.46 16.54l1.41-1.41M15.13 6.87l1.41-1.41" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                </div>
+                <h3 class="svc-title">AI-integraties</h3>
+                <p class="svc-desc">
+                    Chatbots, documentverwerking, slimme automatisering en AI-gestuurde analytics.
+                    Wij integreren LLM's in jouw product op een manier die écht waarde toevoegt
+                    voor de eindgebruiker.
+                </p>
+                <div class="chips" aria-label="Technologieën">
+                    <span class="chip">GPT-4o</span>
+                    <span class="chip">Claude API</span>
+                    <span class="chip">LangChain</span>
+                    <span class="chip">n8n</span>
+                </div>
+                <div class="svc-price">
+                    Vanaf&nbsp;<strong>€ 2.000</strong>&nbsp;— modulair toe te voegen
+                </div>
+            </article>
+
+            <!-- Dienst 3 -->
+            <article class="svc reveal">
+                <div class="svc-icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L4 5v5c0 4 2.8 7.4 7 8.5C15.2 17.4 18 14 18 10V5L11 2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 11l2.5 2.5L14 9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3 class="svc-title">Cybersecurity &amp; Compliance</h3>
+                <p class="svc-desc">
+                    GDPR-architectuur, penetratietesten, NIS2-voorbereiding en OWASP-reviews.
+                    Beveiliging is geen optie — het is de fundering van elk project dat wij aanraken.
+                </p>
+                <div class="chips" aria-label="Diensten">
+                    <span class="chip">OWASP Top 10</span>
+                    <span class="chip">GDPR</span>
+                    <span class="chip">NIS2</span>
+                    <span class="chip">Pentest</span>
+                </div>
+                <div class="svc-price">
+                    Vanaf&nbsp;<strong>€ 1.500</strong>&nbsp;— audit of integratie
+                </div>
+            </article>
+
+            <!-- Dienst 4 -->
+            <article class="svc reveal">
+                <div class="svc-icon" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.7"/><rect x="12" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.7"/><rect x="3" y="12" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.7"/><path d="M15.5 12v7M12 15.5h7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                </div>
+                <h3 class="svc-title">Interne Tools &amp; Platformen</h3>
+                <p class="svc-desc">
+                    Maatwerk dashboards, CRM-uitbreidingen, klantportalen en workflowautomatisering.
+                    Stop met handmatig kopiëren — wij bouwen de tool die jouw team 10 uur
+                    per week teruggeeft.
+                </p>
+                <div class="chips" aria-label="Technologieën">
+                    <span class="chip">React</span>
+                    <span class="chip">REST API</span>
+                    <span class="chip">Webhooks</span>
+                    <span class="chip">Automation</span>
+                </div>
+                <div class="svc-price">
+                    Vanaf&nbsp;<strong>€ 3.000</strong>&nbsp;— scope op maat
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+
+<!-- ── WERKWIJZE ──────────────────────────────────────────── -->
+<section class="process" id="werkwijze">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <div class="lbl">Werkwijze</div>
+            <h2 class="sec-h2">Van idee naar product in vier stappen</h2>
+            <p class="sec-p">
+                Geen eindeloze kickoffs of vage planningsdocumenten. Wij werken in een strak,
+                bewezen proces — en jij weet altijd waar we staan.
+            </p>
+        </div>
+
+        <ol class="steps">
+            <li class="step reveal">
+                <div class="step-n">Stap 01</div>
+                <div class="step-icon-svg" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#60A5FA" stroke-width="1.7"/><path d="M17 17l3 3" stroke="#60A5FA" stroke-width="1.7" stroke-linecap="round"/></svg>
+                </div>
+                <h3 class="step-title">Discovery</h3>
+                <p class="step-desc">
+                    We brengen het probleem, de gebruikers en de technische haalbaarheid
+                    in kaart. Resultaat: een scopedocument en een vaste prijs.
+                </p>
+                <span class="step-dur">1 week</span>
+            </li>
+
+            <li class="step reveal">
+                <div class="step-n">Stap 02</div>
+                <div class="step-icon-svg" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="14" rx="2" stroke="#60A5FA" stroke-width="1.7"/><path d="M7 21h10M12 17v4" stroke="#60A5FA" stroke-width="1.7" stroke-linecap="round"/><path d="M7 9h3M7 12h6" stroke="#60A5FA" stroke-width="1.7" stroke-linecap="round"/></svg>
+                </div>
+                <h3 class="step-title">Design</h3>
+                <p class="step-desc">
+                    UI/UX-wireframes en prototype in Figma. Architectuurontwerp, databaseschema
+                    en technologiebeslissingen. Jij keurt goed voor we beginnen.
+                </p>
+                <span class="step-dur">1–2 weken</span>
+            </li>
+
+            <li class="step reveal">
+                <div class="step-n">Stap 03</div>
+                <div class="step-icon-svg" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 3L4 14h7l-1 7 9-11h-7l1-7z" stroke="#60A5FA" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3 class="step-title">Build</h3>
+                <p class="step-desc">
+                    Iteratieve sprints van twee weken met wekelijkse demo's. Jij volgt de
+                    voortgang live. Feedback wordt direct verwerkt.
+                </p>
+                <span class="step-dur">6–10 weken</span>
+            </li>
+
+            <li class="step reveal">
+                <div class="step-n">Stap 04</div>
+                <div class="step-icon-svg" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#60A5FA" stroke-width="1.7"/><path d="M9 12l2.5 2.5L15 9" stroke="#60A5FA" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3 class="step-title">Launch</h3>
+                <p class="step-desc">
+                    Productie-deployment, beveiligingscheck, documentatie en training.
+                    Inclusief 2 weken bugfix-garantie na livegang.
+                </p>
+                <span class="step-dur">1 week</span>
+            </li>
+        </ol>
+    </div>
+</section>
+
+
+<!-- ── CASES ──────────────────────────────────────────────── -->
+<section class="cases" id="cases">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <div class="lbl">Cases</div>
+            <h2 class="sec-h2">Wat we bouwen voor onze klanten</h2>
+            <p class="sec-p">
+                Elk project begint met een probleem dat geld kost of groei remt.
+                Hier is hoe we dat oplossen.
+            </p>
+        </div>
+
+        <div class="cases-grid">
+            <!-- Case 1 -->
+            <article class="case reveal">
+                <div class="case-hd">
+                    <div class="case-sector">Fintech — MVP</div>
+                    <h3 class="case-title">Leenvergelijkingsplatform voor Brusselse startup</h3>
+                </div>
+                <div class="case-body">
+                    <div class="case-blk">
+                        <div class="case-blk-lbl">Probleem</div>
+                        <p class="case-blk-txt">
+                            Founder had 80.000 euro pre-seed opgehaald maar geen technisch team.
+                            Deadline voor demo aan investeerders: 10 weken.
+                        </p>
+                    </div>
+                    <div class="case-blk">
+                        <div class="case-blk-lbl">Oplossing</div>
+                        <p class="case-blk-txt">
+                            MVP met authenticatie, vergelijkingsengine, GDPR-conform databeleid
+                            en Stripe-integratie in Next.js + Supabase.
+                        </p>
+                    </div>
+                    <div class="case-res">
+                        <div class="case-res-lbl">Resultaat</div>
+                        <p class="case-res-txt">Opgeleverd in 11 weken. Investeerder tekende term sheet na demo.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Case 2 -->
+            <article class="case reveal">
+                <div class="case-hd">
+                    <div class="case-sector">Logistiek — Intern Tool</div>
+                    <h3 class="case-title">AI-dashboard voor Antwerpse logistieke kmo</h3>
+                </div>
+                <div class="case-body">
+                    <div class="case-blk">
+                        <div class="case-blk-lbl">Probleem</div>
+                        <p class="case-blk-txt">
+                            Team verloor 15 uur per week aan manuele zendingstracking via Excel
+                            en e-mail. Fouten leidden tot klachten.
+                        </p>
+                    </div>
+                    <div class="case-blk">
+                        <div class="case-blk-lbl">Oplossing</div>
+                        <p class="case-blk-txt">
+                            Real-time tracking dashboard met AI-anomaliedetectie, automatische
+                            klantmeldingen en warehouseintegratie via API.
+                        </p>
+                    </div>
+                    <div class="case-res">
+                        <div class="case-res-lbl">Resultaat</div>
+                        <p class="case-res-txt">15 uur bespaard per week. Klachten gedaald met 73% in 2 maanden.</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Case 3 -->
+            <article class="case reveal">
+                <div class="case-hd">
+                    <div class="case-sector">SaaS — Migratie</div>
+                    <h3 class="case-title">No-code naar custom stack voor Gentse B2B SaaS</h3>
+                </div>
+                <div class="case-body">
+                    <div class="case-blk">
+                        <div class="case-blk-lbl">Probleem</div>
+                        <p class="case-blk-txt">
+                            Bubble-platform bereikte zijn limieten bij 500+ gebruikers.
+                            Laadtijden stegen, nieuwe features waren niet meer mogelijk.
+                        </p>
+                    </div>
+                    <div class="case-blk">
+                        <div class="case-blk-lbl">Oplossing</div>
+                        <p class="case-blk-txt">
+                            Volledige migratie naar Next.js + PostgreSQL met behoud van data
+                            en feature pariteit, inclusief beveiligingsaudit.
+                        </p>
+                    </div>
+                    <div class="case-res">
+                        <div class="case-res-lbl">Resultaat</div>
+                        <p class="case-res-txt">Laadtijd van 4,2s naar 0,8s. Klaar om 10x te schalen zonder infrastructuurwijziging.</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+
+<!-- ── WAAROM TRISTACK ────────────────────────────────────── -->
+<section class="why" id="waarom">
+    <div class="wrap">
+        <div class="why-wrap">
+            <!-- Linkerkolom: tekst en punten -->
+            <div class="reveal">
+                <div class="lbl">Waarom TriStack</div>
+                <h2 class="sec-h2">Het voordeel van drie specialisten in één team</h2>
+                <p class="why-desc">
+                    Bureaus zijn traag en duur. Freelancers zijn onbetrouwbaar en dekken maar
+                    één discipline. TriStack is het beste van beide werelden: senior expertise,
+                    directe communicatie, en alles onder één dak.
+                </p>
+
+                <ul class="why-pts">
+                    <li class="why-pt">
+                        <div class="why-icon" aria-hidden="true">
+                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M8.5 2v2M8.5 13v2M2 8.5h2M13 8.5h2M4.1 4.1l1.41 1.41M11.49 11.49l1.41 1.41M4.1 12.9l1.41-1.41M11.49 5.51l1.41-1.41" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"/><circle cx="8.5" cy="8.5" r="2.5" stroke="var(--blue)" stroke-width="1.5"/></svg>
+                        </div>
+                        <div class="why-body">
+                            <h4>Geen handoffs, geen vertraging</h4>
+                            <p>Dev, design en security werken gelijktijdig. Geen wachten op overdrachten tussen teams.</p>
+                        </div>
+                    </li>
+                    <li class="why-pt">
+                        <div class="why-icon" aria-hidden="true">
+                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M2.5 8.5l4 4 8-8" stroke="var(--blue)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div class="why-body">
+                            <h4>Vaste prijs, vaste scope</h4>
+                            <p>Geen verrassingen op de factuur. Wat we beloven, leveren we — op tijd en binnen budget.</p>
+                        </div>
+                    </li>
+                    <li class="why-pt">
+                        <div class="why-icon" aria-hidden="true">
+                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M8.5 1.5L2 4v4.5C2 12 4.8 15 8.5 16c3.7-1 6.5-4 6.5-7.5V4L8.5 1.5z" stroke="var(--blue)" stroke-width="1.5" stroke-linejoin="round"/><path d="M6 8.5l2 2 3-3" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div class="why-body">
+                            <h4>Beveiliging als standaard</h4>
+                            <p>GDPR en basisbeveiliging zitten in elk project ingebakken, niet als betaalde extra.</p>
+                        </div>
+                    </li>
+                    <li class="why-pt">
+                        <div class="why-icon" aria-hidden="true">
+                            <svg width="17" height="17" viewBox="0 0 17 17" fill="none"><circle cx="6" cy="5" r="2.5" stroke="var(--blue)" stroke-width="1.5"/><path d="M1.5 13.5c0-2.5 2-4 4.5-4s4.5 1.5 4.5 4" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"/><path d="M12 7.5l2 2 2.5-3" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div class="why-body">
+                            <h4>Jij praat met de bouwers</h4>
+                            <p>Geen accountmanagers ertussen. Direct contact met de mensen die het werk doen.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Rechterkolom: oprichterkaarten -->
+            <div class="why-right reveal">
+                <div class="fc">
+                    <div class="fc-av fa-dev" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M6.5 7.5L3 11l3.5 3.5M15.5 7.5L19 11l-3.5 3.5M13 5l-4 12" stroke="#3B82F6" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        <h4>Full-Stack Developer</h4>
+                        <p>Architectuur, APIs, cloud &amp; DevOps</p>
+                    </div>
+                </div>
+
+                <div class="fc">
+                    <div class="fc-av fa-sec" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L4 5v5c0 4 2.8 7.4 7 8.5C15.2 17.4 18 14 18 10V5L11 2z" stroke="#34D399" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 11l2.5 2.5L14 9" stroke="#34D399" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        <h4>Cybersecurity Expert</h4>
+                        <p>CEH, pentesting, GDPR &amp; NIS2</p>
+                    </div>
+                </div>
+
+                <div class="fc">
+                    <div class="fc-av fa-ai" aria-hidden="true">
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="6" width="16" height="12" rx="2" stroke="#A78BFA" stroke-width="1.7"/><path d="M7 6V4M11 6V4M15 6V4M7 14l2.5-4 2 3 1.5-2 2 3" stroke="#A78BFA" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        <h4>UX &amp; AI Designer</h4>
+                        <p>Figma, AI-integraties &amp; UX-research</p>
+                    </div>
+                </div>
+
+                <div class="fc-combo">
+                    <div>
+                        <h4>Samen: TriStack BV</h4>
+                        <p>Eén contract. Eén aanspreekpunt. Drie disciplines.</p>
+                    </div>
+                    <div class="fc-arrow" aria-hidden="true">→</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ── GETUIGENISSEN ──────────────────────────────────────── -->
+<section class="testi" aria-labelledby="testi-heading">
+    <div class="wrap">
+        <div class="sec-head reveal" style="text-align: center">
+            <div class="lbl" style="margin: 0 auto 14px">Klantgetuigenissen</div>
+            <h2 class="sec-h2" id="testi-heading">Vertrouwen verdiend, project na project</h2>
+        </div>
+
+        <div class="testi-grid">
+            <article class="tc reveal">
+                <div class="tc-stars" aria-label="5 van 5 sterren">★★★★★</div>
+                <blockquote class="tc-quote">
+                    TriStack heeft ons MVP gebouwd terwijl wij ons konden focussen op sales en
+                    investeerders. Ze begrepen onze business beter dan verwacht — en de beveiliging
+                    zat van dag één correct.
+                </blockquote>
+                <footer class="tc-person">
+                    <div class="tc-av" style="background:#EFF6FF; color:#1B2A4A" aria-hidden="true">SV</div>
+                    <div>
+                        <div class="tc-name">Sarah Van den Berg</div>
+                        <div class="tc-role">CEO, FinCheck.be — Brussel</div>
+                    </div>
+                </footer>
+            </article>
+
+            <article class="tc reveal">
+                <div class="tc-stars" aria-label="5 van 5 sterren">★★★★★</div>
+                <blockquote class="tc-quote">
+                    We hadden al twee freelancers geprobeerd die halverwege afhaakten.
+                    TriStack leverde on time en on budget. Het dashboard heeft ons operationeel
+                    team volledig getransformeerd.
+                </blockquote>
+                <footer class="tc-person">
+                    <div class="tc-av" style="background:#F0FFF4; color:#166534" aria-hidden="true">PM</div>
+                    <div>
+                        <div class="tc-name">Pieter Martens</div>
+                        <div class="tc-role">Operations Director, LogiLink — Antwerpen</div>
+                    </div>
+                </footer>
+            </article>
+
+            <article class="tc reveal">
+                <div class="tc-stars" aria-label="5 van 5 sterren">★★★★★</div>
+                <blockquote class="tc-quote">
+                    Onze Bubble-app was een rem op onze groei. TriStack migreerde alles in
+                    minder dan 2 maanden. De laadtijden zijn onherkenbaar beter en we kunnen
+                    nu de features bouwen die klanten vragen.
+                </blockquote>
+                <footer class="tc-person">
+                    <div class="tc-av" style="background:#F5F3FF; color:#5B21B6" aria-hidden="true">LH</div>
+                    <div>
+                        <div class="tc-name">Laura Hermans</div>
+                        <div class="tc-role">Founder, TaskBridge SaaS — Gent</div>
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </div>
+</section>
+
+
+<!-- ── PRIJZEN ────────────────────────────────────────────── -->
+<section class="pricing" id="prijzen">
+    <div class="wrap">
+        <div class="sec-head reveal" style="text-align: center">
+            <div class="lbl" style="margin: 0 auto 14px">Prijzen</div>
+            <h2 class="sec-h2">Transparante tarieven, geen verrassingen</h2>
+        </div>
+
+        <p class="pricing-note reveal">
+            Elk project start met een betaalde Discovery Sprint van € 1.500 — de beste investering die je maakt.
+        </p>
+
+        <div class="price-grid">
+            <!-- Pakket 1 -->
+            <article class="pc reveal">
+                <div class="pc-name">Starter MVP</div>
+                <div class="pc-price">€ 5.000 <span>– 10.000</span></div>
+                <p class="pc-desc">Voor founders die snel willen valideren met een werkend product.</p>
+                <ul class="pc-feats">
+                    <li class="pf"><span class="pf-ok" aria-hidden="true">✓</span>Tot 5 kerngebruikersverhalen</li>
+                    <li class="pf"><span class="pf-ok" aria-hidden="true">✓</span>Authenticatie &amp; GDPR-datamodel</li>
+                    <li class="pf"><span class="pf-ok" aria-hidden="true">✓</span>Responsieve UI &amp; deployment</li>
+                    <li class="pf"><span class="pf-ok" aria-hidden="true">✓</span>6–8 weken doorlooptijd</li>
+                    <li class="pf"><span class="pf-ok" aria-hidden="true">✓</span>2 weken bugfix-garantie</li>
+                </ul>
+                <button class="pc-btn out" data-scroll-to="contact">Plan een gesprek</button>
+            </article>
+
+            <!-- Pakket 2 (featured) -->
+            <article class="pc featured reveal">
+                <span class="pc-badge">Meest gevraagd</span>
+                <div class="pc-name">Standaard MVP</div>
+                <div class="pc-price">€ 12.000 <span>– 22.000</span></div>
+                <p class="pc-desc">Voor founders die investeerders willen overtuigen of eerste betalende klanten willen bedienen.</p>
+                <ul class="pc-feats">
+                    <li class="pf"><span class="pf-ok" aria-hidden="true">✓</span>Tot 12 gebruikersverhalen</li>
+                    <li class="pf"><span class="pf-ok" aria-hidden="true">✓</span>Integraties (Stripe, e-mail, auth)</li>
+                    <li class="pf"><span class="pf-ok" aria-hidden="true">✓</span>Beheerpaneel &amp; UX-geteste flows</li>
+                    <li class="pf"><span class="pf-ok" aria-hidden="true">✓</span>Beveiligingscheck inbegrepen</li>
+                    <li class="pf"><span class="pf-ok" aria-hidden="true">✓</span>8–12 weken doorlooptijd</li>
+                </ul>
+                <button class="pc-btn blue" data-scroll-to="contact">Plan een gesprek</button>
+            </article>
+
+            <!-- Pakket 3 -->
+            <article class="pc reveal">
+                <div class="pc-name">Maandelijks retainer</div>
+                <div class="pc-price">€ 800 <span>– 3.500/mnd</span></div>
+                <p class="pc-desc">Voor klanten die hun product willen laten groeien en onderhouden na lancering.</p>
+                <ul class="pc-feats">
+                    <li class="pf"><span class="pf-ok" aria-hidden="true">✓</span>Bugfixes &amp; security-updates</li>
+                    <li class="pf"><span class="pf-ok" aria-hidden="true">✓</span>10–40u/maand capaciteit</li>
+                    <li class="pf"><span class="pf-ok" aria-hidden="true">✓</span>Prioritaire responstijd</li>
+                    <li class="pf"><span class="pf-ok" aria-hidden="true">✓</span>Maandelijks evaluatiegesprek</li>
+                    <li class="pf"><span class="pf-ok" aria-hidden="true">✓</span>Opzegbaar per maand</li>
+                </ul>
+                <button class="pc-btn out" data-scroll-to="contact">Meer info</button>
+            </article>
+        </div>
+    </div>
+</section>
+
+
+<!-- ── CTA ────────────────────────────────────────────────── -->
+<section class="cta-sec" id="contact">
+    <div class="wrap-sm">
+        <h2 class="reveal">Klaar om jouw product te <em>bouwen</em>?</h2>
+        <p class="reveal">
+            Boek een gratis discovery call van 30 minuten. Geen verkooppraatje —
+            gewoon een eerlijk gesprek over wat je wil bouwen en of wij de juiste
+            partner zijn.
+        </p>
+        <div class="cta-btns reveal">
+            <a href="mailto:hello@tristack.be" class="btn btn-blue btn-lg">
+                Boek gratis gesprek
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <a href="mailto:hello@tristack.be" class="btn btn-ghost btn-lg">hello@tristack.be</a>
+        </div>
+        <p class="cta-note reveal">Geen verplichtingen · Gemiddelde responstijd &lt; 24u</p>
+    </div>
+</section>
+
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer class="footer">
+    <div class="wrap">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">
+                    Tri<span style="color: var(--blue)">Stack</span>
+                </a>
+                <p>
+                    IT-consultancy gespecialiseerd in MVP-ontwikkeling, AI-integraties en
+                    cybersecurity. Gevestigd in België, actief in de hele Benelux.
+                </p>
+            </div>
+
+            <nav class="footer-col" aria-label="Diensten">
+                <h4>Diensten</h4>
+                <a href="#diensten">MVP-ontwikkeling</a>
+                <a href="#diensten">AI-integraties</a>
+                <a href="#diensten">Cybersecurity</a>
+                <a href="#diensten">Interne tools</a>
+                <a href="#prijzen">Retainer</a>
+            </nav>
+
+            <nav class="footer-col" aria-label="Bedrijf">
+                <h4>Bedrijf</h4>
+                <a href="#waarom">Over TriStack</a>
+                <a href="#werkwijze">Werkwijze</a>
+                <a href="#cases">Cases</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="mailto:hello@tristack.be">hello@tristack.be</a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com"   target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="#contact">Boek een call</a>
+            </div>
+        </div>
+
+        <div class="footer-btm">
+            <span>© 2026 TriStack BV — België · BTW BE 0XXX.XXX.XXX</span>
+            <nav class="footer-legal" aria-label="Juridisch">
+                <a href="#">Privacybeleid</a>
+                <a href="#">Algemene voorwaarden</a>
+                <a href="#">Cookie-instellingen</a>
+            </nav>
+        </div>
+    </div>
+</footer>
+
+<!-- Scroll-naar-boven knop -->
+<button class="scr-top" id="scrtop" aria-label="Scroll naar boven">↑</button>
+
+<!-- JavaScript — ES-modules -->
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>

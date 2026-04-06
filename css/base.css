@@ -1,0 +1,216 @@
+/* ============================================================
+   BASE — Reset, CSS-variabelen, typografie, layouts
+   ============================================================ */
+
+/* Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background: #fff;
+    color: #0F172A;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+img  { max-width: 100%; display: block; }
+a    { text-decoration: none; color: inherit; }
+button { cursor: pointer; font-family: inherit; border: none; background: none; }
+ul   { list-style: none; }
+
+/* ── CSS-variabelen ───────────────────────────────────────── */
+:root {
+    /* Kleuren */
+    --navy:       #1B2A4A;
+    --navy-deep:  #0F1C33;
+    --navy-mid:   #253554;
+    --blue:       #2563EB;
+    --blue-h:     #1D4ED8;
+    --blue-l:     #3B82F6;
+    --blue-faint: #EFF6FF;
+    --blue-faint2:#DBEAFE;
+
+    --off:      #F8FAFC;
+    --surface:  #F1F5F9;
+    --border:   #E2E8F0;
+    --border-d: #CBD5E1;
+
+    --text:   #0F172A;
+    --muted:  #475569;
+    --faint:  #94A3B8;
+    --ghost:  #CBD5E1;
+
+    --green:    #16A34A;
+    --green-bg: #F0FDF4;
+    --green-b:  #BBF7D0;
+
+    /* Border-radius */
+    --r8:  8px;
+    --r12: 12px;
+    --r16: 16px;
+    --r24: 24px;
+}
+
+/* ── Layout helpers ───────────────────────────────────────── */
+.wrap    { max-width: 1160px; margin: 0 auto; padding: 0 5%; }
+.wrap-sm { max-width: 720px;  margin: 0 auto; padding: 0 5%; }
+
+section { padding: 100px 0; }
+
+/* ── Animaties ────────────────────────────────────────────── */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes pulseDot {
+    0%, 100% { transform: scale(1);   opacity: 1; }
+    50%       { transform: scale(1.5); opacity: .5; }
+}
+
+/* ── Scroll-reveal ────────────────────────────────────────── */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+            opacity   .65s cubic-bezier(.22, 1, .36, 1),
+            transform .65s cubic-bezier(.22, 1, .36, 1);
+}
+
+.reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Sectie-labels en koppen ──────────────────────────────── */
+.lbl {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    background: var(--blue-faint);
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+}
+
+.lbl::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background: var(--blue);
+    border-radius: 50%;
+}
+
+.sec-head { margin-bottom: 52px; }
+
+.sec-h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(24px, 2.6vw, 36px);
+    font-weight: 700;
+    letter-spacing: -.03em;
+    line-height: 1.15;
+    color: var(--navy);
+    margin-bottom: 12px;
+}
+
+.sec-p {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.75;
+    max-width: 540px;
+}
+
+/* ── Knoppen ──────────────────────────────────────────────── */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    border-radius: var(--r12);
+    transition: all .2s;
+    white-space: nowrap;
+}
+
+.btn-lg { font-size: 16px; padding: 14px 28px; }
+.btn-md { font-size: 14px; padding: 11px 22px; }
+
+.btn-blue {
+    background: var(--blue);
+    color: #fff;
+    box-shadow: 0 8px 28px rgba(37, 99, 235, .22);
+}
+.btn-blue:hover {
+    background: var(--blue-h);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 36px rgba(37, 99, 235, .3);
+}
+
+.btn-ghost {
+    background: rgba(255, 255, 255, .07);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, .15);
+}
+.btn-ghost:hover {
+    background: rgba(255, 255, 255, .13);
+    border-color: rgba(255, 255, 255, .25);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--navy);
+    border: 1.5px solid var(--border-d);
+}
+.btn-outline:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.btn svg { flex-shrink: 0; transition: transform .2s; }
+.btn:hover svg { transform: translateX(3px); }
+
+/* ── Scroll-naar-boven knop ───────────────────────────────── */
+.scr-top {
+    position: fixed;
+    bottom: 26px;
+    right: 26px;
+    width: 44px;
+    height: 44px;
+    background: var(--navy);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
+    opacity: 0;
+    pointer-events: none;
+    transition: all .3s;
+    z-index: 100;
+    font-size: 18px;
+    border: 1px solid rgba(255, 255, 255, .08);
+}
+.scr-top.on          { opacity: 1; pointer-events: all; }
+.scr-top:hover       { background: var(--blue); transform: translateY(-3px); }

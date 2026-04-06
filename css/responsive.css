@@ -1,0 +1,82 @@
+/* ============================================================
+   RESPONSIVE — Media queries voor alle breakpoints
+   ============================================================ */
+
+/* ── Tablet (max 1024px) ──────────────────────────────────── */
+@media (max-width: 1024px) {
+    /* Hero: één kolom */
+    .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 52px;
+    }
+    .hero-panel { max-width: 500px; }
+
+    /* Diensten: één kolom */
+    .svc-grid { grid-template-columns: 1fr; }
+
+    /* Werkwijze: twee kolommen */
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .step:not(:last-child)::after { display: none; }
+
+    /* Cases: twee kolommen */
+    .cases-grid { grid-template-columns: repeat(2, 1fr); }
+
+    /* Waarom: één kolom */
+    .why-wrap {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    .why-right { max-width: 500px; }
+
+    /* Getuigenissen: twee kolommen */
+    .testi-grid { grid-template-columns: repeat(2, 1fr); }
+
+    /* Prijzen: één kolom */
+    .price-grid {
+        grid-template-columns: 1fr;
+        max-width: 440px;
+    }
+
+    /* Footer: twee kolommen */
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+    }
+}
+
+/* ── Mobiel (max 768px) ───────────────────────────────────── */
+@media (max-width: 768px) {
+    section { padding: 72px 0; }
+
+    /* Nav: hamburger zichtbaar, desktop links verborgen */
+    .nav-links  { display: none; }
+    .hamburger  { display: flex; }
+
+    /* Cases en getuigenissen: één kolom */
+    .cases-grid  { grid-template-columns: 1fr; }
+    .testi-grid  { grid-template-columns: 1fr; }
+
+    /* Werkwijze: één kolom */
+    .steps { grid-template-columns: 1fr; }
+
+    /* Hero: minder padding */
+    .hero { padding: 96px 0 60px; }
+}
+
+/* ── Klein mobiel (max 480px) ─────────────────────────────── */
+@media (max-width: 480px) {
+    /* Knoppen: volledig breed, gestapeld */
+    .hero-btns,
+    .cta-btns {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .btn-lg { justify-content: center; }
+
+    /* Footer: één kolom */
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-btm {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
