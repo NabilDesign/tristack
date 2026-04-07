@@ -102,3 +102,19 @@
 .mob-menu.open { display: flex; }
 .mob-menu .nav-a   { padding: 12px 16px; font-size: 15px; }
 .mob-menu .nav-cta { margin: 10px 0 0; text-align: center; padding: 14px; display: block; }
+/* Logo image */
+.logo-img { padding: 0; display: flex; align-items: center; }
+.logo-img-tag { height: 40px; width: auto; display: block; object-fit: contain; }
+
+/* Footer logo image */
+.footer-logo-img { display: flex; align-items: center; margin-bottom: 12px; }
+.footer-logo-img-tag { height: 36px; width: auto; display: block; object-fit: contain; filter: brightness(0) invert(1); }
+
+/* Portrait logo fix — limit width so it doesn't overflow nav */
+.logo-img-tag {
+    height: 38px !important;
+    max-width: 120px;
+    width: auto;
+    object-fit: contain;
+    object-position: left center;
+}
