@@ -39,6 +39,8 @@
             <a href="#werkwijze" class="nav-a">Werkwijze</a>
             <a href="over-ons.html" class="nav-a">Over ons</a>
             <a href="projecten.html" class="nav-a">Projecten</a>
+            <a href="skills.html" class="nav-a">Skills</a>
+            <a href="#prijzen" class="nav-a">Prijzen</a>
             <a href="#contact" class="nav-cta">Gratis gesprek →</a>
         </div>
         <div class="hamburger" id="ham" role="button" aria-label="Menu openen" aria-expanded="false">
@@ -552,98 +554,26 @@
 <!-- CONTACT -->
 <section class="contact-sec" id="contact">
     <div class="wrap">
-        <div class="contact-inner">
-            <div class="contact-left reveal">
-                <p class="sec-label">Contact</p>
-                <h2>Vertel ons over jouw zaak</h2>
-                <p class="contact-sub">Vul het formulier in of kies een moment in de kalender. We nemen binnen 24 uur contact op.</p>
-
-                <ul class="contact-perks">
-                    <li>
-                        <span class="perk-icon" aria-hidden="true">⏱</span>
-                        Reactie binnen 24 uur
-                    </li>
-                    <li>
-                        <span class="perk-icon" aria-hidden="true">💬</span>
-                        Gratis gesprek van 30 minuten
-                    </li>
-                    <li>
-                        <span class="perk-icon" aria-hidden="true">📋</span>
-                        Vrijblijvende offerte achteraf
-                    </li>
-                </ul>
-
-                <a href="/cdn-cgi/l/email-protection#afc7cac3c3c0efdbddc6dcdbceccc481cdca" class="contact-mail"><span class="__cf_email__" data-cfemail="543c3138383b1420263d272035373f7a3631">[email&#160;protected]</span></a>
+        <div class="contact-inner" style="display:block;">
+            <div class="sec-head reveal" style="text-align:center; margin-bottom:40px;">
+                <p class="sec-label" style="margin:0 auto 12px">Contact</p>
+                <h2>Plan een gratis gesprek van 30 minuten</h2>
+                <p class="sec-sub" style="margin:0 auto">Kies een moment dat jou past. Na het boeken krijg je automatisch een bevestiging per mail.</p>
             </div>
 
-            <div class="contact-cal reveal">
-                <div class="cal-card">
-                    <div class="cal-header">
-                        <div>
-                            <p class="cal-month" id="cal-month-label"></p>
-                            <p class="cal-duration">30 min gesprek · gratis</p>
-                        </div>
-                        <div class="cal-nav">
-                            <button class="cal-nav-btn" id="cal-prev" aria-label="Vorige maand">&#8592;</button>
-                            <button class="cal-nav-btn" id="cal-next" aria-label="Volgende maand">&#8594;</button>
-                        </div>
-                    </div>
-                    <div class="cal-grid" id="cal-grid"></div>
-                    <div class="cal-footer" id="cal-footer" hidden>
-                        <p class="cal-selected-txt" id="cal-selected-txt"></p>
-                        <a href="/cdn-cgi/l/email-protection#264e434a4a496652544f555247454d084443" class="cal-book-btn" id="cal-book-btn">Bevestig dit moment →</a>
-                    </div>
+            <div class="reveal" style="max-width:1000px; margin:0 auto; min-height:600px; border-radius:16px; overflow:hidden; border:1px solid var(--border); background:#fff;">
+                <div style="width:100%;height:700px;overflow:scroll" id="my-cal-inline-30min"></div>
+            </div>
+
+            <div class="reveal" style="display:flex; justify-content:center; gap:32px; flex-wrap:wrap; margin-top:40px; text-align:center;">
+                <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:var(--ink-soft);">
+                    <span style="font-size:16px;">⏱</span> 30 minuten, gratis
                 </div>
-            </div>
-
-            <div class="contact-right reveal">
-                <div class="cf" id="cf">
-                    <div id="cf-form">
-                        <div class="cf-row">
-                            <div class="cf-field">
-                                <label for="cf-naam">Naam</label>
-                                <input type="text" id="cf-naam" placeholder="Jan Janssen" autocomplete="name">
-                            </div>
-                            <div class="cf-field">
-                                <label for="cf-tel">Telefoonnummer</label>
-                                <input type="tel" id="cf-tel" placeholder="+32 470 00 00 00" autocomplete="tel">
-                            </div>
-                        </div>
-                        <div class="cf-field">
-                            <label for="cf-email">E-mailadres</label>
-                            <input type="email" id="cf-email" placeholder="jan@jouwzaak.be" autocomplete="email">
-                        </div>
-                        <div class="cf-field">
-                            <label for="cf-sector">Wat voor zaak heb je?</label>
-                            <select id="cf-sector">
-                                <option value="" disabled selected>Kies een sector</option>
-                                <option>Kapper / schoonheidssalon</option>
-                                <option>Loodgieter / installateur</option>
-                                <option>Restaurant / horeca</option>
-                                <option>Garage / autohandel</option>
-                                <option>Tandarts / zorgverlener</option>
-                                <option>Andere</option>
-                            </select>
-                        </div>
-                        <div class="cf-field">
-                            <label for="cf-bericht">Wat wil je aanpakken?</label>
-                            <textarea id="cf-bericht" rows="4" placeholder="Bv. ik verlies veel tijd aan telefonische afspraken en wil dat automatiseren..."></textarea>
-                        </div>
-                        <p class="cf-error" id="cf-error" role="alert" aria-live="polite"></p>
-                        <button class="cf-submit" id="cf-submit" type="button">
-                            Verstuur bericht
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                        <p class="cf-note">Geen spam. Jouw gegevens worden enkel gebruikt om je te contacteren.</p>
-                    </div>
-
-                    <div id="cf-thanks" hidden>
-                        <div class="cf-thanks-icon" aria-hidden="true">✓</div>
-                        <h3>Bericht ontvangen!</h3>
-                        <p>We nemen binnen 24 uur contact op via e-mail of telefoon.</p>
-                    </div>
+                <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:var(--ink-soft);">
+                    <span style="font-size:16px;">📩</span> Bevestiging per mail
+                </div>
+                <div style="display:flex; align-items:center; gap:8px; font-size:14px; color:var(--ink-soft);">
+                    <span style="font-size:16px;">💬</span> Vrijblijvend, geen verplichtingen
                 </div>
             </div>
         </div>
@@ -705,75 +635,16 @@
             if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
-
-    (function () {
-        const submit = document.getElementById('cf-submit');
-        if (!submit) return;
-        submit.addEventListener('click', function () {
-            const naam    = document.getElementById('cf-naam').value.trim();
-            const email   = document.getElementById('cf-email').value.trim();
-            const sector  = document.getElementById('cf-sector').value;
-            const bericht = document.getElementById('cf-bericht').value.trim();
-            const error   = document.getElementById('cf-error');
-            if (!naam)    { toonFout('Vul je naam in.'); return; }
-            if (!email || !email.includes('@')) { toonFout('Vul een geldig e-mailadres in.'); return; }
-            if (!sector)  { toonFout('Kies een sector.'); return; }
-            if (!bericht) { toonFout('Vertel ons kort wat je wil aanpakken.'); return; }
-            error.textContent = '';
-            submit.disabled = true;
-            submit.textContent = 'Even geduld...';
-            setTimeout(function () {
-                document.getElementById('cf-form').hidden = true;
-                document.getElementById('cf-thanks').hidden = false;
-            }, 900);
-            function toonFout(msg) {
-                error.textContent = msg;
-                error.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-        });
-    })();
 </script>
 
-<script>
-    (function () {
-        var months = ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
-        var days = ['zo','ma','di','wo','do','vr','za'];
-        var today = new Date();
-        var current = new Date(today.getFullYear(), today.getMonth(), 1);
-        var selected = null;
-
-        function render() {
-            var grid = document.getElementById('cal-grid');
-            var label = document.getElementById('cal-month-label');
-            var footer = document.getElementById('cal-footer');
-            var selTxt = document.getElementById('cal-selected-txt');
-            var bookBtn = document.getElementById('cal-book-btn');
-            if (!grid) return;
-            var yr = current.getFullYear();
-            var mo = current.getMonth();
-            label.textContent = months[mo] + ' ' + yr;
-            var firstDay = new Date(yr, mo, 1).getDay();
-            var daysInMonth = new Date(yr, mo + 1, 0).getDate();
-            var html = '';
-            days.forEach(function(d) { html += '<div class="cal-day-name">' + d + '</div>'; });
-            for (var i = 0; i < firstDay; i++) { html += '<div class="cal-day cal-empty"></div>'; }
-            for (var d = 1; d <= daysInMonth; d++) {
-                var date = new Date(yr, mo, d);
-                var isPast = date < new Date(today.getFullYear(), today.getMonth(), today.getDate());
-                var isToday = date.toDateString() === today.toDateString();
-                var isSel = selected && date.toDateString() === selected.toDateString();
-                var cls = 'cal-day';
-                if (isPast) cls += ' cal-past';
-                if (isToday) cls += ' cal-today';
-                if (isSel) cls += ' cal-selected';
-                html += '<div class="' + cls + '" data-date="' + date.toISOString() + '">' + d + '</div>';
-            }
-            grid.innerHTML = html;
-            grid.querySelectorAll('.cal-day:not(.cal-past):not(.cal-empty)').forEach(function(el) {
-                el.addEventListener('click', function() { selected = new Date(el.getAttribute('data-date')); render(); });
-            });
-            if (selected) {
-                footer.hidden = false;
-                var dayName = ['zondag','maandag','dinsdag','woensdag','donderdag','vrijdag','zaterdag'][selected.getDay()];
-                selTxt.textContent = dayName + ' ' + selected.getDate() + ' ' + months[selected.getMonth()];
-                bookBtn.href = 'mailto:hello@tristack.be?subject=Gesprek%20boeken%20' + encodeURIComponent(selTxt.textContent);
+<!-- Cal.com inline embed -->
+<script type="text/javascript">
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.eu/embed/embed.js", "init");
+    Cal("init", "30min", {origin:"https://app.cal.eu"});
+    Cal.ns["30min"]("inline", {
+        elementOrSelector:"#my-cal-inline-30min",
+        config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"light"},
+        calLink: "anass-rhadouani-gc22rf/30min",
+    });
+    Cal.ns["30min"]("ui", {"theme":"light","cssVarsPerTheme":{"light":{"cal-brand":"#2563EB"},"dark":{"cal-brand":"#2563EB"}},"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
