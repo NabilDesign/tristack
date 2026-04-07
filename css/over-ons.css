@@ -183,6 +183,75 @@
 }
 
 
+/* ── Skills binnen portretten ──────────────────────────────── */
+.portrait-skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+}
+
+.ps-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--ink);
+    margin-bottom: 14px;
+}
+
+.ps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ps-item {
+    font-size: 13px;
+    color: var(--ink-mid);
+    line-height: 1.5;
+    padding: 8px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
+.portrait:nth-child(even) .ps-item {
+    background: #fff;
+}
+
+.ps-certs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ps-cert {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
+.portrait:nth-child(even) .ps-cert {
+    background: #fff;
+}
+
+.ps-cert-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.ps-cert-org {
+    font-size: 12px;
+    color: var(--ink-faint);
+}
+
+
 /* ── Het verhaal — kort en eerlijk ─────────────────────────── */
 .verhaal {
     padding: 100px 0;
@@ -309,6 +378,7 @@
     .portrait-photo         { height: 360px; }
     .portrait-text          { padding: 48px 40px; }
     .verhaal-inner          { grid-template-columns: 1fr; gap: 56px; }
+    .portrait-skills        { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
