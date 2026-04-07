@@ -4,58 +4,104 @@
 
 /* ── Tablet (max 1024px) ──────────────────────────────────── */
 @media (max-width: 1024px) {
-    .hero-inner        { grid-template-columns: 1fr; gap: 52px; }
-    .hv-side           { display: none; }
-    .hv-main img       { height: 360px; }
+    .hero-inner        { grid-template-columns: 1fr; gap: 40px; }
 
-    .svc-grid          { grid-template-columns: 1fr; }
     .steps             { grid-template-columns: repeat(2, 1fr); }
     .cases-grid        { grid-template-columns: repeat(2, 1fr); }
     .why-inner         { grid-template-columns: 1fr; gap: 48px; }
-    .team-img-wrap     { max-width: 480px; }
     .testi-grid        { grid-template-columns: repeat(2, 1fr); }
-    .price-grid        { grid-template-columns: 1fr; max-width: 440px; }
     .footer-top        { grid-template-columns: 1fr 1fr; gap: 32px; }
     .hero-trust        { gap: 12px; }
+    .projects-home     { grid-template-columns: 1fr; }
+    .svc-pills-grid    { grid-template-columns: repeat(2, 1fr); }
+    .at-body           { grid-template-columns: 1fr; gap: 40px; }
 }
 
 /* ── Mobiel (max 768px) ───────────────────────────────────── */
 @media (max-width: 768px) {
-    section            { padding: 72px 0; }
+    section            { padding: 64px 0; }
     .nav-links         { display: none; }
     .hamburger         { display: flex; }
     .cases-grid        { grid-template-columns: 1fr; }
     .testi-grid        { grid-template-columns: 1fr; }
     .steps             { grid-template-columns: 1fr; }
-    .hero              { padding: 96px 0 60px; }
-    .case-row          { grid-template-columns: 1fr; }
-    .team-card         { display: none; }
+    .hero              { padding: 88px 0 60px; min-height: unset; }
     .hero-trust        { flex-wrap: wrap; gap: 10px; }
     .trust-divider     { display: none; }
+    .svc-pills-grid    { grid-template-columns: 1fr; }
+    .projects-home     { grid-template-columns: 1fr; }
+    .why-inner         { grid-template-columns: 1fr; gap: 40px; }
+    .results-inner     { gap: 20px; }
+    .result-item       { padding: 0 20px; min-width: 120px; }
+    .result-divider    { display: none; }
+    .footer-top        { grid-template-columns: 1fr 1fr; gap: 24px; }
+
+    /* Hero: tekst volledig zichtbaar, visual eronder */
+    .hero-inner        { gap: 32px; }
+    .hero h1           { font-size: clamp(28px, 7vw, 42px); }
+    .hero-sub          { font-size: 15px; }
+
+    /* Probleemselector: horizontaal scrollbaar op smal scherm */
+    .prob-select       { gap: 6px; }
+    .prob-btn          { padding: 10px 12px; }
+    .prob-btn-title    { font-size: 13px; }
+    .prob-btn-sub      { font-size: 11px; }
+
+    /* Hero visual: vaste hoogte ipv min-height zodat panel ruimte krijgt */
+    .hero-visual       { min-height: unset; }
+
+    /* Panels: op mobiel GEEN absolute positioning —
+       inactive panels worden verborgen via display:none
+       zodat de hoogte correct is */
+    .hv-panel          {
+        position: static;
+        display: none;
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    .hv-panel.active   {
+        display: block;
+        position: static;
+        animation: fadeUp .3s both;
+    }
 }
 
 /* ── Klein mobiel (max 480px) ─────────────────────────────── */
 @media (max-width: 480px) {
-    .hero-btns,
+    .hero-btns         { flex-direction: column; align-items: stretch; }
     .cta-btns          { flex-direction: column; align-items: stretch; }
+    .cta-final-btns    { flex-direction: column; align-items: center; }
     .btn-primary,
     .btn-secondary     { justify-content: center; }
     .footer-top        { grid-template-columns: 1fr; }
     .footer-btm        { flex-direction: column; align-items: flex-start; }
-    .proof-items .dot  { display: none; }
+
+    /* Proof strip kleiner */
+    .proof-item        { font-size: 12px; padding: 0 16px; }
+
+    /* Stats balk */
+    .result-num        { font-size: 26px; }
+    .result-item       { min-width: 100px; padding: 0 12px; }
+
+    /* Cases stats grid */
+    .case-stats        { grid-template-columns: 1fr 1fr; }
+
+    /* Stappen: kleinere padding */
+    .step              { padding: 24px 20px; }
+
+    /* Projecten kaarten */
+    .proj-card-img     { height: 160px; }
+
+    /* Why compare */
+    .wc-cell           { padding: 11px 12px; font-size: 12.5px; }
 }
 
 /* Contact */
-@media (max-width: 1200px) {
-    .contact-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
-    .contact-left  { grid-column: 1 / -1; }
-}
 @media (max-width: 768px) {
-    .contact-inner { grid-template-columns: 1fr; gap: 28px; }
-    .contact-left  { grid-column: auto; }
+    .contact-inner     { grid-template-columns: 1fr; gap: 28px; }
 }
 @media (max-width: 480px) {
-    .cf-row        { grid-template-columns: 1fr; }
-    .cf            { padding: 24px; }
-    .cal-card      { padding: 20px; }
+    .cf-row            { grid-template-columns: 1fr; }
+    .cf                { padding: 24px; }
 }

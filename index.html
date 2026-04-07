@@ -854,7 +854,15 @@
                 var panels = document.querySelectorAll('.hv-panel');
                 panels.forEach(function(p) { p.classList.remove('active'); });
                 var target = document.getElementById('panel-' + prob);
-                if (target) target.classList.add('active');
+                if (target) {
+                    target.classList.add('active');
+                    /* Op mobiel: scroll naar het panel zodat het zichtbaar is */
+                    if (window.innerWidth < 1024) {
+                        setTimeout(function() {
+                            target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }, 50);
+                    }
+                }
             });
         });
     })();
