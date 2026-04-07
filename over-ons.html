@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Over ons &middot; TriStack</title>
-    <meta name="description" content="Drie studenten die bouwen omdat het telt. Leer ons kennen.">
+    <meta name="description" content="Leer Ahmed, Nabil en Anass kennen — drie specialisten die TriStack bouwen voor ondernemers die efficiënter willen werken.">
     <link rel="canonical" href="https://tristack.be/over-ons">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231A1A1A'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='system-ui,sans-serif' font-weight='800' font-size='14' fill='%232563EB'>TS</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,18 +12,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/sections.css">
     <link rel="stylesheet" href="css/over-ons.css">
 </head>
 <body>
 
 <nav class="nav" id="nav">
     <div class="nav-inner">
-        <a href="index.html" class="logo">Tri<span class="logo-accent">Stack</span></a>
+        <a href="index.html" class="logo logo-img">
+            <img src="images/Logo/Logo.png" alt="TriStack" class="logo-img-tag">
+        </a>
         <div class="nav-links">
-            <a href="index.html#diensten" class="nav-a">Diensten</a>
             <a href="index.html#werkwijze" class="nav-a">Werkwijze</a>
             <a href="over-ons.html" class="nav-a" aria-current="page">Over ons</a>
-
             <a href="projecten.html" class="nav-a">Projecten</a>
             <a href="index.html#contact" class="nav-cta">Gratis gesprek &rarr;</a>
         </div>
@@ -32,21 +33,37 @@
         </div>
     </div>
 </nav>
-<div class="mob-menu" id="mob" role="navigation">
-    <a href="index.html#diensten" class="nav-a">Diensten</a>
+<div class="mob-menu" id="mob" role="navigation" aria-label="Mobiel menu">
     <a href="index.html#werkwijze" class="nav-a">Werkwijze</a>
     <a href="over-ons.html" class="nav-a">Over ons</a>
-
     <a href="projecten.html" class="nav-a">Projecten</a>
-    <a href="index.html#prijzen" class="nav-a">Prijzen</a>
     <a href="index.html#contact" class="nav-cta">Gratis gesprek &rarr;</a>
 </div>
 
 
 <!-- OPENING -->
 <header class="hero-over">
-    <p class="sec-label reveal">Over TriStack</p>
-    <h1 class="reveal">Geen groot bureau.<br>Gewoon drie mensen<br>die <em>echt willen helpen.</em></h1>
+    <div class="hero-over-split">
+        <div class="hero-over-left">
+            <p class="sec-label reveal">Over TriStack</p>
+            <h1 class="reveal">Geen groot bureau.<br>Gewoon drie mensen<br>die <em>echt willen helpen.</em></h1>
+            <p class="hero-over-sub reveal">We zijn Ahmed, Nabil en Anass &mdash; drie specialisten die TriStack begonnen omdat ondernemers betere software verdienen. Geen tussenpersonen, geen licenties, geen verrassingen.</p>
+            <a href="#ahmed" class="hero-over-scroll reveal">
+                Leer ons kennen
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+        <div class="hero-over-photos reveal" aria-hidden="true">
+            <div class="hop-track">
+                <div class="hop-photo hop-ahmed">A</div>
+                <div class="hop-photo hop-nabil"><img src="images/over-ons-fotos/Nabil2.jpeg" alt="Nabil" style="object-position:center 20%;"></div>
+                <div class="hop-photo hop-anass">An</div>
+                <div class="hop-photo hop-ahmed">A</div>
+                <div class="hop-photo hop-nabil"><img src="images/over-ons-fotos/Nabil2.jpeg" alt="Nabil" style="object-position:center 20%;"></div>
+                <div class="hop-photo hop-anass">An</div>
+            </div>
+        </div>
+    </div>
 </header>
 
 
@@ -54,7 +71,7 @@
 <section class="portraits">
 
     <!-- AHMED -->
-    <article class="portrait reveal">
+    <article class="portrait reveal" id="ahmed">
         <div class="portrait-photo">
             <!-- Vervang door: <img src="images/over-ons-fotos/Ahmed.jpeg" alt="Ahmed"> -->
             <div class="ph-bg ph-ahmed">
@@ -66,22 +83,22 @@
             <span class="portrait-num">01</span>
             <h2 class="portrait-name">Ahmed</h2>
             <p class="portrait-discipline">Frontend &middot; Design &middot; Databanken</p>
-            <p class="portrait-quote">&ldquo;[Schrijf hier jouw eigen zin, Ahmed. Waarom doe je dit? Wat drijft je? Eén eerlijke zin is genoeg.]&rdquo;</p>
-            <p class="portrait-bio">Ahmed zorgt dat wat we bouwen ook echt aangenaam is om te gebruiken. Hij denkt na over elk klikje, elk scherm &mdash; niet voor de esthetiek, maar omdat een slechte interface mensen frustreert. En gefrustreerde klanten komen niet terug.</p>
+            <p class="portrait-quote">&ldquo;Als iets er goed uitziet én prettig aanvoelt, hoef je het niet uit te leggen. Dat is wat ik probeer te bouwen.&rdquo;</p>
+            <p class="portrait-bio">Ahmed is de man achter alles wat je ziet en aanraakt. Hij heeft een scherp oog voor detail en gelooft dat goede software niet alleen moet werken &mdash; het moet ook aangenaam zijn om te gebruiken. Want als een interface je frustreert, gebruik je het niet. Hij combineert sterke technische kennis met een scherp gevoel voor design en heeft dat bewezen in meerdere projecten.</p>
             <div class="portrait-details">
-                <span class="pd-item"><span class="pd-icon">&#127829;</span> [Hobby]</span>
-                <span class="pd-item"><span class="pd-icon">&#127925;</span> [Interesse]</span>
-                <span class="pd-item"><span class="pd-icon">&#128218;</span> [Studie of iets persoonlijks]</span>
+                <span class="pd-item"><span class="pd-icon">🎨</span> Design &amp; esthetiek</span>
+                <span class="pd-item"><span class="pd-icon">💻</span> Frontend development</span>
+                <span class="pd-item"><span class="pd-icon">🗄️</span> Databanken &amp; structuur</span>
             </div>
 
             <div class="portrait-skills">
                 <div class="ps-col">
                     <p class="ps-title">Wat ik voor jou bouw</p>
                     <div class="ps-list">
-                        <span class="ps-item">Een website die er professioneel uitziet</span>
-                        <span class="ps-item">Een boekingssysteem dat klanten zelf kunnen gebruiken</span>
+                        <span class="ps-item">Een website die er professioneel uitziet en fijn werkt</span>
+                        <span class="ps-item">Een boekingssysteem dat klanten zelf begrijpen</span>
                         <span class="ps-item">Een overzichtelijk dashboard voor jouw zaak</span>
-                        <span class="ps-item">Formulieren, offertetools en klantenpagina's</span>
+                        <span class="ps-item">Formulieren, offertetools en klantenpagina&apos;s</span>
                         <span class="ps-item">Alles werkt even goed op gsm als op computer</span>
                     </div>
                 </div>
@@ -89,12 +106,12 @@
                     <p class="ps-title">Ervaring &amp; opleiding</p>
                     <div class="ps-certs">
                         <div class="ps-cert">
-                            <span class="ps-cert-name">[Opleiding of project]</span>
-                            <span class="ps-cert-org">[School of organisatie &middot; Jaar]</span>
+                            <span class="ps-cert-name">Frontend &amp; UI Development</span>
+                            <span class="ps-cert-org">Meerdere projecten &middot; Actief</span>
                         </div>
                         <div class="ps-cert">
-                            <span class="ps-cert-name">[Opleiding of project]</span>
-                            <span class="ps-cert-org">[School of organisatie &middot; Jaar]</span>
+                            <span class="ps-cert-name">TriStack &mdash; Medeoprichter</span>
+                            <span class="ps-cert-org">Frontend &amp; Design &middot; 2024&ndash;heden</span>
                         </div>
                     </div>
                 </div>
@@ -103,7 +120,7 @@
     </article>
 
     <!-- NABIL -->
-    <article class="portrait reveal">
+    <article class="portrait reveal" id="nabil">
         <div class="portrait-photo">
             <img src="images/over-ons-fotos/Nabil.jpeg" alt="Nabil">
         </div>
@@ -112,21 +129,21 @@
             <h2 class="portrait-name">Nabil</h2>
             <p class="portrait-discipline">All-round IT &middot; Cybersecurity &middot; Backend</p>
             <p class="portrait-quote">&ldquo;Ik hou ervan om oplossingen te zoeken voor klanten en hen echt te helpen. Als ik zie dat technologie hun taken kan vereenvoudigen &mdash; dat is mijn doel.&rdquo;</p>
-            <p class="portrait-bio">Nabil is de all-round IT-expert van het team. Van servers opzetten tot backends bouwen tot systemen beveiligen &mdash; hij springt bij waar nodig. 22 jaar, gecertificeerd pentester, en de reden waarom alles wat we bouwen snel, stabiel en veilig is.</p>
+            <p class="portrait-bio">Nabil is de cybersecurity-expert van het team. Waar de meeste ontwikkelaars security achteraf toevoegen, bouwt Nabil het er van in het begin in. Gecertificeerd pentester, 22 jaar &mdash; en omdat hij IT door en door kent, springt hij ook bij op backend, servers en infrastructuur waar nodig. Alles wat we bouwen is snel, stabiel en veilig, en dat is grotendeels zijn verdienste.</p>
             <div class="portrait-details">
-                <span class="pd-item"><span class="pd-icon">&#127939;</span> Sporten</span>
-                <span class="pd-item">All-round it expert</span>
-                <span class="pd-item"><span class="pd-icon">&#128272;</span> Security research</span>
+                <span class="pd-item"><span class="pd-icon">🔐</span> Cybersecurity &amp; Pentesting</span>
+                <span class="pd-item"><span class="pd-icon">🛡️</span> Jouw probleem is mijn probleem</span>
+                <span class="pd-item"><span class="pd-icon">⚙️</span> All-round IT expert</span>
             </div>
 
             <div class="portrait-skills">
                 <div class="ps-col">
                     <p class="ps-title">Wat ik voor jou doe</p>
                     <div class="ps-list">
-                        <span class="ps-item">Jouw systeem online zetten en draaiende houden</span>
-                        <span class="ps-item">Alles werkt snel, ook bij veel bezoekers tegelijk</span>
-                        <span class="ps-item">Jouw klantgegevens zijn veilig opgeslagen</span>
+                        <span class="ps-item">Jouw systeem is beveiligd tegen aanvallen van buitenaf</span>
+                        <span class="ps-item">Klantgegevens zijn veilig opgeslagen en goed afgeschermd</span>
                         <span class="ps-item">Niemand kan zomaar bij jouw systeem of data</span>
+                        <span class="ps-item">Jouw systeem online zetten en draaiende houden</span>
                         <span class="ps-item">Jij hebt altijd een back-up, niks gaat verloren</span>
                     </div>
                 </div>
@@ -138,8 +155,8 @@
                             <span class="ps-cert-org">Zelfstandig &middot; Actief</span>
                         </div>
                         <div class="ps-cert">
-                            <span class="ps-cert-name">[Certificaat of opleiding]</span>
-                            <span class="ps-cert-org">[Organisatie &middot; Jaar]</span>
+                            <span class="ps-cert-name">Ethical Hacker</span>
+                            <span class="ps-cert-org">Systemen binnendringen om ze te beschermen</span>
                         </div>
                     </div>
                 </div>
@@ -148,7 +165,7 @@
     </article>
 
     <!-- ANASS -->
-    <article class="portrait reveal">
+    <article class="portrait reveal" id="anass">
         <div class="portrait-photo">
             <!-- Vervang door: <img src="images/over-ons-fotos/Anass.jpeg" alt="Anass"> -->
             <div class="ph-bg ph-anass">
@@ -160,12 +177,12 @@
             <span class="portrait-num">03</span>
             <h2 class="portrait-name">Anass</h2>
             <p class="portrait-discipline">Applicaties &middot; AI-integratie</p>
-            <p class="portrait-quote">&ldquo;[Schrijf hier jouw eigen zin, Anass. Waarom doe je dit? Wat fascineert je aan bouwen? Eén eerlijke zin is genoeg.]&rdquo;</p>
-            <p class="portrait-bio">Anass bouwt de applicaties en zorgt voor de slimme laag erbovenop. Hij volgt AI niet om te kunnen zeggen dat hij het doet, maar om te begrijpen wat het &eacute;cht oplost &mdash; en wat niet.</p>
+            <p class="portrait-quote">&ldquo;Nieuwe technologie is pas interessant als het iets echts oplost. Ik ben altijd op zoek naar dat kruispunt.&rdquo;</p>
+            <p class="portrait-bio">Anass bouwt de applicaties en zorgt voor de slimme laag erbovenop. Hij volgt AI niet om te kunnen zeggen dat hij het doet &mdash; hij volgt het omdat hij wil begrijpen wat het &eacute;cht kan oplossen voor gewone ondernemers. Altijd bezig met wat er nieuw is, maar met beide voeten op de grond. Hij heeft zijn kennis bewezen in meerdere projecten en is medeoprichter van TriStack.</p>
             <div class="portrait-details">
-                <span class="pd-item"><span class="pd-icon">&#129302;</span> [Hobby]</span>
-                <span class="pd-item"><span class="pd-icon">&#9889;</span> [Interesse]</span>
-                <span class="pd-item"><span class="pd-icon">&#127756;</span> [Iets persoonlijks]</span>
+                <span class="pd-item"><span class="pd-icon">🤖</span> AI &amp; automatisering</span>
+                <span class="pd-item"><span class="pd-icon">⚡</span> Nieuwe tech verkennen</span>
+                <span class="pd-item"><span class="pd-icon">🗄️</span> Databanken &amp; structuur</span>
             </div>
 
             <div class="portrait-skills">
@@ -176,19 +193,19 @@
                         <span class="ps-item">Offertes die zichzelf opstellen na een formulier</span>
                         <span class="ps-item">Rapportages die elke week vanzelf in je mailbox zitten</span>
                         <span class="ps-item">Een chatbot die vragen van klanten beantwoordt</span>
-                        <span class="ps-item">Koppelingen tussen jouw tools zodat niks dubbel ingevoerd wordt</span>
+                        <span class="ps-item">Koppelingen tussen tools zodat niks dubbel ingevoerd wordt</span>
                     </div>
                 </div>
                 <div class="ps-col">
                     <p class="ps-title">Ervaring &amp; opleiding</p>
                     <div class="ps-certs">
                         <div class="ps-cert">
-                            <span class="ps-cert-name">[Opleiding of project]</span>
-                            <span class="ps-cert-org">[School of organisatie &middot; Jaar]</span>
+                            <span class="ps-cert-name">Applicatieontwikkeling &amp; AI-integratie</span>
+                            <span class="ps-cert-org">Meerdere projecten &middot; Actief</span>
                         </div>
                         <div class="ps-cert">
-                            <span class="ps-cert-name">[Opleiding of project]</span>
-                            <span class="ps-cert-org">[School of organisatie &middot; Jaar]</span>
+                            <span class="ps-cert-name">TriStack &mdash; Medeoprichter</span>
+                            <span class="ps-cert-org">Applicaties &amp; AI &middot; 2024&ndash;heden</span>
                         </div>
                     </div>
                 </div>
@@ -226,6 +243,14 @@
     </div>
 </section>
 
+<!-- WAAROM TRISTACK -->
+<section class="verhaal-naam-section">
+    <div class="verhaal-naam reveal">
+        <p class="verhaal-naam-label">Waarom TriStack?</p>
+        <p class="verhaal-naam-tekst">Drie mensen. Drie expertises. Eén naam. Ahmed bouwt wat je ziet, Nabil beveiligt wat je niet ziet, Anass automatiseert wat je niet meer wil doen. Toen we beseften dat onze kennis elkaar perfect aanvult &mdash; dat er samen eigenlijk niets is wat we niet kunnen bouwen &mdash; was de naam vanzelf duidelijk. <strong>Tri</strong> voor drie. <strong>Stack</strong> voor de technologie die we stapelen. TriStack.</p>
+    </div>
+</section>
+
 
 <!-- OUTRO -->
 <section class="outro" id="gesprek">
@@ -242,6 +267,39 @@
         </div>
     </div>
 </section>
+
+<footer class="footer">
+    <div class="wrap">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo footer-logo-img">
+                    <img src="images/Logo/Logo.png" alt="TriStack" class="footer-logo-img-tag">
+                </a>
+                <p>Webapplicaties en slimme automatisering voor ondernemers die effici&euml;nter willen werken.</p>
+            </div>
+            <nav class="footer-col" aria-label="Bedrijf">
+                <h4>Bedrijf</h4>
+                <a href="over-ons.html">Over TriStack</a>
+                <a href="index.html#werkwijze">Werkwijze</a>
+                <a href="projecten.html">Projecten</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="mailto:hallo@tristack.be">hallo@tristack.be</a>
+                <a href="https://wa.me/32489345632" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                <a href="index.html#contact">Boek een call</a>
+            </div>
+        </div>
+        <div class="footer-btm">
+            <span>&copy; 2026 TriStack</span>
+            <nav class="footer-legal" aria-label="Juridisch">
+                <a href="privacybeleid.html">Privacybeleid</a>
+                <a href="algemene-voorwaarden.html">Algemene voorwaarden</a>
+            </nav>
+        </div>
+    </div>
+</footer>
 
 <button class="scr-top" id="scrtop" aria-label="Scroll naar boven">&#8593;</button>
 <script type="module" src="js/main.js"></script>

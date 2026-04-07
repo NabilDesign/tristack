@@ -4,26 +4,112 @@
 
 /* ── Openingsscherm: één zin, veel lucht ────────────────────── */
 .hero-over {
-    padding: 160px 5% 120px;
+    padding: 120px 0 0;
     border-bottom: 1px solid var(--border);
-    max-width: 1200px;
-    margin: 0 auto;
+    overflow: hidden;
 }
 
-.hero-over .sec-label { margin-bottom: 28px; }
+/* Split: tekst links, fotos rechts */
+.hero-over-split {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5% 80px;
+    gap: 60px;
+}
+
+.hero-over-left .sec-label { margin-bottom: 20px; }
 
 .hero-over h1 {
-    font-size: clamp(36px, 5vw, 68px);
+    font-size: clamp(28px, 3.2vw, 48px);
     font-weight: 800;
-    letter-spacing: -0.05em;
-    line-height: 1.05;
+    letter-spacing: -0.04em;
+    line-height: 1.15;
     color: var(--ink);
-    max-width: 820px;
 }
 .hero-over h1 em {
     font-style: italic;
     font-weight: 400;
     color: var(--ink-soft);
+}
+
+.hero-over-sub {
+    margin-top: 20px;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+}
+
+.hero-over-scroll {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 28px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    transition: gap 0.2s ease;
+}
+.hero-over-scroll:hover { gap: 14px; }
+
+/* Scrollende fotocolumn rechts */
+.hero-over-photos {
+    height: 420px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.hop-track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 20px 0;
+    animation: hop-scroll 14s linear infinite;
+}
+.hop-track:hover { animation-play-state: paused; }
+
+@keyframes hop-scroll {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+.hop-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 36px;
+    flex-shrink: 0;
+    margin: 0 auto;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+}
+.hop-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+}
+.hop-ahmed { background: #1E3A5F; color: #93C5FD; }
+.hop-nabil { background: #2a2a2a; }
+.hop-anass { background: #14532D; color: #86EFAC; }
+
+@media (max-width: 900px) {
+    .hero-over-split {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .hero-over-photos { display: none; }
 }
 
 
@@ -35,7 +121,7 @@
 .portrait {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 560px;
+    min-height: 480px;
     border-bottom: 1px solid var(--border);
 }
 .portrait:last-child { border-bottom: none; }
@@ -391,4 +477,45 @@
 
 @media (max-width: 480px) {
     .outro-btns             { flex-direction: column; }
+}
+/* ── Naam origine blok ───────────────────────────────────────── */
+.verhaal-naam {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 5%;
+    border-top: 1px solid var(--border);
+}
+
+.verhaal-naam-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+}
+
+.verhaal-naam-tekst {
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    max-width: 760px;
+}
+
+.verhaal-naam-tekst strong {
+    color: var(--ink);
+    font-weight: 700;
+}
+
+/* ── Waarom TriStack sectie ──────────────────────────────────── */
+.verhaal-naam-section {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.verhaal-naam-section .verhaal-naam {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 64px 5%;
+    border-top: none;
 }
