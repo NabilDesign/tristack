@@ -307,27 +307,10 @@
     text-align: right;
 }
 
-/* Tech stack */
-.tech-stack {}
-
-.tech-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-}
-
-.tech-pill {
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--ink-mid);
-    border: 1px solid var(--border);
-    padding: 4px 11px;
-    border-radius: 3px;
-    background: var(--page);
-}
-.project-item:nth-child(even) .tech-pill {
-    background: #fff;
-}
+/* Tech stack — verborgen voor klantpubliek */
+.tech-stack { display: none; }
+.tech-pills  { display: none; }
+.tech-pill   { display: none; }
 
 
 /* ── Outro ──────────────────────────────────────────────────── */

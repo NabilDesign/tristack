@@ -16,6 +16,7 @@
     .testi-grid        { grid-template-columns: repeat(2, 1fr); }
     .price-grid        { grid-template-columns: 1fr; max-width: 440px; }
     .footer-top        { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .hero-trust        { gap: 12px; }
 }
 
 /* ── Mobiel (max 768px) ───────────────────────────────────── */
@@ -29,6 +30,8 @@
     .hero              { padding: 96px 0 60px; }
     .case-row          { grid-template-columns: 1fr; }
     .team-card         { display: none; }
+    .hero-trust        { flex-wrap: wrap; gap: 10px; }
+    .trust-divider     { display: none; }
 }
 
 /* ── Klein mobiel (max 480px) ─────────────────────────────── */

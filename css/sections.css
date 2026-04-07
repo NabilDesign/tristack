@@ -24,6 +24,9 @@
     border-color: var(--surface-2);
 }
 
+.svc-img {
+    overflow: hidden;
+}
 .svc-img img {
     width: 100%;
     height: 220px;
@@ -169,12 +172,12 @@
 .cases-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 16px;
 }
 
 .case {
     background: #fff;
-    border-radius: var(--r28);
+    border-radius: var(--r20);
     overflow: hidden;
     border: 1px solid var(--border);
     display: flex;
@@ -182,8 +185,8 @@
     transition: all .3s cubic-bezier(.22,1,.36,1);
 }
 .case:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 16px 40px rgba(0,0,0,.08);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 36px rgba(0,0,0,.08);
 }
 
 .case-img {
@@ -192,7 +195,7 @@
 }
 .case-img img {
     width: 100%;
-    height: 200px;
+    height: 160px;
     object-fit: cover;
     display: block;
     transition: transform .5s ease;
@@ -201,27 +204,27 @@
 
 .case-sector {
     position: absolute;
-    top: 14px; left: 14px;
+    top: 12px; left: 12px;
     font-size: 11px;
     font-weight: 600;
-    letter-spacing: .5px;
+    letter-spacing: .4px;
     color: #fff;
-    background: rgba(0,0,0,.5);
+    background: rgba(0,0,0,.52);
     backdrop-filter: blur(6px);
-    padding: 4px 12px;
+    padding: 3px 10px;
     border-radius: 20px;
 }
 
 .case-body {
-    padding: 24px;
+    padding: 18px;
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
 }
 
 .case h3 {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     color: var(--ink);
     line-height: 1.35;
@@ -230,31 +233,31 @@
 .case-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    gap: 10px;
 }
 
 .case-lbl {
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .8px;
     color: var(--ink-faint);
-    margin-bottom: 4px;
+    margin-bottom: 3px;
 }
 
 .case-row p {
-    font-size: 12px;
+    font-size: 11.5px;
     color: var(--ink-soft);
-    line-height: 1.6;
+    line-height: 1.55;
 }
 
 .case-result {
     margin-top: auto;
     background: var(--green-bg);
     border: 1px solid var(--green-b);
-    border-radius: var(--r10);
-    padding: 12px 14px;
-    font-size: 13px;
+    border-radius: var(--r6);
+    padding: 10px 12px;
+    font-size: 12.5px;
     color: #166534;
     line-height: 1.5;
 }
@@ -354,43 +357,94 @@
 .team-card p { font-size: 12px; color: var(--ink-soft); }
 
 
-/* ── Getuigenissen ────────────────────────────────────────── */
-.testi { background: var(--surface); }
-
-.testi-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+/* ── Getuigenissen — scrollende kolommen ─────────────────── */
+.testi {
+    background: var(--surface);
+    overflow: hidden;
 }
 
+.testi .sec-head { padding: 0 5%; max-width: 1160px; margin: 0 auto 48px; }
+
+/* Drie-kolom scrollcontainer */
+.testi-columns {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 0 5%;
+    max-height: 680px;
+    overflow: hidden;
+    /* Fade top en bottom */
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.testi-col-wrap {
+    flex: 1;
+    max-width: 340px;
+    overflow: hidden;
+}
+
+/* Kolom 2 en 3 verbergen op kleine schermen */
+.testi-col-wrap-mid  { display: none; }
+.testi-col-wrap-right { display: none; }
+
+@media (min-width: 768px)  { .testi-col-wrap-mid   { display: block; } }
+@media (min-width: 1100px) { .testi-col-wrap-right { display: block; } }
+
+/* De scrollende lijsten */
+.testi-col {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.testi-col-1 { animation: scrollUp 24s linear infinite; }
+.testi-col-2 { animation: scrollUp 30s linear infinite; }
+.testi-col-3 { animation: scrollUp 27s linear infinite; }
+
+/* Pauzeer bij hover */
+.testi-col-wrap:hover .testi-col { animation-play-state: paused; }
+
+@keyframes scrollUp {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+/* Review kaartje */
 .tc {
     background: #fff;
     border: 1px solid var(--border);
-    border-radius: var(--r28);
-    padding: 28px;
+    border-radius: var(--r20);
+    padding: 24px;
     display: flex;
     flex-direction: column;
-    transition: all .3s cubic-bezier(.22,1,.36,1);
+    gap: 0;
+    transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s;
+    cursor: default;
 }
 .tc:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0,0,0,.07);
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 16px 40px rgba(0,0,0,.08);
 }
 
 .tc-stars {
     color: #F59E0B;
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 2px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
 }
 
 .tc blockquote {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--ink-mid);
     line-height: 1.75;
-    font-style: italic;
+    font-style: normal;
     flex: 1;
-    margin-bottom: 22px;
+    margin: 0 0 18px 0;
+    padding: 0;
     quotes: "\201C" "\201D";
 }
 .tc blockquote::before { content: open-quote; }
@@ -399,24 +453,54 @@
 .tc-footer {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding-top: 16px;
+    gap: 10px;
+    padding-top: 14px;
     border-top: 1px solid var(--border);
 }
 .tc-footer img {
-    width: 40px; height: 40px;
+    width: 36px; height: 36px;
     border-radius: 50%;
     object-fit: cover;
     flex-shrink: 0;
+    border: 2px solid var(--surface);
 }
 .tc-footer strong {
     display: block;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--ink);
-    margin-bottom: 2px;
+    margin-bottom: 1px;
 }
-.tc-footer span { font-size: 12px; color: var(--ink-faint); }
+.tc-footer span { font-size: 11px; color: var(--ink-faint); line-height: 1.4; }
+
+
+/* ── WhatsApp floating button ─────────────────────────────── */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 28px;
+    left: 28px;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
+    color: #fff;
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 20px 12px 16px;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(37,211,102,.4);
+    text-decoration: none;
+    transition: all .25s cubic-bezier(.22,1,.36,1);
+    white-space: nowrap;
+}
+.whatsapp-btn:hover {
+    background: #20be5c;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(37,211,102,.5);
+}
+.whatsapp-btn svg { flex-shrink: 0; }
 
 
 /* ── Prijzen ──────────────────────────────────────────────── */
@@ -1275,4 +1359,54 @@
 
 @media (max-width: 1024px) {
     .at-body { grid-template-columns: 1fr; gap: 40px; }
+}
+
+/* ── Resultaten balk (nieuw) ──────────────────────────────── */
+.results-bar {
+    background: var(--ink);
+    padding: 40px 0;
+}
+
+.results-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+}
+
+.result-item {
+    text-align: center;
+    padding: 0 48px;
+    flex: 1;
+    min-width: 140px;
+}
+
+.result-num {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: 6px;
+}
+
+.result-label {
+    font-size: 13px;
+    color: #64748B;
+    font-weight: 500;
+}
+
+.result-divider {
+    width: 1px;
+    height: 48px;
+    background: rgba(255,255,255,.08);
+    flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+    .result-divider { display: none; }
+    .results-inner  { gap: 24px; }
+    .result-item    { padding: 0 24px; min-width: 130px; }
 }
