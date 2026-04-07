@@ -189,3 +189,373 @@
 .footer-legal { display: flex; gap: 18px; flex-wrap: wrap; }
 .footer-legal a { color: #2D3F53; }
 .footer-legal a:hover { color: #4E627A; }
+
+
+/* ═══════════════════════════════════════════════════════════
+   PROJECTEN op homepage
+   ═══════════════════════════════════════════════════════════ */
+.projects-home {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.proj-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all .3s cubic-bezier(.22,1,.36,1);
+}
+.proj-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,.08);
+    border-color: #D0D5DD;
+}
+
+/* Screenshot afbeelding */
+.proj-card-img {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    background: var(--surface);
+    flex-shrink: 0;
+}
+.proj-card-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    transition: transform .5s ease;
+}
+.proj-card:hover .proj-card-img img { transform: scale(1.03); }
+
+/* Tweede screenshot overlay (RugCraft app) */
+.proj-img-overlay {
+    position: absolute;
+    bottom: 10px; right: 10px;
+    width: 64px; height: 108px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,.18);
+}
+.proj-img-secondary {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top;
+}
+
+/* Placeholder mockup voor QuotationApp (geen screenshot) */
+.proj-card-img--placeholder {
+    background: #1A1A1A;
+    display: flex; align-items: center; justify-content: center;
+}
+.proj-img-mockup {
+    width: 85%; height: 80%;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+}
+.mockup-bar {
+    background: var(--surface);
+    padding: 6px 10px;
+    display: flex; gap: 4px; align-items: center;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+}
+.mockup-bar span {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--border);
+}
+.mockup-body {
+    padding: 10px 12px; flex: 1; display: flex; flex-direction: column; gap: 6px; position: relative;
+}
+.mockup-row { height: 8px; background: var(--surface); border-radius: 3px; }
+.mockup-row--header { height: 12px; background: var(--surface-2); width: 60%; }
+.mockup-row--short { width: 55%; }
+.mockup-badge {
+    position: absolute; bottom: 8px; right: 8px;
+    background: var(--accent); color: #fff;
+    font-size: 9px; font-weight: 700; padding: 3px 8px;
+    border-radius: 4px; letter-spacing: .3px;
+}
+
+/* Body */
+.proj-card-body {
+    padding: 22px 24px 24px;
+    display: flex; flex-direction: column; flex: 1;
+}
+
+.proj-meta {
+    display: flex; gap: 6px; flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+.proj-tag {
+    font-size: 11px; font-weight: 600;
+    color: var(--accent); background: var(--accent-bg);
+    border: 1px solid rgba(37,99,235,.12);
+    padding: 2px 9px; border-radius: 4px;
+}
+
+.proj-card h3 {
+    font-size: 19px; font-weight: 800;
+    color: var(--ink); margin-bottom: 8px;
+    letter-spacing: -.03em;
+}
+
+.proj-problem {
+    font-size: 13.5px; color: var(--ink-soft);
+    line-height: 1.68; margin-bottom: 14px;
+}
+
+.proj-built {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 20px;
+    padding: 9px 13px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
+.proj-built span {
+    font-size: 12px; font-weight: 600; color: var(--ink-mid);
+    line-height: 1.4;
+}
+.proj-built::before {
+    content: '→';
+    font-size: 13px; color: var(--accent); font-weight: 700; flex-shrink: 0;
+}
+
+/* Review blok */
+.proj-review {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+}
+.proj-stars {
+    display: flex; gap: 3px; margin-bottom: 10px;
+}
+.proj-quote {
+    font-size: 13.5px; color: var(--ink-mid);
+    line-height: 1.72; font-style: italic;
+    margin-bottom: 14px;
+}
+.proj-quote::before { content: '\201C'; }
+.proj-quote::after  { content: '\201D'; }
+
+.proj-reviewer {
+    display: flex; align-items: center; gap: 10px;
+}
+.proj-reviewer-av {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: var(--surface-2);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 11px; font-weight: 700; color: var(--ink-soft);
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+}
+.proj-reviewer-name {
+    font-size: 12px; color: var(--ink-faint);
+}
+
+@media (max-width: 900px) {
+    .projects-home { grid-template-columns: 1fr; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   DIENSTEN — Inline mockups (geen stockfoto's)
+   ═══════════════════════════════════════════════════════════ */
+
+/* Verwijder oude svc-img stijlen, vervang door mockup */
+.svc-img { display: none; }
+
+.svc-mockup {
+    flex-shrink: 0;
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Donkere variant — boekingssysteem */
+.svc-mockup--dark {
+    background: #1A1A1A;
+    border-bottom-color: rgba(255,255,255,.08);
+}
+
+.svm-topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 14px;
+}
+.svm-dots { display: flex; gap: 5px; }
+.svm-dots span { width: 8px; height: 8px; border-radius: 50%; }
+.svm-dots span:nth-child(1) { background: #FF5F57; }
+.svm-dots span:nth-child(2) { background: #FEBC2E; }
+.svm-dots span:nth-child(3) { background: #28C840; }
+.svm-title { font-size: 11px; font-weight: 600; color: rgba(255,255,255,.5); font-family: 'Instrument Sans', sans-serif; }
+
+.svm-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 8px; margin-bottom: 12px;
+}
+.svm-stat {
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 7px; padding: 9px 11px;
+}
+.svm-stat-val {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 19px; font-weight: 800; color: #fff;
+    letter-spacing: -0.04em; line-height: 1; margin-bottom: 3px;
+}
+.svm-stat-val.svm-green { color: #4ADE80; }
+.svm-stat-lbl { font-size: 9px; font-weight: 600; color: rgba(255,255,255,.3); text-transform: uppercase; letter-spacing: .8px; }
+
+.svm-rows {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 7px; overflow: hidden;
+}
+.svm-row {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 11px;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.svm-row:last-child { border-bottom: none; }
+.svm-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.svm-name { font-size: 12px; font-weight: 600; color: rgba(255,255,255,.8); flex: 1; }
+.svm-time { font-size: 11px; color: rgba(255,255,255,.3); margin-right: 4px; }
+.svm-badge { font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 4px; text-transform: uppercase; letter-spacing: .3px; }
+.svm-badge--green { background: rgba(74,222,128,.15); color: #4ADE80; }
+.svm-badge--blue  { background: rgba(37,99,235,.2); color: #60A5FA; }
+.svm-badge--gray  { background: rgba(255,255,255,.06); color: rgba(255,255,255,.3); }
+
+/* Lichte variant — automatiseringsflow */
+.svc-mockup--light {
+    background: var(--surface);
+    border-bottom-color: var(--border);
+}
+
+.svm-flow-label {
+    font-size: 10px; font-weight: 700; color: var(--ink-faint);
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;
+}
+
+.svm-flow {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 18px; flex-wrap: nowrap;
+}
+.svm-flow-step {
+    flex: 1; background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px; padding: 11px 10px;
+    text-align: center; min-width: 0;
+}
+.svm-flow-icon {
+    font-size: 16px; margin-bottom: 6px;
+    width: 32px; height: 32px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 7px;
+}
+.svm-flow-icon--blue   { background: var(--accent-bg); }
+.svm-flow-icon--green  { background: var(--green-bg); }
+.svm-flow-icon--orange { background: #FFF7ED; }
+.svm-flow-text { font-size: 11px; font-weight: 600; color: var(--ink-mid); line-height: 1.35; }
+.svm-flow-arrow { font-size: 14px; color: var(--ink-faint); flex-shrink: 0; font-weight: 700; }
+
+.svm-saves {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+.svm-save-item {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 8px; padding: 10px 12px; text-align: center;
+}
+.svm-save-num {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 18px; font-weight: 800; color: var(--green);
+    letter-spacing: -0.03em; line-height: 1; margin-bottom: 3px;
+}
+.svm-save-lbl { font-size: 10px; color: var(--ink-faint); font-weight: 500; }
+
+
+/* ═══════════════════════════════════════════════════════════
+   DIENSTEN — Pill grid
+   ═══════════════════════════════════════════════════════════ */
+.svc-grid { display: none; } /* vervangen door pill grid */
+
+.svc-pills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.svc-pill {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    display: flex; gap: 16px; align-items: flex-start;
+    transition: all .25s cubic-bezier(.22,1,.36,1);
+}
+.svc-pill:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(0,0,0,.07);
+    border-color: #D0D5DD;
+}
+
+.svc-pill-icon {
+    font-size: 18px; flex-shrink: 0;
+    width: 40px; height: 40px; border-radius: 10px;
+    background: var(--surface); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 2px;
+}
+
+.svc-pill-body h3 {
+    font-size: 15px; font-weight: 700; color: var(--ink);
+    margin-bottom: 6px; letter-spacing: -.02em;
+}
+.svc-pill-body p {
+    font-size: 13px; color: var(--ink-soft); line-height: 1.65;
+}
+
+/* AI pill — subtiel paars accent */
+.svc-pill--ai {
+    background: linear-gradient(135deg, #F5F3FF, #EDE9FE);
+    border-color: rgba(124,58,237,.15);
+}
+.svc-pill--ai:hover { border-color: rgba(124,58,237,.3); box-shadow: 0 10px 28px rgba(124,58,237,.1); }
+.svc-pill--ai .svc-pill-body h3 { color: #5B21B6; }
+.svc-pill-icon--ai {
+    background: #EDE9FE !important;
+    border-color: rgba(124,58,237,.2) !important;
+    color: #7C3AED; font-size: 15px; font-weight: 900;
+    font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+/* CTA pill */
+.svc-pill--cta {
+    background: var(--ink);
+    border-color: var(--ink);
+}
+.svc-pill--cta:hover { box-shadow: 0 10px 28px rgba(0,0,0,.2); }
+.svc-pill-cta-inner { display: flex; flex-direction: column; gap: 4px; width: 100%; }
+.svc-pill-cta-inner p    { font-size: 12px; color: rgba(255,255,255,.45); margin: 0; }
+.svc-pill-cta-inner strong { font-size: 16px; font-weight: 700; color: #fff; letter-spacing: -.02em; }
+.svc-pill-cta-btn {
+    display: inline-flex; align-items: center;
+    margin-top: 12px; font-size: 13px; font-weight: 600;
+    color: #fff; background: var(--accent);
+    padding: 9px 16px; border-radius: 7px;
+    transition: all .2s; width: fit-content;
+}
+.svc-pill-cta-btn:hover { background: var(--accent-h); transform: translateX(2px); }
+
+@media (max-width: 900px) {
+    .svc-pills-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+    .svc-pills-grid { grid-template-columns: 1fr; }
+}

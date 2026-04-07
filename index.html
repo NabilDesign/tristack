@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TriStack: Webapps & AI voor lokale ondernemers · België</title>
-    <meta name="description" content="TriStack bouwt software op maat voor kappers, loodgieters, horeca en andere lokale ondernemers in België. Online boeken, offertes, automatisering. Geen licenties, vaste prijs.">
+    <title>TriStack: Webapps & AI voor ondernemers</title>
+    <meta name="description" content="TriStack bouwt software op maat voor kappers, loodgieters, horeca en andere ondernemers. Online boeken, offertes, automatisering. Geen licenties, vaste prijs.">
     <link rel="canonical" href="https://tristack.be/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="TriStack: Software op maat voor lokale ondernemers">
+    <meta property="og:title" content="TriStack: Software op maat voor ondernemers">
     <meta property="og:description" content="Wij bouwen digitale tools die jouw dagelijks werk makkelijker maken. Op maat, zonder gedoe, vaste prijs.">
     <meta property="og:locale" content="nl_BE">
 
@@ -57,6 +57,8 @@
     <div class="hero-blob blob-2" aria-hidden="true"></div>
 
     <div class="hero-inner">
+
+        <!-- LEFT: tekst + probleemselector -->
         <div class="hero-text">
             <div class="hero-tag">
                 <span class="tag-dot" aria-hidden="true"></span>
@@ -64,29 +66,61 @@
             </div>
 
             <h1>
-                Software op maat<br>
-                voor jouw zaak.<br>
-                <em>Vaste prijs, snel live.</em>
+                Jouw probleem.<br>
+                Onze software.<br>
+                <em>Opgelost.</em>
             </h1>
 
             <p class="hero-sub">
-                Boekingssystemen, offertetools, klantendashboards — gebouwd door drie jonge specialisten die begrijpen hoe een lokale zaak werkt. Geen licenties, geen verrassingen.
+                Vertel ons wat jou tijd kost — wij bouwen de tool die het oplost. Op maat, vaste prijs, live in 4 tot 8 weken.
             </p>
 
-            <!-- Founder faces — vertrouwen bovenaan -->
-            <div class="hero-founders">
-                <div class="hero-founder-avatars">
-                    <img class="av" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face" alt="Ahmed">
-                    <img class="av" src="images/over-ons-fotos/Nabil.jpeg" alt="Nabil">
-                    <img class="av" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face" alt="Anass">
-                </div>
-                <div class="hero-founders-text">
-                    <strong>Ahmed, Nabil & Anass</strong>
-                    Jij praat rechtstreeks met de bouwers — geen tussenpersoon
-                </div>
+            <!-- Probleemselector -->
+            <p class="prob-select-lbl">Wat kost jou nu de meeste tijd?</p>
+            <div class="prob-select" id="probSelect">
+                <button class="prob-btn active" data-prob="booking" type="button">
+                    <span class="prob-btn-icon">📅</span>
+                    <span class="prob-btn-body">
+                        <span class="prob-btn-title">Afspraken inplannen</span>
+                        <span class="prob-btn-sub">Telefoon de hele dag, no-shows</span>
+                    </span>
+                    <span class="prob-btn-arrow">→</span>
+                </button>
+                <button class="prob-btn" data-prob="quote" type="button">
+                    <span class="prob-btn-icon">📋</span>
+                    <span class="prob-btn-body">
+                        <span class="prob-btn-title">Offertes opmaken</span>
+                        <span class="prob-btn-sub">Uren kwijt in Word, klanten haken af</span>
+                    </span>
+                    <span class="prob-btn-arrow">→</span>
+                </button>
+                <button class="prob-btn" data-prob="shop" type="button">
+                    <span class="prob-btn-icon">🛍️</span>
+                    <span class="prob-btn-body">
+                        <span class="prob-btn-title">Online verkopen</span>
+                        <span class="prob-btn-sub">Geen webshop, klanten vinden je niet</span>
+                    </span>
+                    <span class="prob-btn-arrow">→</span>
+                </button>
+                <button class="prob-btn" data-prob="dashboard" type="button">
+                    <span class="prob-btn-icon">📊</span>
+                    <span class="prob-btn-body">
+                        <span class="prob-btn-title">Overzicht bewaren</span>
+                        <span class="prob-btn-sub">Klanten en cijfers in spreadsheets</span>
+                    </span>
+                    <span class="prob-btn-arrow">→</span>
+                </button>
+                <button class="prob-btn prob-btn--ai" data-prob="ai" type="button">
+                    <span class="prob-btn-icon prob-btn-icon--ai">✦</span>
+                    <span class="prob-btn-body">
+                        <span class="prob-btn-title">Alles automatiseren met AI</span>
+                        <span class="prob-btn-sub">Herinneringen, opvolging, antwoorden — vanzelf</span>
+                    </span>
+                    <span class="prob-btn-arrow">→</span>
+                </button>
             </div>
 
-            <div class="hero-btns">
+            <div class="hero-btns" style="margin-top:32px;">
                 <a href="#contact" class="btn-primary">
                     Boek een gratis gesprek
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -94,7 +128,7 @@
                 <a href="#cases" class="btn-secondary">Bekijk resultaten</a>
             </div>
 
-            <div class="hero-trust">
+            <div class="hero-trust" style="margin-top:32px;">
                 <div class="trust-item">
                     <div class="trust-icon" aria-hidden="true">✓</div>
                     <div><strong>12+</strong> tevreden klanten</div>
@@ -112,70 +146,212 @@
             </div>
         </div>
 
-        <!-- Dashboard mockup -->
-        <div class="hero-visual">
-            <div class="hv-notif" aria-hidden="true">
-                <span class="hv-notif-pulse"></span>
-                Nieuwe afspraak ingepland
-            </div>
-            <div class="hv-dashboard">
-                <div class="hv-dash-header">
-                    <div class="hv-dash-dots">
-                        <div class="hv-dash-dot"></div>
-                        <div class="hv-dash-dot"></div>
-                        <div class="hv-dash-dot"></div>
-                    </div>
-                    <div class="hv-dash-title">Jouw Boekingssysteem · vandaag</div>
-                    <div style="width:44px"></div>
+        <!-- RIGHT: wisselende mockup per probleem -->
+        <div class="hero-visual" id="heroVisual">
+
+            <!-- BOOKING -->
+            <div class="hv-panel active" id="panel-booking">
+                <div class="hv-panel-notif">
+                    <span class="hv-notif-pulse"></span>
+                    Nieuwe afspraak via WhatsApp bevestigd
                 </div>
-                <div class="hv-dash-body">
-                    <div class="hv-stats-row">
-                        <div class="hv-stat-box">
-                            <div class="label">Vandaag</div>
-                            <div class="value">7</div>
-                            <div class="delta">↑ +2 vs gisteren</div>
+                <div class="hv-dashboard">
+                    <div class="hv-dash-header">
+                        <div class="hv-dash-dots">
+                            <div class="hv-dash-dot"></div><div class="hv-dash-dot"></div><div class="hv-dash-dot"></div>
                         </div>
-                        <div class="hv-stat-box">
-                            <div class="label">No-shows</div>
-                            <div class="value">0</div>
-                            <div class="delta">↓ −68%</div>
-                        </div>
-                        <div class="hv-stat-box">
-                            <div class="label">Omzet</div>
-                            <div class="value">€840</div>
-                            <div class="delta">↑ +22%</div>
-                        </div>
+                        <div class="hv-dash-title">Boekingssysteem · vandaag</div>
+                        <div style="width:44px"></div>
                     </div>
-                    <div class="hv-appointments">
-                        <div class="hv-apt-header">Komende afspraken</div>
-                        <div class="hv-apt-item">
-                            <div class="hv-apt-dot" style="background:#2563EB"></div>
-                            <div class="hv-apt-name">Nathalie V.</div>
-                            <div class="hv-apt-time">10:00</div>
-                            <div class="hv-apt-badge badge-green">Bevestigd</div>
+                    <div class="hv-dash-body">
+                        <div class="hv-stats-row">
+                            <div class="hv-stat-box"><div class="label">Afspraken</div><div class="value">7</div><div class="delta">↑ +2 vs gisteren</div></div>
+                            <div class="hv-stat-box"><div class="label">No-shows</div><div class="value">0</div><div class="delta" style="color:#16A34A">↓ −68%</div></div>
+                            <div class="hv-stat-box"><div class="label">Omzet</div><div class="value">€840</div><div class="delta">↑ +22%</div></div>
                         </div>
-                        <div class="hv-apt-item">
-                            <div class="hv-apt-dot" style="background:#F97316"></div>
-                            <div class="hv-apt-name">Jonas D.</div>
-                            <div class="hv-apt-time">11:30</div>
-                            <div class="hv-apt-badge badge-blue">Nieuw</div>
-                        </div>
-                        <div class="hv-apt-item">
-                            <div class="hv-apt-dot" style="background:#9B9B9B"></div>
-                            <div class="hv-apt-name">Ahmed R.</div>
-                            <div class="hv-apt-time">14:00</div>
-                            <div class="hv-apt-badge badge-gray">Wacht</div>
+                        <div class="hv-appointments">
+                            <div class="hv-apt-header">Komende afspraken</div>
+                            <div class="hv-apt-item"><div class="hv-apt-dot" style="background:#2563EB"></div><div class="hv-apt-name">Nathalie V.</div><div class="hv-apt-time">10:00</div><div class="hv-apt-badge badge-green">Bevestigd</div></div>
+                            <div class="hv-apt-item"><div class="hv-apt-dot" style="background:#F97316"></div><div class="hv-apt-name">Jonas D.</div><div class="hv-apt-time">11:30</div><div class="hv-apt-badge badge-blue">Nieuw</div></div>
+                            <div class="hv-apt-item"><div class="hv-apt-dot" style="background:#9B9B9B"></div><div class="hv-apt-name">Ahmed R.</div><div class="hv-apt-time">14:00</div><div class="hv-apt-badge badge-gray">Wacht</div></div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="hv-float-card" aria-hidden="true">
-                <div class="hv-float-icon">📩</div>
-                <div class="hv-float-text">
-                    <strong>−68% no-shows</strong>
-                    <span>door automatische herinneringen</span>
+                <div class="hv-result-pill">
+                    <span class="hv-result-pulse"></span>
+                    −68% no-shows · 2u/dag teruggewonnen
                 </div>
             </div>
+
+            <!-- QUOTE -->
+            <div class="hv-panel" id="panel-quote">
+                <div class="hv-panel-notif hv-notif--blue">
+                    <span class="hv-notif-pulse" style="background:rgba(255,255,255,.7)"></span>
+                    Offerte automatisch gegenereerd
+                </div>
+                <div class="hv-dashboard">
+                    <div class="hv-dash-header">
+                        <div class="hv-dash-dots">
+                            <div class="hv-dash-dot"></div><div class="hv-dash-dot"></div><div class="hv-dash-dot"></div>
+                        </div>
+                        <div class="hv-dash-title">Offertetool · nieuwe offerte</div>
+                        <div style="width:44px"></div>
+                    </div>
+                    <div class="hv-dash-body">
+                        <div class="hv-quote-field"><div class="hv-qf-lbl">Klant</div><div class="hv-qf-val">Marc Pieters — Pieters Installaties</div></div>
+                        <div class="hv-quote-field"><div class="hv-qf-lbl">Dienst</div><div class="hv-qf-val">Verwarmingsinstallatie · €1.240</div></div>
+                        <div class="hv-quote-field"><div class="hv-qf-lbl">Korting</div><div class="hv-qf-val">Vaste klant · −5%</div></div>
+                        <div class="hv-quote-generate">
+                            <span>⚡</span> Offerte genereren
+                        </div>
+                        <div class="hv-quote-result">
+                            <div>
+                                <div class="hv-qr-lbl">Klaar in</div>
+                                <div class="hv-qr-val">3 min</div>
+                            </div>
+                            <div class="hv-qr-badge">PDF verstuurd ✓</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hv-result-pill hv-result-pill--blue">
+                    <span class="hv-result-pulse" style="background:#60A5FA"></span>
+                    +40% conversie · klanten wachten niet meer
+                </div>
+            </div>
+
+            <!-- SHOP -->
+            <div class="hv-panel" id="panel-shop">
+                <div class="hv-panel-notif hv-notif--orange">
+                    <span class="hv-notif-pulse" style="background:rgba(255,255,255,.7)"></span>
+                    Nieuwe bestelling · €65
+                </div>
+                <div class="hv-dashboard">
+                    <div class="hv-dash-header">
+                        <div class="hv-dash-dots">
+                            <div class="hv-dash-dot"></div><div class="hv-dash-dot"></div><div class="hv-dash-dot"></div>
+                        </div>
+                        <div class="hv-dash-title">Webshop · jouw collectie</div>
+                        <div style="width:44px"></div>
+                    </div>
+                    <div class="hv-dash-body">
+                        <div class="hv-shop-grid">
+                            <div class="hv-shop-item"><div class="hv-shop-img" style="background:#EDE9FE">🧶</div><div class="hv-shop-name">Haak set S</div><div class="hv-shop-price">€28</div></div>
+                            <div class="hv-shop-item"><div class="hv-shop-img" style="background:#FEF3C7">🪡</div><div class="hv-shop-name">Wol pakket</div><div class="hv-shop-price">€42</div></div>
+                            <div class="hv-shop-item"><div class="hv-shop-img" style="background:#FCE7F3">🎀</div><div class="hv-shop-name">Gift box</div><div class="hv-shop-price">€65</div></div>
+                        </div>
+                        <div class="hv-shop-cart">
+                            <div class="hv-shop-cart-info">
+                                <div class="hv-shop-cart-lbl">Winkelwagen</div>
+                                <div class="hv-shop-cart-total">€135 · 3 items</div>
+                            </div>
+                            <div class="hv-shop-cart-btn">Betalen →</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hv-result-pill hv-result-pill--orange">
+                    <span class="hv-result-pulse" style="background:#FCD34D"></span>
+                    Jij beheert alles zelf · geen technische kennis
+                </div>
+            </div>
+
+            <!-- DASHBOARD -->
+            <div class="hv-panel" id="panel-dashboard">
+                <div class="hv-panel-notif hv-notif--purple">
+                    <span class="hv-notif-pulse" style="background:rgba(255,255,255,.7)"></span>
+                    Omzet +22% deze maand
+                </div>
+                <div class="hv-dashboard">
+                    <div class="hv-dash-header">
+                        <div class="hv-dash-dots">
+                            <div class="hv-dash-dot"></div><div class="hv-dash-dot"></div><div class="hv-dash-dot"></div>
+                        </div>
+                        <div class="hv-dash-title">Dashboard · deze maand</div>
+                        <div style="width:44px"></div>
+                    </div>
+                    <div class="hv-dash-body">
+                        <div class="hv-stats-row">
+                            <div class="hv-stat-box"><div class="label">Klanten</div><div class="value" style="color:#2563EB">47</div><div class="delta">↑ +8</div></div>
+                            <div class="hv-stat-box"><div class="label">Omzet</div><div class="value">€9.2K</div><div class="delta">↑ +22%</div></div>
+                            <div class="hv-stat-box"><div class="label">Open</div><div class="value">12</div><div class="delta" style="color:#F97316">offertes</div></div>
+                        </div>
+                        <div class="hv-dash-chart">
+                            <div class="hv-chart-lbl">Omzet per week</div>
+                            <div class="hv-chart-bars">
+                                <div class="hv-bar" style="height:40%"></div>
+                                <div class="hv-bar" style="height:58%"></div>
+                                <div class="hv-bar" style="height:48%"></div>
+                                <div class="hv-bar hv-bar--accent" style="height:72%"></div>
+                                <div class="hv-bar hv-bar--accent" style="height:88%"></div>
+                                <div class="hv-bar hv-bar--accent" style="height:100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hv-result-pill hv-result-pill--purple">
+                    <span class="hv-result-pulse" style="background:#C4B5FD"></span>
+                    Alles op één plek · geen spreadsheets meer
+                </div>
+            </div>
+
+            <!-- AI -->
+            <div class="hv-panel" id="panel-ai">
+                <div class="hv-panel-notif hv-notif--ai">
+                    <span class="hv-notif-pulse" style="background:rgba(255,255,255,.7)"></span>
+                    AI-assistent actief · werkt 24/7
+                </div>
+                <div class="hv-dashboard">
+                    <div class="hv-dash-header">
+                        <div class="hv-dash-dots">
+                            <div class="hv-dash-dot"></div><div class="hv-dash-dot"></div><div class="hv-dash-dot"></div>
+                        </div>
+                        <div class="hv-dash-title">AI-automatisering · live</div>
+                        <div style="width:44px"></div>
+                    </div>
+                    <div class="hv-dash-body">
+                        <div class="hv-ai-flow">
+                            <div class="hv-ai-step">
+                                <div class="hv-ai-step-icon hv-ai-icon--trigger">📩</div>
+                                <div class="hv-ai-step-label">Klant stuurt bericht</div>
+                                <div class="hv-ai-step-time">09:14</div>
+                            </div>
+                            <div class="hv-ai-connector"><div class="hv-ai-connector-dot"></div><div class="hv-ai-connector-dot"></div><div class="hv-ai-connector-dot"></div></div>
+                            <div class="hv-ai-step hv-ai-step--active">
+                                <div class="hv-ai-step-icon hv-ai-icon--process">✦</div>
+                                <div class="hv-ai-step-label">AI verwerkt & antwoordt</div>
+                                <div class="hv-ai-step-time hv-ai-processing">bezig…</div>
+                            </div>
+                            <div class="hv-ai-connector"><div class="hv-ai-connector-dot"></div><div class="hv-ai-connector-dot"></div><div class="hv-ai-connector-dot"></div></div>
+                            <div class="hv-ai-step">
+                                <div class="hv-ai-step-icon hv-ai-icon--done">✓</div>
+                                <div class="hv-ai-step-label">Antwoord verstuurd</div>
+                                <div class="hv-ai-step-time">09:14</div>
+                            </div>
+                        </div>
+                        <div class="hv-ai-tasks">
+                            <div class="hv-ai-task hv-ai-task--done">
+                                <span class="hv-ai-task-check">✓</span>
+                                <span class="hv-ai-task-text">Herinnering verstuurd aan Nathalie V.</span>
+                                <span class="hv-ai-task-time">08:00</span>
+                            </div>
+                            <div class="hv-ai-task hv-ai-task--done">
+                                <span class="hv-ai-task-check">✓</span>
+                                <span class="hv-ai-task-text">Offerte automatisch gegenereerd · Marc P.</span>
+                                <span class="hv-ai-task-time">09:02</span>
+                            </div>
+                            <div class="hv-ai-task hv-ai-task--active">
+                                <span class="hv-ai-task-check hv-ai-task-spin">◌</span>
+                                <span class="hv-ai-task-text">Rapport deze week wordt opgesteld</span>
+                                <span class="hv-ai-task-time">nu</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hv-result-pill hv-result-pill--ai">
+                    <span class="hv-result-pulse" style="background:#A78BFA"></span>
+                    Werkt vanzelf · jij focust op je zaak
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
@@ -183,7 +359,7 @@
 
 <!-- PROOF STRIP -->
 <div class="proof-strip">
-    <p class="proof-lbl">Gebouwd voor lokale ondernemers in België</p>
+    <p class="proof-lbl">Gebouwd voor ondernemers die willen groeien</p>
     <div class="proof-track-wrap">
         <div class="proof-track" aria-hidden="true">
             <div class="proof-item"><span>Kappers</span><span class="proof-dot-sm"></span></div>
@@ -235,210 +411,63 @@
 </div>
 
 
-<!-- CASES -->
-<section class="cases" id="cases">
-    <div class="wrap">
-        <div class="sec-head reveal">
-            <p class="sec-label">Cases</p>
-            <h2>Echte problemen, meetbare resultaten</h2>
-            <p class="sec-sub">Elke ondernemer had een specifiek pijnpunt. Zo losten we het op — in code, niet in PowerPoint.</p>
-        </div>
-
-        <div class="cases-grid">
-            <article class="case reveal">
-                <div class="case-img">
-                    <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&h=300&fit=crop&crop=center" alt="Kappersalon boekingssysteem" width="600" height="300">
-                </div>
-                <div class="case-sector-row">
-                    <span class="case-sector">Schoonheidssalon</span>
-                </div>
-                <div class="case-body">
-                    <h3>Online boekingssysteem voor Gentse kappersketen</h3>
-                    <div class="case-stats">
-                        <div class="case-stat">
-                            <div class="case-stat-num">−68%</div>
-                            <div class="case-stat-lbl">minder no-shows</div>
-                        </div>
-                        <div class="case-stat">
-                            <div class="case-stat-num">2u/dag</div>
-                            <div class="case-stat-lbl">teruggewonnen tijd</div>
-                        </div>
-                    </div>
-                    <hr class="case-sep">
-                    <p class="case-story"><strong>Probleem:</strong> Telefonische afspraken kostten 2 uur per dag. No-shows zorgden voor lege stoelen en gemiste omzet.<br><br><strong>Oplossing:</strong> Online boekingssysteem met automatische WhatsApp-herinneringen en betaling vooraf.</p>
-                </div>
-            </article>
-
-            <article class="case reveal">
-                <div class="case-img">
-                    <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=300&fit=crop&crop=center" alt="Installateur offertetool" width="600" height="300">
-                </div>
-                <div class="case-sector-row">
-                    <span class="case-sector">Installateur</span>
-                </div>
-                <div class="case-body">
-                    <h3>Automatische offertes voor Antwerpse loodgieter</h3>
-                    <div class="case-stats">
-                        <div class="case-stat">
-                            <div class="case-stat-num">5 min</div>
-                            <div class="case-stat-lbl">offerte klaar</div>
-                        </div>
-                        <div class="case-stat">
-                            <div class="case-stat-num">+40%</div>
-                            <div class="case-stat-lbl">conversieratio</div>
-                        </div>
-                    </div>
-                    <hr class="case-sep">
-                    <p class="case-story"><strong>Probleem:</strong> Elke offerte manueel opstellen in Word. Klanten wachtten 3 dagen op een antwoord en haakten af.<br><br><strong>Oplossing:</strong> Klant vult een formulier in, het systeem genereert automatisch een professionele offerte.</p>
-                </div>
-            </article>
-
-            <article class="case reveal">
-                <div class="case-img">
-                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=300&fit=crop&crop=center" alt="Restaurant reserveringssysteem" width="600" height="300">
-                </div>
-                <div class="case-sector-row">
-                    <span class="case-sector">Horeca</span>
-                </div>
-                <div class="case-body">
-                    <h3>Reserverings- en loyaliteitsapp voor Brugs restaurant</h3>
-                    <div class="case-stats">
-                        <div class="case-stat">
-                            <div class="case-stat-num">0</div>
-                            <div class="case-stat-lbl">dubbele boekingen</div>
-                        </div>
-                        <div class="case-stat">
-                            <div class="case-stat-num">+35%</div>
-                            <div class="case-stat-lbl">terugkerende klanten</div>
-                        </div>
-                    </div>
-                    <hr class="case-sep">
-                    <p class="case-story"><strong>Probleem:</strong> Telefonische reserveringen leidden tot dubbele boekingen. Vaste klanten werden niet beloond.<br><br><strong>Oplossing:</strong> Webapplicatie met online reserveringen, automatische opvolging en loyaliteitssysteem.</p>
-                </div>
-            </article>
-        </div>
-
-        <div class="cases-cta reveal">
-            <a href="projecten.html">
-                Bekijk alle projecten
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-        </div>
-    </div>
-</section>
-
-
-<!-- TESTIMONIALS -->
-<section class="testi-sec" id="testimonials">
-    <div class="wrap">
-        <div class="sec-head reveal">
-            <p class="sec-label">Wat klanten zeggen</p>
-            <h2>Niet wij zeggen het, zij zeggen het</h2>
-            <p class="sec-sub">Wat lokale ondernemers vertellen nadat ze met TriStack werkten.</p>
-        </div>
-
-        <div class="testi-grid" data-stagger>
-            <div class="testi-card reveal">
-                <div class="testi-stars">
-                    <div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div>
-                </div>
-                <p class="testi-quote">Ze luisterden echt naar hoe mijn zaak werkt en bouwden precies wat ik nodig had. Geen standaard pakket, maar iets dat past bij mijn kapperszaak. En de prijs was eerlijk.</p>
-                <div class="testi-person">
-                    <div class="testi-avatar-placeholder">KV</div>
-                    <div>
-                        <div class="testi-name">Karen Vermeersch</div>
-                        <div class="testi-role">Zaakvoerster · Salon Karen, Gent</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="testi-card reveal">
-                <div class="testi-stars">
-                    <div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div>
-                </div>
-                <p class="testi-quote">Ik dacht dat software laten bouwen iets was voor grote bedrijven. TriStack bewees het tegendeel. Binnen zes weken had ik een offerte-tool die mij elke dag uren bespaart.</p>
-                <div class="testi-person">
-                    <div class="testi-avatar-placeholder">MP</div>
-                    <div>
-                        <div class="testi-name">Marc Pieters</div>
-                        <div class="testi-role">Eigenaar · Pieters Installaties, Antwerpen</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="testi-card reveal">
-                <div class="testi-stars">
-                    <div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div>
-                </div>
-                <p class="testi-quote">Wat ik het meest waardeer: ik kon altijd rechtstreeks bellen met de jongens die het bouwden. Geen helpdesk, geen wachtrij. Gewoon echte mensen die hun werk kennen.</p>
-                <div class="testi-person">
-                    <div class="testi-avatar-placeholder">SD</div>
-                    <div>
-                        <div class="testi-name">Sophie Decorte</div>
-                        <div class="testi-role">Uitbaatster · Brasserie 't Zand, Brugge</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
 <!-- DIENSTEN -->
 <section class="services" id="diensten">
     <div class="wrap">
         <div class="sec-head reveal">
-            <p class="sec-label">Diensten</p>
-            <h2>Wat wij bouwen voor jou</h2>
-            <p class="sec-sub">Geen generieke software vol compromissen. Digitale tools die naadloos passen bij hoe jij werkt.</p>
+            <p class="sec-label">Wat wij bouwen</p>
+            <h2>Software voor elk probleem in jouw zaak</h2>
+            <p class="sec-sub">Van eenvoudige webshop tot AI-gestuurde automatisering — alles op maat, voor een vaste prijs.</p>
         </div>
 
-        <div class="svc-grid">
-            <article class="svc reveal">
-                <div class="svc-img">
-                    <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600&h=300&fit=crop&crop=top" alt="Webapplicatie op maat" width="600" height="300">
+        <div class="svc-pills-grid">
+            <div class="svc-pill reveal">
+                <div class="svc-pill-icon">📅</div>
+                <div class="svc-pill-body">
+                    <h3>Boekingssystemen</h3>
+                    <p>Online afspraken, automatische bevestigingen en herinneringen. Geen telefoon meer, geen no-shows.</p>
                 </div>
-                <div class="svc-body">
-                    <span class="svc-num">01</span>
-                    <h3>Webapplicaties & platforms op maat</h3>
-                    <p>Van boekingssysteem tot offerte-tool, van klantendashboard tot volledige webshop. We bouwen precies wat jij nodig hebt — niet meer, niet minder.</p>
-                    <div class="svc-tags">
-                        <span>Boekingssystemen</span>
-                        <span>Dashboards</span>
-                        <span>Webshops</span>
-                        <span>Alles op maat</span>
-                    </div>
-                    <div class="svc-price">
-                        <strong>Op maat</strong>
-                        <span>vaste prijs na gratis gesprek</span>
-                    </div>
+            </div>
+            <div class="svc-pill reveal">
+                <div class="svc-pill-icon">📋</div>
+                <div class="svc-pill-body">
+                    <h3>Offertetools</h3>
+                    <p>Klant vult formulier in, jij krijgt een kant-en-klare offerte. Van 45 minuten naar 3 minuten.</p>
                 </div>
-            </article>
-
-            <article class="svc svc-alt reveal">
-                <div class="svc-img">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=300&fit=crop&crop=top" alt="AI automatisering" width="600" height="300">
+            </div>
+            <div class="svc-pill reveal">
+                <div class="svc-pill-icon">🛍️</div>
+                <div class="svc-pill-body">
+                    <h3>Webshops & platformen</h3>
+                    <p>Jouw producten of diensten online, met betalingen, voorraadbeheer en een CMS dat jij zelf beheert.</p>
                 </div>
-                <div class="svc-body">
-                    <span class="svc-num">02</span>
-                    <h3>AI-automatisering & slimme integraties</h3>
-                    <p>Herinneringen, opvolging, offertes, rapportages — we voegen intelligentie toe aan jouw platform zodat jij je kan focussen op wat telt.</p>
-                    <div class="svc-tags">
-                        <span>Automatische berichten</span>
-                        <span>Slimme opvolging</span>
-                        <span>AI-functies</span>
-                        <span>Werkt vanzelf</span>
-                    </div>
-                    <div class="svc-price">
-                        <strong>Op maat</strong>
-                        <span>modulair toe te voegen</span>
-                    </div>
+            </div>
+            <div class="svc-pill reveal">
+                <div class="svc-pill-icon">📊</div>
+                <div class="svc-pill-body">
+                    <h3>Klantendashboards</h3>
+                    <p>Alle klanten, orders en cijfers op één plek. Geen spreadsheets meer, altijd overzicht.</p>
                 </div>
-            </article>
+            </div>
+            <div class="svc-pill svc-pill--ai reveal">
+                <div class="svc-pill-icon svc-pill-icon--ai">✦</div>
+                <div class="svc-pill-body">
+                    <h3>AI-automatisering</h3>
+                    <p>Herinneringen, opvolging, rapportages en antwoorden — volledig automatisch, 24/7, zonder dat jij er naar omkijkt.</p>
+                </div>
+            </div>
+            <div class="svc-pill svc-pill--cta reveal">
+                <div class="svc-pill-cta-inner">
+                    <p>Iets anders nodig?</p>
+                    <strong>We bouwen alles op maat.</strong>
+                    <a href="#contact" class="svc-pill-cta-btn">
+                        Vertel ons jouw probleem →
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </section>
-
 
 <!-- WERKWIJZE -->
 <section class="process" id="werkwijze">
@@ -568,17 +597,179 @@
 </section>
 
 
+<!-- PROJECTEN & REVIEWS -->
+<section class="cases" id="cases">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <p class="sec-label">Onze projecten</p>
+            <h2>Wat we bouwden — en wat het opleverde</h2>
+            <p class="sec-sub">Vier echte projecten, vier echte klanten. Dit is hoe het eruit ziet wanneer TriStack bouwt.</p>
+        </div>
+
+        <div class="projects-home">
+
+            <!-- RugCraft -->
+            <article class="proj-card reveal">
+                <div class="proj-card-img">
+                    <img src="images/projecten/rugcraftSite.png" alt="RugCraft webshop" loading="lazy">
+                    <div class="proj-img-overlay">
+                        <img src="images/projecten/rugcraftApp.jpeg" alt="RugCraft AR app" class="proj-img-secondary">
+                    </div>
+                </div>
+                <div class="proj-card-body">
+                    <div class="proj-meta">
+                        <span class="proj-tag">E-commerce</span>
+                        <span class="proj-tag">App</span>
+                        <span class="proj-tag">AR</span>
+                    </div>
+                    <h3>RugCraft</h3>
+                    <p class="proj-problem">Klanten kochten tapijten online maar konden niet inschatten hoe het er thuis zou uitzien — wat leidde tot veel retours.</p>
+                    <div class="proj-built">
+                        <span>Webshop + AR-preview app (iOS &amp; Android)</span>
+                    </div>
+                    <div class="proj-review">
+                        <div class="proj-stars">
+                            <div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div>
+                        </div>
+                        <p class="proj-quote">"De AR-functie veranderde alles. Klanten bestellen nu met vertrouwen en we zien een enorme daling in retours. TriStack leverde precies wat beloofd was, op tijd."</p>
+                        <div class="proj-reviewer">
+                            <div class="proj-reviewer-av">RC</div>
+                            <div>
+                                <div class="proj-reviewer-name">Eigenaar · RugCraft</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- AhasDesigns -->
+            <article class="proj-card reveal">
+                <div class="proj-card-img">
+                    <img src="images/projecten/CreativeConnecting.png" alt="AhasDesigns platform" loading="lazy">
+                </div>
+                <div class="proj-card-body">
+                    <div class="proj-meta">
+                        <span class="proj-tag">Platform</span>
+                        <span class="proj-tag">App</span>
+                        <span class="proj-tag">Projectbeheer</span>
+                    </div>
+                    <h3>AhasDesigns</h3>
+                    <p class="proj-problem">Een agency die bedrijven en freelancers samenbracht maar alles via losse mails en WhatsApp liet verlopen — onbeheersbaar en tijdrovend.</p>
+                    <div class="proj-built">
+                        <span>Matchmaking platform + app met real-time chat &amp; klok-in systeem</span>
+                    </div>
+                    <div class="proj-review">
+                        <div class="proj-stars">
+                            <div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div>
+                        </div>
+                        <p class="proj-quote">"Van chaos naar controle. Alles staat nu op één plek — projecten, communicatie, uren. De jongens begrepen meteen wat we nodig hadden en bouwden het feilloos."</p>
+                        <div class="proj-reviewer">
+                            <div class="proj-reviewer-av">AD</div>
+                            <div>
+                                <div class="proj-reviewer-name">Zaakvoerder · AhasDesigns</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- ZahiraDesigns -->
+            <article class="proj-card reveal">
+                <div class="proj-card-img">
+                    <img src="images/projecten/ZahiraDesignsSite.png" alt="ZahiraDesigns website" loading="lazy">
+                </div>
+                <div class="proj-card-body">
+                    <div class="proj-meta">
+                        <span class="proj-tag">Website</span>
+                        <span class="proj-tag">Webshop</span>
+                        <span class="proj-tag">CMS</span>
+                    </div>
+                    <h3>ZahiraDesigns</h3>
+                    <p class="proj-problem">Een handmade crochet business met een generieke template die niet bij haar merk paste en die ze zelf niet kon aanpassen.</p>
+                    <div class="proj-built">
+                        <span>Merkwebsite op maat + webshop + zelfbeheerbaar CMS</span>
+                    </div>
+                    <div class="proj-review">
+                        <div class="proj-stars">
+                            <div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div>
+                        </div>
+                        <p class="proj-quote">"Eindelijk een website die echt bij mijn merk past. Ik kan nu alles zelf aanpassen zonder iemand te hoeven vragen. Mijn klanten reageren veel positiever dan vroeger."</p>
+                        <div class="proj-reviewer">
+                            <div class="proj-reviewer-av">ZD</div>
+                            <div>
+                                <div class="proj-reviewer-name">Eigenares · ZahiraDesigns</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- QuotationApp -->
+            <article class="proj-card reveal">
+                <div class="proj-card-img proj-card-img--placeholder">
+                    <div class="proj-img-mockup">
+                        <div class="mockup-bar">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <div class="mockup-body">
+                            <div class="mockup-row mockup-row--header"></div>
+                            <div class="mockup-row"></div>
+                            <div class="mockup-row mockup-row--short"></div>
+                            <div class="mockup-row"></div>
+                            <div class="mockup-row mockup-row--short"></div>
+                            <div class="mockup-badge">QuotationApp</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="proj-card-body">
+                    <div class="proj-meta">
+                        <span class="proj-tag">Webapplicatie</span>
+                        <span class="proj-tag">Offertes</span>
+                        <span class="proj-tag">Klantbeheer</span>
+                    </div>
+                    <h3>QuotationApp</h3>
+                    <p class="proj-problem">Een ondernemer die offertes manueel opstelde in Word en klantgegevens bijhield in spreadsheets — elke offerte kostte hem 45 minuten.</p>
+                    <div class="proj-built">
+                        <span>Offertebeheer + klantendatabase + dienstencatalogus + login</span>
+                    </div>
+                    <div class="proj-review">
+                        <div class="proj-stars">
+                            <div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div>
+                        </div>
+                        <p class="proj-quote">"Wat vroeger 45 minuten kostte, duurt nu 3 minuten. Mijn klanten krijgen sneller een antwoord en ik heb eindelijk overzicht over alle openstaande offertes."</p>
+                        <div class="proj-reviewer">
+                            <div class="proj-reviewer-av">QA</div>
+                            <div>
+                                <div class="proj-reviewer-name">Eigenaar · QuotationApp klant</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+        <div class="cases-cta reveal">
+            <a href="projecten.html">
+                Bekijk de volledige projecten
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+
 <!-- OVER ONS TEASER — met gezichten -->
 <section class="about-teaser">
     <div class="wrap">
         <div class="about-teaser-inner reveal">
             <div class="at-top">
                 <p class="sec-label">Over ons</p>
-                <h2>Drie specialisten die bouwen omdat het telt</h2>
+                <h2>Drie jonge specialisten die bouwen omdat het telt</h2>
             </div>
             <div class="at-body">
                 <div class="at-text">
-                    <p>We zijn Ahmed, Nabil en Anass. Laatste-jaars studenten, elk met een eigen expertise en jaren praktijkervaring. We zagen dat lokale ondernemers keer op keer teleurgesteld worden door software die te duur, te ingewikkeld of gewoon niet voor hen gemaakt is. Dus besloten we het zelf te doen.</p>
+                    <p>We zijn Ahmed, Nabil en Anass. Drie specialisten, elk met een eigen expertise en jaren praktijkervaring. We zagen dat ondernemers keer op keer teleurgesteld worden door software die te duur, te ingewikkeld of gewoon niet voor hen gemaakt is. Dus besloten we het zelf te doen.</p>
                     <a href="over-ons.html" class="at-link">
                         Leer ons kennen
                         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -586,7 +777,7 @@
                 </div>
                 <div class="at-people">
                     <div class="at-person">
-                        <img class="at-person-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=96&h=96&fit=crop&crop=face" alt="Ahmed">
+                        <div class="at-person-img at-person-initial" style="background:#1E3A5F; color:#93C5FD;">A</div>
                         <div class="at-person-text">
                             <strong>Ahmed</strong>
                             <em>Alles wat je ziet en aanraakt</em>
@@ -600,7 +791,7 @@
                         </div>
                     </div>
                     <div class="at-person">
-                        <img class="at-person-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=96&h=96&fit=crop&crop=face" alt="Anass">
+                        <div class="at-person-img at-person-initial" style="background:#14532D; color:#86EFAC;">An</div>
                         <div class="at-person-text">
                             <strong>Anass</strong>
                             <em>Alles wat slim en automatisch kan</em>
@@ -677,7 +868,7 @@
         <div class="footer-top">
             <div class="footer-brand">
                 <a href="#" class="footer-logo">Tri<span class="logo-accent">Stack</span></a>
-                <p>Webapplicaties en slimme automatisering voor kleine lokale ondernemers. Gevestigd in België, actief in de hele Benelux.</p>
+                <p>Webapplicaties en slimme automatisering voor ondernemers die efficiënter willen werken.</p>
             </div>
             <nav class="footer-col" aria-label="Diensten">
                 <h4>Diensten</h4>
@@ -699,7 +890,7 @@
             </div>
         </div>
         <div class="footer-btm">
-            <span>© 2026 TriStack BV, België · BTW BE 0XXX.XXX.XXX</span>
+            <span>© 2026 TriStack</span>
             <nav class="footer-legal" aria-label="Juridisch">
                 <a href="#">Privacybeleid</a>
                 <a href="#">Algemene voorwaarden</a>
@@ -711,6 +902,22 @@
 <button class="scr-top" id="scrtop" aria-label="Scroll naar boven">↑</button>
 
 <script type="module" src="js/main.js"></script>
+<script>
+    (function() {
+        var btns = document.querySelectorAll('.prob-btn');
+        btns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                btns.forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                var prob = btn.getAttribute('data-prob');
+                var panels = document.querySelectorAll('.hv-panel');
+                panels.forEach(function(p) { p.classList.remove('active'); });
+                var target = document.getElementById('panel-' + prob);
+                if (target) target.classList.add('active');
+            });
+        });
+    })();
+</script>
 
 <!-- Cal.com inline embed -->
 <script type="text/javascript">
