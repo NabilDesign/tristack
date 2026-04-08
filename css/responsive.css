@@ -37,18 +37,33 @@
     .footer-top        { grid-template-columns: 1fr 1fr; gap: 24px; }
 
     /* Hero: tekst volledig zichtbaar, visual eronder */
-    .hero-inner        { gap: 32px; }
+    .hero-inner        { gap: 0; display: flex; flex-direction: column; }
+    .hero-text         { order: 1; }
+    .hero-visual       { order: 0; margin-bottom: 24px; min-height: unset; }
     .hero h1           { font-size: clamp(28px, 7vw, 42px); }
     .hero-sub          { font-size: 15px; }
 
-    /* Probleemselector: horizontaal scrollbaar op smal scherm */
-    .prob-select       { gap: 6px; }
-    .prob-btn          { padding: 10px 12px; }
-    .prob-btn-title    { font-size: 13px; }
+    /* Probleemselector: horizontaal scrollbaar */
+    .prob-select       {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 8px;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .prob-select::-webkit-scrollbar { display: none; }
+    .prob-btn          {
+        flex-shrink: 0;
+        width: 150px;
+        padding: 10px 10px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+    .prob-btn-arrow    { display: none; }
+    .prob-btn-title    { font-size: 12.5px; }
     .prob-btn-sub      { font-size: 11px; }
-
-    /* Hero visual: vaste hoogte ipv min-height zodat panel ruimte krijgt */
-    .hero-visual       { min-height: unset; }
 
     /* Panels: op mobiel GEEN absolute positioning —
        inactive panels worden verborgen via display:none
