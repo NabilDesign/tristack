@@ -15,6 +15,14 @@
     .projects-home     { grid-template-columns: 1fr; }
     .svc-pills-grid    { grid-template-columns: repeat(2, 1fr); }
     .at-body           { grid-template-columns: 1fr; gap: 40px; }
+
+    /* Op mobiel: grote cirkels bovenaan de sectie */
+    .at-people         { flex-direction: row; justify-content: center; gap: 20px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,.08); margin-bottom: 4px; }
+    .at-person         { flex-direction: column; align-items: center; text-align: center; padding: 0; border-bottom: none; gap: 10px; }
+    .at-person-img,
+    .at-person-initial { width: 72px; height: 72px; font-size: 20px; }
+    .at-person-text strong { font-size: 14px; }
+    .at-person-text em { display: none; }
 }
 
 /* ── Mobiel (max 768px) ───────────────────────────────────── */
