@@ -1,24 +1,47 @@
 /* ============================================================
-   RESPONSIVE — verbeterde versie
+   RESPONSIVE — verbeterde versie v2
 
    FIXES:
-   1. Vergelijkingstabel → gestapeld per rij op mobiel (was: 2 kolommen die niet pasten)
-   2. Hero visual → betere min-height + panel sizing op mobiel
-   3. Resultaten-balk → wrap naar 2x2 grid op klein mobiel (was: 4 op een rij)
-   4. Werkwijze stappen → minder padding op tablet, 1 kolom op 768px
-   5. Over-ons personen → wrap-safe layout (was: 3 naast elkaar op 375px)
-   6. Why-list + why-right → betere spacing op mobiel
-   7. Projectkaarten img → proportionele hoogte ipv vaste 160px
+   1.  Hero tekst afgesneden links → padding van 5% naar 20px+ op mobiel
+   2.  Vergelijkingstabel → gestapeld per rij op mobiel
+   3.  Hero visual → betere sizing op mobiel
+   4.  Resultaten-balk → 2x2 grid op mobiel
+   5.  Werkwijze stappen → betere padding
+   6.  Over-ons personen → wrap-safe
+   7.  Projectkaarten → proportionele hoogte
+   8.  Dashboard panels → compacter op 480px
+   9.  Extra breakpoint voor 360px (Galaxy S8 etc.)
+   10. Overflow-fix op alle containers
    ============================================================ */
+
+/* ── FIX 1: Globale mobiele padding fix ─────────────────────
+   .wrap en .hero-inner gebruiken padding: 0 5%.
+   Op 375px = slechts 18.75px. Dat is te weinig, waardoor
+   tekst tegen of buiten de rand valt.
+   We overschrijven naar vaste px waarden op mobiel.
+   ─────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .wrap              { padding: 0 20px; }
+    .wrap-sm           { padding: 0 20px; }
+}
+@media (max-width: 480px) {
+    .wrap              { padding: 0 16px; }
+    .wrap-sm           { padding: 0 16px; }
+}
+
 
 /* ── Tablet (max 1024px) ──────────────────────────────────── */
 @media (max-width: 1024px) {
-    .hero-inner        { grid-template-columns: 1fr; gap: 40px; }
     .nav-links         { display: none; }
     .hamburger         { display: flex; }
 
-    /* Hero layout op tablet en mobiel */
-    .hero-inner        { display: flex; flex-direction: column; gap: 0; }
+    /* Hero layout op tablet */
+    .hero-inner        {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        grid-template-columns: 1fr;
+    }
     .hero-text-top     { order: 1; }
     .hero-visual       { order: 2; min-height: unset; margin-top: 24px; }
     .hero h1           { font-size: clamp(26px, 7vw, 38px); }
@@ -48,6 +71,7 @@
     .prob-btn-title    { font-size: 11.5px; }
     .prob-btn-sub      { display: none; }
 
+    /* Grids naar minder kolommen */
     .steps             { grid-template-columns: repeat(2, 1fr); }
     .cases-grid        { grid-template-columns: repeat(2, 1fr); }
     .why-inner         { grid-template-columns: 1fr; gap: 48px; }
@@ -58,17 +82,32 @@
     .svc-pills-grid    { grid-template-columns: repeat(2, 1fr); }
     .at-body           { grid-template-columns: 1fr; gap: 40px; }
 
-    /* Op tablet: cirkels bovenaan de sectie */
-    .at-people         { flex-direction: row; justify-content: center; gap: 20px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,.08); margin-bottom: 4px; }
-    .at-person         { flex-direction: column; align-items: center; text-align: center; padding: 0; border-bottom: none; gap: 10px; }
+    /* Over-ons: cirkels naast elkaar */
+    .at-people         {
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+        padding-bottom: 28px;
+        border-bottom: 1px solid rgba(255,255,255,.08);
+        margin-bottom: 4px;
+    }
+    .at-person         {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0;
+        border-bottom: none;
+        gap: 10px;
+    }
     .at-person-img,
     .at-person-initial { width: 72px; height: 72px; font-size: 20px; }
     .at-person-text strong { font-size: 14px; }
     .at-person-text em { display: none; }
 
-    /* ─── FIX 1: Vergelijkingstabel op tablet ─── */
+    /* Vergelijkingstabel iets compacter */
     .wc-cell           { padding: 13px 16px; font-size: 13px; }
 }
+
 
 /* ── Mobiel (max 768px) ───────────────────────────────────── */
 @media (max-width: 768px) {
@@ -76,7 +115,6 @@
     .cases-grid        { grid-template-columns: 1fr; }
     .testi-grid        { grid-template-columns: 1fr; }
     .steps             { grid-template-columns: 1fr; }
-    .hero              { padding: 88px 0 60px; min-height: unset; }
     .hero-trust        { flex-wrap: wrap; gap: 10px; }
     .trust-divider     { display: none; }
     .svc-pills-grid    { grid-template-columns: 1fr; }
@@ -84,13 +122,19 @@
     .why-inner         { grid-template-columns: 1fr; gap: 40px; }
     .footer-top        { grid-template-columns: 1fr 1fr; gap: 24px; }
 
-    /* ─── FIX 2: Hero layout op mobiel ─── */
-    .hero              { padding: 80px 0 48px; }
-    .hero-inner        { gap: 0; display: flex; flex-direction: column; }
-    .hero-text         { order: 1; }
-    .hero-visual       { order: 2; margin: 20px 0 0; min-height: unset; }
+    /* ─── Hero layout op mobiel ─── */
+    .hero              { padding: 80px 0 48px; min-height: unset; }
+    .hero-inner        {
+        gap: 0;
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px;       /* FIX: vaste padding ipv 5% */
+        max-width: 100%;       /* FIX: voorkom overflow */
+    }
+    .hero-text         { order: 1; max-width: 100%; overflow-wrap: break-word; }
+    .hero-visual       { order: 2; margin: 20px 0 0; min-height: unset; max-width: 100%; }
     .hero h1           { font-size: clamp(26px, 7vw, 38px); margin-bottom: 12px; }
-    .hero-sub          { font-size: 14.5px; margin-bottom: 0; }
+    .hero-sub          { font-size: 14.5px; margin-bottom: 0; max-width: 100%; }
 
     /* Probleemselector */
     .prob-select-lbl   { display: none; }
@@ -102,6 +146,7 @@
         margin-top: 14px;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        max-width: 100%;       /* FIX: voorkom dat scrollknoppen container opblazen */
     }
     .prob-select::-webkit-scrollbar { display: none; }
     .prob-btn          {
@@ -140,25 +185,29 @@
         animation: fadeUp .3s both;
     }
 
-    /* ─── FIX 3: Resultaten-balk als 2x2 grid ─── */
+    /* ─── Resultaten-balk als 2x2 grid ─── */
     .results-inner     {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 24px 0;
     }
-    .result-item       { padding: 0 16px; min-width: unset; }
+    .result-item       { padding: 0 16px; min-width: unset; flex: unset; }
     .result-divider    { display: none; }
     .result-num        { font-size: 28px; }
 
-    /* ─── FIX 4: Werkwijze stappen betere spacing ─── */
+    /* ─── Werkwijze stappen betere spacing ─── */
     .step              { padding: 28px 22px; }
 
-    /* ─── FIX 5: Vergelijkingstabel gestapeld per rij ───
-       Elke rij wordt nu een blok: "nu" bovenaan (rood),
-       "met TriStack" eronder (groen). Veel leesbaarder
-       dan twee smalle kolommen naast elkaar.
+    /* ─── VERGELIJKINGSTABEL: gestapeld per rij ───
+       Was: grid-template-columns: 1fr 1fr op alle maten
+       → twee kolommen van ~170px met lange zinnen = onleesbaar
+
+       Nu: elke rij wordt een verticaal blok.
+       "Jouw dag nu" bovenaan, "Met TriStack" eronder.
+       Tabelheader verdwijnt, inline labels nemen het over.
     ─── */
     .wc-header         { display: none; }
+    .why-compare       { border-radius: 12px; }
     .wc-row            {
         display: flex;
         flex-direction: column;
@@ -173,14 +222,13 @@
     .wc-cell.wc-before {
         border-right: none;
         border-bottom: none;
-        padding-bottom: 8px;
+        padding-bottom: 6px;
     }
     .wc-cell.wc-after  {
-        padding-top: 8px;
-        border-radius: 0;
+        padding-top: 6px;
     }
 
-    /* Labels toevoegen zodat je weet welke kant welke is */
+    /* Overschrijf ::before content voor mobiele labels */
     .wc-cell.wc-before::before {
         content: '✗  Nu:  ';
         color: #DC2626;
@@ -198,23 +246,32 @@
         letter-spacing: .5px;
     }
 
-    /* ─── FIX 6: Why-left betere spacing op mobiel ─── */
+    /* Why-left betere spacing */
     .why-desc          { font-size: 15px; margin-bottom: 28px; }
     .why-list li       { padding: 14px 0; gap: 12px; }
     .why-list strong   { font-size: 14px; }
     .why-list p        { font-size: 13px; }
-    .why-cta-card      { padding: 18px 20px; flex-direction: column; text-align: center; gap: 14px; }
+    .why-cta-card      {
+        padding: 18px 20px;
+        flex-direction: column;
+        text-align: center;
+        gap: 14px;
+    }
     .why-cta-card a    { align-self: center; }
 
-    /* ─── FIX 7: Projectkaarten proportionele hoogte ─── */
+    /* Projectkaarten */
     .proj-card-img     { height: 180px; }
 
     /* Contact */
     .contact-inner     { grid-template-columns: 1fr; gap: 28px; }
 }
 
+
 /* ── Klein mobiel (max 480px) ─────────────────────────────── */
 @media (max-width: 480px) {
+
+    .hero-inner        { padding: 0 16px; }
+
     .hero-btns         { flex-direction: column; align-items: stretch; }
     .cta-btns          { flex-direction: column; align-items: stretch; }
     .cta-final-btns    { flex-direction: column; align-items: center; }
@@ -223,45 +280,39 @@
     .footer-top        { grid-template-columns: 1fr; }
     .footer-btm        { flex-direction: column; align-items: flex-start; }
 
-    /* Proof strip kleiner */
+    /* Proof strip */
     .proof-item        { font-size: 12px; padding: 0 16px; }
 
-    /* ─── FIX 3b: Stats balk nóg compacter op 480px ─── */
+    /* Stats balk */
     .result-num        { font-size: 24px; }
     .result-label      { font-size: 11.5px; }
     .result-item       { padding: 0 8px; }
 
-    /* Cases stats grid */
+    /* Cases stats */
     .case-stats        { grid-template-columns: 1fr 1fr; }
 
-    /* Stappen: kleinere padding */
+    /* Stappen */
     .step              { padding: 22px 18px; }
 
-    /* ─── FIX 7b: Projectkaarten nog kleiner op 480px ─── */
+    /* Projectkaarten */
     .proj-card-img     { height: 150px; }
 
-    /* ─── FIX 5b: Vergelijkingstabel nóg compacter ─── */
+    /* Vergelijkingstabel nóg compacter */
     .wc-cell           { padding: 12px 14px; font-size: 13px; line-height: 1.5; }
-    .wc-cell.wc-before { padding-bottom: 6px; }
-    .wc-cell.wc-after  { padding-top: 6px; padding-bottom: 14px; }
+    .wc-cell.wc-before { padding-bottom: 4px; }
+    .wc-cell.wc-after  { padding-top: 4px; padding-bottom: 14px; }
 
-    /* ─── FIX 8: Over-ons personen wrappen op klein scherm ───
-       Op 375px passen 3 personen van 72px + gaps niet.
-       Nu wrappen ze naar 2+1 als het moet.
-    ─── */
-    .at-people         {
-        flex-wrap: wrap;
-        gap: 16px;
-    }
+    /* Over-ons personen wrappen */
+    .at-people         { flex-wrap: wrap; gap: 16px; }
     .at-person         { min-width: 80px; }
     .at-person-img,
     .at-person-initial { width: 60px; height: 60px; font-size: 17px; }
     .at-person-text strong { font-size: 13px; }
 
-    /* ─── FIX 9: Hero h1 niet te klein op 375px ─── */
+    /* Hero titel */
     .hero h1           { font-size: clamp(24px, 7vw, 34px); }
 
-    /* ─── FIX 10: CTA final compacter ─── */
+    /* CTA final */
     .cta-final h2      { font-size: clamp(22px, 6vw, 32px); }
     .cta-final p       { font-size: 15px; }
 
@@ -269,10 +320,7 @@
     .cf-row            { grid-template-columns: 1fr; }
     .cf                { padding: 24px; }
 
-    /* ─── FIX 11: Hero dashboard panels compacter ───
-       De stat-boxes en appointment items waren te groot
-       voor een 375px scherm
-    ─── */
+    /* ─── Dashboard panels compacter ─── */
     .hv-stat-box       { padding: 8px 10px; }
     .hv-stat-box .value { font-size: 16px; }
     .hv-stat-box .label { font-size: 8px; letter-spacing: .8px; }
@@ -284,7 +332,7 @@
     .hv-dash-header    { padding: 9px 12px; }
     .hv-result-pill    { font-size: 11px; padding: 6px 12px; }
 
-    /* Shop items compacter */
+    /* Shop items */
     .hv-shop-img       { height: 36px; font-size: 16px; }
     .hv-shop-name      { font-size: 9.5px; padding: 4px 6px 1px; }
     .hv-shop-price     { font-size: 11px; padding: 0 6px 5px; }
@@ -292,12 +340,12 @@
     .hv-shop-cart-total { font-size: 12px; }
     .hv-shop-cart-btn  { padding: 6px 10px; font-size: 10px; }
 
-    /* Quote velden compacter */
+    /* Quote velden */
     .hv-qf-val         { font-size: 11.5px; }
     .hv-quote-generate { padding: 8px 12px; font-size: 11px; }
     .hv-qr-val         { font-size: 20px; }
 
-    /* AI flow compacter */
+    /* AI flow */
     .hv-ai-step-icon   { width: 28px; height: 28px; font-size: 12px; }
     .hv-ai-step-label  { font-size: 8.5px; }
     .hv-ai-step-time   { font-size: 8px; }
@@ -306,9 +354,13 @@
     .hv-ai-task-time   { font-size: 9px; }
 }
 
-/* ── Extra klein (max 360px, bv. Galaxy S8) ───────────────── */
+
+/* ── Extra klein (max 360px — Galaxy S8, iPhone SE) ───────── */
 @media (max-width: 360px) {
-    .hero h1           { font-size: 22px; }
+    .hero-inner        { padding: 0 14px; }
+    .wrap              { padding: 0 14px; }
+
+    .hero h1           { font-size: 22px; letter-spacing: -0.03em; }
     .hero-sub          { font-size: 13.5px; }
     .prob-btn          { width: 115px; padding: 7px 8px; }
     .prob-btn-title    { font-size: 10.5px; }
