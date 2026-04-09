@@ -1,5 +1,14 @@
 /* ============================================================
-   RESPONSIVE
+   RESPONSIVE — verbeterde versie
+
+   FIXES:
+   1. Vergelijkingstabel → gestapeld per rij op mobiel (was: 2 kolommen die niet pasten)
+   2. Hero visual → betere min-height + panel sizing op mobiel
+   3. Resultaten-balk → wrap naar 2x2 grid op klein mobiel (was: 4 op een rij)
+   4. Werkwijze stappen → minder padding op tablet, 1 kolom op 768px
+   5. Over-ons personen → wrap-safe layout (was: 3 naast elkaar op 375px)
+   6. Why-list + why-right → betere spacing op mobiel
+   7. Projectkaarten img → proportionele hoogte ipv vaste 160px
    ============================================================ */
 
 /* ── Tablet (max 1024px) ──────────────────────────────────── */
@@ -7,6 +16,7 @@
     .hero-inner        { grid-template-columns: 1fr; gap: 40px; }
     .nav-links         { display: none; }
     .hamburger         { display: flex; }
+
     /* Hero layout op tablet en mobiel */
     .hero-inner        { display: flex; flex-direction: column; gap: 0; }
     .hero-text-top     { order: 1; }
@@ -48,13 +58,16 @@
     .svc-pills-grid    { grid-template-columns: repeat(2, 1fr); }
     .at-body           { grid-template-columns: 1fr; gap: 40px; }
 
-    /* Op mobiel: grote cirkels bovenaan de sectie */
+    /* Op tablet: cirkels bovenaan de sectie */
     .at-people         { flex-direction: row; justify-content: center; gap: 20px; padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,.08); margin-bottom: 4px; }
     .at-person         { flex-direction: column; align-items: center; text-align: center; padding: 0; border-bottom: none; gap: 10px; }
     .at-person-img,
     .at-person-initial { width: 72px; height: 72px; font-size: 20px; }
     .at-person-text strong { font-size: 14px; }
     .at-person-text em { display: none; }
+
+    /* ─── FIX 1: Vergelijkingstabel op tablet ─── */
+    .wc-cell           { padding: 13px 16px; font-size: 13px; }
 }
 
 /* ── Mobiel (max 768px) ───────────────────────────────────── */
@@ -69,12 +82,9 @@
     .svc-pills-grid    { grid-template-columns: 1fr; }
     .projects-home     { grid-template-columns: 1fr; }
     .why-inner         { grid-template-columns: 1fr; gap: 40px; }
-    .results-inner     { gap: 20px; }
-    .result-item       { padding: 0 20px; min-width: 120px; }
-    .result-divider    { display: none; }
     .footer-top        { grid-template-columns: 1fr 1fr; gap: 24px; }
 
-    /* Hero layout op mobiel */
+    /* ─── FIX 2: Hero layout op mobiel ─── */
     .hero              { padding: 80px 0 48px; }
     .hero-inner        { gap: 0; display: flex; flex-direction: column; }
     .hero-text         { order: 1; }
@@ -82,7 +92,7 @@
     .hero h1           { font-size: clamp(26px, 7vw, 38px); margin-bottom: 12px; }
     .hero-sub          { font-size: 14.5px; margin-bottom: 0; }
 
-    /* Probleemselector verbergen op mobiel — te druk onder het panel */
+    /* Probleemselector */
     .prob-select-lbl   { display: none; }
     .prob-select       {
         flex-direction: row;
@@ -116,9 +126,7 @@
     .hero-btns         { margin-top: 20px !important; }
     .hero-trust        { margin-top: 16px !important; }
 
-    /* Panels: op mobiel GEEN absolute positioning —
-       inactive panels worden verborgen via display:none
-       zodat de hoogte correct is */
+    /* Panels: op mobiel geen absolute positioning */
     .hv-panel          {
         position: static;
         display: none;
@@ -131,6 +139,78 @@
         position: static;
         animation: fadeUp .3s both;
     }
+
+    /* ─── FIX 3: Resultaten-balk als 2x2 grid ─── */
+    .results-inner     {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px 0;
+    }
+    .result-item       { padding: 0 16px; min-width: unset; }
+    .result-divider    { display: none; }
+    .result-num        { font-size: 28px; }
+
+    /* ─── FIX 4: Werkwijze stappen betere spacing ─── */
+    .step              { padding: 28px 22px; }
+
+    /* ─── FIX 5: Vergelijkingstabel gestapeld per rij ───
+       Elke rij wordt nu een blok: "nu" bovenaan (rood),
+       "met TriStack" eronder (groen). Veel leesbaarder
+       dan twee smalle kolommen naast elkaar.
+    ─── */
+    .wc-header         { display: none; }
+    .wc-row            {
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid var(--border);
+    }
+    .wc-row:last-child { border-bottom: none; }
+    .wc-cell           {
+        padding: 14px 18px;
+        font-size: 13.5px;
+        line-height: 1.55;
+    }
+    .wc-cell.wc-before {
+        border-right: none;
+        border-bottom: none;
+        padding-bottom: 8px;
+    }
+    .wc-cell.wc-after  {
+        padding-top: 8px;
+        border-radius: 0;
+    }
+
+    /* Labels toevoegen zodat je weet welke kant welke is */
+    .wc-cell.wc-before::before {
+        content: '✗  Nu:  ';
+        color: #DC2626;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+    }
+    .wc-cell.wc-after::before {
+        content: '✓  Met TriStack:  ';
+        color: var(--green);
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+    }
+
+    /* ─── FIX 6: Why-left betere spacing op mobiel ─── */
+    .why-desc          { font-size: 15px; margin-bottom: 28px; }
+    .why-list li       { padding: 14px 0; gap: 12px; }
+    .why-list strong   { font-size: 14px; }
+    .why-list p        { font-size: 13px; }
+    .why-cta-card      { padding: 18px 20px; flex-direction: column; text-align: center; gap: 14px; }
+    .why-cta-card a    { align-self: center; }
+
+    /* ─── FIX 7: Projectkaarten proportionele hoogte ─── */
+    .proj-card-img     { height: 180px; }
+
+    /* Contact */
+    .contact-inner     { grid-template-columns: 1fr; gap: 28px; }
 }
 
 /* ── Klein mobiel (max 480px) ─────────────────────────────── */
@@ -146,28 +226,106 @@
     /* Proof strip kleiner */
     .proof-item        { font-size: 12px; padding: 0 16px; }
 
-    /* Stats balk */
-    .result-num        { font-size: 26px; }
-    .result-item       { min-width: 100px; padding: 0 12px; }
+    /* ─── FIX 3b: Stats balk nóg compacter op 480px ─── */
+    .result-num        { font-size: 24px; }
+    .result-label      { font-size: 11.5px; }
+    .result-item       { padding: 0 8px; }
 
     /* Cases stats grid */
     .case-stats        { grid-template-columns: 1fr 1fr; }
 
     /* Stappen: kleinere padding */
-    .step              { padding: 24px 20px; }
+    .step              { padding: 22px 18px; }
 
-    /* Projecten kaarten */
-    .proj-card-img     { height: 160px; }
+    /* ─── FIX 7b: Projectkaarten nog kleiner op 480px ─── */
+    .proj-card-img     { height: 150px; }
 
-    /* Why compare */
-    .wc-cell           { padding: 11px 12px; font-size: 12.5px; }
-}
+    /* ─── FIX 5b: Vergelijkingstabel nóg compacter ─── */
+    .wc-cell           { padding: 12px 14px; font-size: 13px; line-height: 1.5; }
+    .wc-cell.wc-before { padding-bottom: 6px; }
+    .wc-cell.wc-after  { padding-top: 6px; padding-bottom: 14px; }
 
-/* Contact */
-@media (max-width: 768px) {
-    .contact-inner     { grid-template-columns: 1fr; gap: 28px; }
-}
-@media (max-width: 480px) {
+    /* ─── FIX 8: Over-ons personen wrappen op klein scherm ───
+       Op 375px passen 3 personen van 72px + gaps niet.
+       Nu wrappen ze naar 2+1 als het moet.
+    ─── */
+    .at-people         {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+    .at-person         { min-width: 80px; }
+    .at-person-img,
+    .at-person-initial { width: 60px; height: 60px; font-size: 17px; }
+    .at-person-text strong { font-size: 13px; }
+
+    /* ─── FIX 9: Hero h1 niet te klein op 375px ─── */
+    .hero h1           { font-size: clamp(24px, 7vw, 34px); }
+
+    /* ─── FIX 10: CTA final compacter ─── */
+    .cta-final h2      { font-size: clamp(22px, 6vw, 32px); }
+    .cta-final p       { font-size: 15px; }
+
+    /* Contact form */
     .cf-row            { grid-template-columns: 1fr; }
     .cf                { padding: 24px; }
+
+    /* ─── FIX 11: Hero dashboard panels compacter ───
+       De stat-boxes en appointment items waren te groot
+       voor een 375px scherm
+    ─── */
+    .hv-stat-box       { padding: 8px 10px; }
+    .hv-stat-box .value { font-size: 16px; }
+    .hv-stat-box .label { font-size: 8px; letter-spacing: .8px; }
+    .hv-stat-box .delta { font-size: 9px; }
+    .hv-apt-name       { font-size: 11px; }
+    .hv-apt-time       { font-size: 10px; }
+    .hv-apt-badge      { font-size: 8.5px; padding: 2px 6px; }
+    .hv-dash-body      { padding: 10px; }
+    .hv-dash-header    { padding: 9px 12px; }
+    .hv-result-pill    { font-size: 11px; padding: 6px 12px; }
+
+    /* Shop items compacter */
+    .hv-shop-img       { height: 36px; font-size: 16px; }
+    .hv-shop-name      { font-size: 9.5px; padding: 4px 6px 1px; }
+    .hv-shop-price     { font-size: 11px; padding: 0 6px 5px; }
+    .hv-shop-cart      { padding: 8px 10px; }
+    .hv-shop-cart-total { font-size: 12px; }
+    .hv-shop-cart-btn  { padding: 6px 10px; font-size: 10px; }
+
+    /* Quote velden compacter */
+    .hv-qf-val         { font-size: 11.5px; }
+    .hv-quote-generate { padding: 8px 12px; font-size: 11px; }
+    .hv-qr-val         { font-size: 20px; }
+
+    /* AI flow compacter */
+    .hv-ai-step-icon   { width: 28px; height: 28px; font-size: 12px; }
+    .hv-ai-step-label  { font-size: 8.5px; }
+    .hv-ai-step-time   { font-size: 8px; }
+    .hv-ai-task        { padding: 7px 9px; gap: 7px; }
+    .hv-ai-task-text   { font-size: 10.5px; }
+    .hv-ai-task-time   { font-size: 9px; }
+}
+
+/* ── Extra klein (max 360px, bv. Galaxy S8) ───────────────── */
+@media (max-width: 360px) {
+    .hero h1           { font-size: 22px; }
+    .hero-sub          { font-size: 13.5px; }
+    .prob-btn          { width: 115px; padding: 7px 8px; }
+    .prob-btn-title    { font-size: 10.5px; }
+    .prob-btn-icon     { width: 24px; height: 24px; font-size: 11px; }
+
+    .result-num        { font-size: 22px; }
+    .result-label      { font-size: 11px; }
+
+    .wc-cell           { padding: 10px 12px; font-size: 12.5px; }
+
+    .at-person-img,
+    .at-person-initial { width: 52px; height: 52px; font-size: 15px; }
+
+    .step              { padding: 20px 16px; }
+    .step h3           { font-size: 15px; }
+    .step p            { font-size: 12.5px; }
+
+    .cta-final h2      { font-size: 20px; }
+    .cta-final p       { font-size: 14px; }
 }
