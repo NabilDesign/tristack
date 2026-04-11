@@ -1,55 +1,44 @@
 /* ============================================================
-   RESPONSIVE — verbeterde versie v2
+   RESPONSIVE
 
-   FIXES:
-   1.  Hero tekst afgesneden links → padding van 5% naar 20px+ op mobiel
-   2.  Vergelijkingstabel → gestapeld per rij op mobiel
-   3.  Hero visual → betere sizing op mobiel
-   4.  Resultaten-balk → 2x2 grid op mobiel
-   5.  Werkwijze stappen → betere padding
-   6.  Over-ons personen → wrap-safe
-   7.  Projectkaarten → proportionele hoogte
-   8.  Dashboard panels → compacter op 480px
-   9.  Extra breakpoint voor 360px (Galaxy S8 etc.)
-   10. Overflow-fix op alle containers
+   Vergelijkingstabel:
+   - Desktop: twee-kolommen tabel (.wc-desktop)
+   - Mobiel:  scroll-kaarten met animatie (.wc-scroll)
    ============================================================ */
 
-/* ── FIX 1: Globale mobiele padding fix ─────────────────────
-   .wrap en .hero-inner gebruiken padding: 0 5%.
-   Op 375px = slechts 18.75px. Dat is te weinig, waardoor
-   tekst tegen of buiten de rand valt.
-   We overschrijven naar vaste px waarden op mobiel.
-   ─────────────────────────────────────────────────────────── */
+/* ── Scroll-kaarten: verborgen op desktop ─────────────────── */
+.wc-scroll          { display: none; }
+.wc-desktop         { display: block; }
+
+/* ── Globale mobiele padding ──────────────────────────────── */
 @media (max-width: 768px) {
-    .wrap              { padding: 0 20px; }
-    .wrap-sm           { padding: 0 20px; }
+    .wrap            { padding: 0 20px; }
+    .wrap-sm         { padding: 0 20px; }
 }
 @media (max-width: 480px) {
-    .wrap              { padding: 0 16px; }
-    .wrap-sm           { padding: 0 16px; }
+    .wrap            { padding: 0 16px; }
+    .wrap-sm         { padding: 0 16px; }
 }
 
 
 /* ── Tablet (max 1024px) ──────────────────────────────────── */
 @media (max-width: 1024px) {
-    .nav-links         { display: none; }
-    .hamburger         { display: flex; }
+    .nav-links       { display: none; }
+    .hamburger       { display: flex; }
 
-    /* Hero layout op tablet */
-    .hero-inner        {
+    .hero-inner      {
         display: flex;
         flex-direction: column;
         gap: 0;
         grid-template-columns: 1fr;
     }
-    .hero-text-top     { order: 1; }
-    .hero-visual       { order: 2; min-height: unset; margin-top: 24px; }
-    .hero h1           { font-size: clamp(26px, 7vw, 38px); }
-    .hero-sub          { font-size: 14.5px; }
+    .hero-text-top   { order: 1; }
+    .hero-visual     { order: 2; min-height: unset; margin-top: 24px; }
+    .hero h1         { font-size: clamp(26px, 7vw, 38px); }
+    .hero-sub        { font-size: 14.5px; }
 
-    /* Probleemselector compact horizontaal scrollbaar */
-    .prob-select-lbl   { margin-top: 28px; }
-    .prob-select       {
+    .prob-select-lbl { margin-top: 28px; }
+    .prob-select     {
         flex-direction: row;
         overflow-x: auto;
         gap: 6px;
@@ -58,326 +47,268 @@
         scrollbar-width: none;
     }
     .prob-select::-webkit-scrollbar { display: none; }
-    .prob-btn          {
-        flex-shrink: 0;
-        width: 130px;
-        padding: 8px 10px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 3px;
+    .prob-btn        {
+        flex-shrink: 0; width: 130px; padding: 8px 10px;
+        flex-direction: column; align-items: flex-start; gap: 3px;
     }
-    .prob-btn-icon     { width: 28px; height: 28px; font-size: 13px; }
-    .prob-btn-arrow    { display: none; }
-    .prob-btn-title    { font-size: 11.5px; }
-    .prob-btn-sub      { display: none; }
+    .prob-btn-icon   { width: 28px; height: 28px; font-size: 13px; }
+    .prob-btn-arrow  { display: none; }
+    .prob-btn-title  { font-size: 11.5px; }
+    .prob-btn-sub    { display: none; }
 
-    /* Grids naar minder kolommen */
-    .steps             { grid-template-columns: repeat(2, 1fr); }
-    .cases-grid        { grid-template-columns: repeat(2, 1fr); }
-    .why-inner         { grid-template-columns: 1fr; gap: 48px; }
-    .testi-grid        { grid-template-columns: repeat(2, 1fr); }
-    .footer-top        { grid-template-columns: 1fr 1fr; gap: 32px; }
-    .hero-trust        { gap: 12px; }
-    .projects-home     { grid-template-columns: 1fr; }
-    .svc-pills-grid    { grid-template-columns: repeat(2, 1fr); }
-    .at-body           { grid-template-columns: 1fr; gap: 40px; }
+    .steps           { grid-template-columns: repeat(2, 1fr); }
+    .cases-grid      { grid-template-columns: repeat(2, 1fr); }
+    .why-inner       { grid-template-columns: 1fr; gap: 48px; }
+    .testi-grid      { grid-template-columns: repeat(2, 1fr); }
+    .footer-top      { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .hero-trust      { gap: 12px; }
+    .projects-home   { grid-template-columns: 1fr; }
+    .svc-pills-grid  { grid-template-columns: repeat(2, 1fr); }
+    .at-body         { grid-template-columns: 1fr; gap: 40px; }
 
-    /* Over-ons: cirkels naast elkaar */
-    .at-people         {
-        flex-direction: row;
-        justify-content: center;
-        gap: 20px;
-        padding-bottom: 28px;
-        border-bottom: 1px solid rgba(255,255,255,.08);
-        margin-bottom: 4px;
+    .at-people       {
+        flex-direction: row; justify-content: center; gap: 20px;
+        padding-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,.08); margin-bottom: 4px;
     }
-    .at-person         {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 0;
-        border-bottom: none;
-        gap: 10px;
+    .at-person       {
+        flex-direction: column; align-items: center; text-align: center;
+        padding: 0; border-bottom: none; gap: 10px;
     }
-    .at-person-img,
-    .at-person-initial { width: 72px; height: 72px; font-size: 20px; }
+    .at-person-img, .at-person-initial { width: 72px; height: 72px; font-size: 20px; }
     .at-person-text strong { font-size: 14px; }
     .at-person-text em { display: none; }
 
-    /* Vergelijkingstabel iets compacter */
-    .wc-cell           { padding: 13px 16px; font-size: 13px; }
+    .wc-cell         { padding: 13px 16px; font-size: 13px; }
 }
 
 
 /* ── Mobiel (max 768px) ───────────────────────────────────── */
 @media (max-width: 768px) {
-    section            { padding: 64px 0; }
-    .cases-grid        { grid-template-columns: 1fr; }
-    .testi-grid        { grid-template-columns: 1fr; }
-    .steps             { grid-template-columns: 1fr; }
-    .hero-trust        { flex-wrap: wrap; gap: 10px; }
-    .trust-divider     { display: none; }
-    .svc-pills-grid    { grid-template-columns: 1fr; }
-    .projects-home     { grid-template-columns: 1fr; }
-    .why-inner         { grid-template-columns: 1fr; gap: 40px; }
-    .footer-top        { grid-template-columns: 1fr 1fr; gap: 24px; }
+    section          { padding: 64px 0; }
+    .cases-grid      { grid-template-columns: 1fr; }
+    .testi-grid      { grid-template-columns: 1fr; }
+    .steps           { grid-template-columns: 1fr; }
+    .hero-trust      { flex-wrap: wrap; gap: 10px; }
+    .trust-divider   { display: none; }
+    .svc-pills-grid  { grid-template-columns: 1fr; }
+    .projects-home   { grid-template-columns: 1fr; }
+    .why-inner       { grid-template-columns: 1fr; gap: 40px; }
+    .footer-top      { grid-template-columns: 1fr 1fr; gap: 24px; }
 
-    /* ─── Hero layout op mobiel ─── */
-    .hero              { padding: 80px 0 48px; min-height: unset; }
-    .hero-inner        {
-        gap: 0;
-        display: flex;
-        flex-direction: column;
-        padding: 0 20px;       /* FIX: vaste padding ipv 5% */
-        max-width: 100%;       /* FIX: voorkom overflow */
+    /* Hero */
+    .hero            { padding: 80px 0 48px; min-height: unset; }
+    .hero-inner      {
+        gap: 0; display: flex; flex-direction: column;
+        padding: 0 20px; max-width: 100%;
     }
-    .hero-text         { order: 1; max-width: 100%; overflow-wrap: break-word; }
-    .hero-visual       { order: 2; margin: 20px 0 0; min-height: unset; max-width: 100%; }
-    .hero h1           { font-size: clamp(26px, 7vw, 38px); margin-bottom: 12px; }
-    .hero-sub          { font-size: 14.5px; margin-bottom: 0; max-width: 100%; }
+    .hero-text       { order: 1; max-width: 100%; overflow-wrap: break-word; }
+    .hero-visual     { order: 2; margin: 20px 0 0; min-height: unset; max-width: 100%; }
+    .hero h1         { font-size: clamp(26px, 7vw, 38px); margin-bottom: 12px; }
+    .hero-sub        { font-size: 14.5px; margin-bottom: 0; max-width: 100%; }
 
-    /* Probleemselector */
-    .prob-select-lbl   { display: none; }
-    .prob-select       {
-        flex-direction: row;
-        overflow-x: auto;
-        gap: 6px;
-        padding-bottom: 4px;
-        margin-top: 14px;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        max-width: 100%;       /* FIX: voorkom dat scrollknoppen container opblazen */
+    .prob-select-lbl { display: none; }
+    .prob-select     {
+        flex-direction: row; overflow-x: auto; gap: 6px;
+        padding-bottom: 4px; margin-top: 14px;
+        -webkit-overflow-scrolling: touch; scrollbar-width: none; max-width: 100%;
     }
     .prob-select::-webkit-scrollbar { display: none; }
-    .prob-btn          {
-        flex-shrink: 0;
-        width: 130px;
-        padding: 8px 10px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 3px;
+    .prob-btn        {
+        flex-shrink: 0; width: 130px; padding: 8px 10px;
+        flex-direction: column; align-items: flex-start; gap: 3px;
     }
-    .prob-btn-icon     { width: 28px; height: 28px; font-size: 13px; }
-    .prob-btn-arrow    { display: none; }
-    .prob-btn-title    { font-size: 11.5px; }
-    .prob-btn-sub      { display: none; }
+    .prob-btn-icon   { width: 28px; height: 28px; font-size: 13px; }
+    .prob-btn-arrow  { display: none; }
+    .prob-btn-title  { font-size: 11.5px; }
+    .prob-btn-sub    { display: none; }
 
-    /* Mockup kleiner op mobiel */
-    .hv-dashboard      { font-size: 90%; }
+    .hv-dashboard    { font-size: 90%; }
     .hv-stat-box .value { font-size: 18px; }
-    .hv-panel-notif    { font-size: 10.5px; padding: 6px 12px; }
+    .hv-panel-notif  { font-size: 10.5px; padding: 6px 12px; }
+    .hero-btns       { margin-top: 20px !important; }
+    .hero-trust      { margin-top: 16px !important; }
 
-    /* Trust balk en knoppen */
-    .hero-btns         { margin-top: 20px !important; }
-    .hero-trust        { margin-top: 16px !important; }
+    .hv-panel        { position: static; display: none; opacity: 1; transform: none; transition: none; }
+    .hv-panel.active { display: block; position: static; animation: fadeUp .3s both; }
 
-    /* Panels: op mobiel geen absolute positioning */
-    .hv-panel          {
-        position: static;
-        display: none;
-        opacity: 1;
-        transform: none;
-        transition: none;
-    }
-    .hv-panel.active   {
-        display: block;
-        position: static;
-        animation: fadeUp .3s both;
-    }
+    /* Resultaten 2x2 */
+    .results-inner   { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 0; }
+    .result-item     { padding: 0 16px; min-width: unset; flex: unset; }
+    .result-divider  { display: none; }
+    .result-num      { font-size: 28px; }
 
-    /* ─── Resultaten-balk als 2x2 grid ─── */
-    .results-inner     {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px 0;
-    }
-    .result-item       { padding: 0 16px; min-width: unset; flex: unset; }
-    .result-divider    { display: none; }
-    .result-num        { font-size: 28px; }
+    .step            { padding: 28px 22px; }
+    .proj-card-img   { height: 180px; }
+    .contact-inner   { grid-template-columns: 1fr; gap: 28px; }
 
-    /* ─── Werkwijze stappen betere spacing ─── */
-    .step              { padding: 28px 22px; }
+    /* Why section op mobiel: verberg de why-left lijst, focus op vergelijking */
+    .why-inner       { display: block; }
+    .why-left        { display: none; }
+    .why-right       { display: none; }
 
-    /* ─── VERGELIJKINGSTABEL: gestapeld per rij ───
-       Was: grid-template-columns: 1fr 1fr op alle maten
-       → twee kolommen van ~170px met lange zinnen = onleesbaar
-
-       Nu: elke rij wordt een verticaal blok.
-       "Jouw dag nu" bovenaan, "Met TriStack" eronder.
-       Tabelheader verdwijnt, inline labels nemen het over.
-    ─── */
-    .wc-header         { display: none; }
-    .why-compare       { border-radius: 12px; }
-    .wc-row            {
+    /* ─── SCROLL-KAARTEN: toon op mobiel ─── */
+    .wc-desktop      { display: none; }
+    .wc-scroll       {
         display: flex;
         flex-direction: column;
-        border-bottom: 1px solid var(--border);
-    }
-    .wc-row:last-child { border-bottom: none; }
-    .wc-cell           {
-        padding: 14px 18px;
-        font-size: 13.5px;
-        line-height: 1.55;
-    }
-    .wc-cell.wc-before {
-        border-right: none;
-        border-bottom: none;
-        padding-bottom: 6px;
-    }
-    .wc-cell.wc-after  {
-        padding-top: 6px;
+        gap: 16px;
     }
 
-    /* Overschrijf ::before content voor mobiele labels */
-    .wc-cell.wc-before::before {
-        content: '✗  Nu:  ';
-        color: #DC2626;
-        font-size: 10px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: .5px;
+    .wc-card {
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,.04);
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity .5s cubic-bezier(.22,1,.36,1), transform .5s cubic-bezier(.22,1,.36,1);
     }
-    .wc-cell.wc-after::before {
-        content: '✓  Met TriStack:  ';
-        color: var(--green);
-        font-size: 10px;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: .5px;
+    .wc-card--visible {
+        opacity: 1;
+        transform: translateY(0);
     }
 
-    /* Why-left betere spacing */
-    .why-desc          { font-size: 15px; margin-bottom: 28px; }
-    .why-list li       { padding: 14px 0; gap: 12px; }
-    .why-list strong   { font-size: 14px; }
-    .why-list p        { font-size: 13px; }
-    .why-cta-card      {
+    .wc-card-problem {
         padding: 18px 20px;
-        flex-direction: column;
-        text-align: center;
-        gap: 14px;
+        background: #FEF2F2;
+        border-bottom: 1px solid #FECACA;
     }
-    .why-cta-card a    { align-self: center; }
+    .wc-card-solution {
+        padding: 18px 20px;
+        background: #F0FDF4;
+    }
 
-    /* Projectkaarten */
-    .proj-card-img     { height: 180px; }
+    .wc-card-label {
+        display: inline-block;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .7px;
+        margin-bottom: 6px;
+    }
+    .wc-card-label--red   { color: #DC2626; }
+    .wc-card-label--green { color: #16A34A; }
 
-    /* Contact */
-    .contact-inner     { grid-template-columns: 1fr; gap: 28px; }
+    .wc-card-problem p {
+        font-size: 14px;
+        line-height: 1.55;
+        color: #7F1D1D;
+        margin: 0;
+    }
+    .wc-card-solution p {
+        font-size: 14px;
+        line-height: 1.55;
+        color: #14532D;
+        font-weight: 500;
+        margin: 0;
+    }
+
+    /* Stagger de kaarten: elke kaart schuift iets later in */
+    .wc-card:nth-child(1) { transition-delay: 0s; }
+    .wc-card:nth-child(2) { transition-delay: .05s; }
+    .wc-card:nth-child(3) { transition-delay: .1s; }
+    .wc-card:nth-child(4) { transition-delay: .15s; }
+    .wc-card:nth-child(5) { transition-delay: .2s; }
+    .wc-card:nth-child(6) { transition-delay: .25s; }
+
+    /* Why CTA card op mobiel */
+    .why-cta-card    {
+        padding: 18px 20px; flex-direction: column;
+        text-align: center; gap: 14px;
+    }
+    .why-cta-card a  { align-self: center; }
 }
 
 
 /* ── Klein mobiel (max 480px) ─────────────────────────────── */
 @media (max-width: 480px) {
+    .hero-inner      { padding: 0 16px; }
 
-    .hero-inner        { padding: 0 16px; }
+    .hero-btns       { flex-direction: column; align-items: stretch; }
+    .cta-btns        { flex-direction: column; align-items: stretch; }
+    .cta-final-btns  { flex-direction: column; align-items: center; }
+    .btn-primary, .btn-secondary { justify-content: center; }
+    .footer-top      { grid-template-columns: 1fr; }
+    .footer-btm      { flex-direction: column; align-items: flex-start; }
 
-    .hero-btns         { flex-direction: column; align-items: stretch; }
-    .cta-btns          { flex-direction: column; align-items: stretch; }
-    .cta-final-btns    { flex-direction: column; align-items: center; }
-    .btn-primary,
-    .btn-secondary     { justify-content: center; }
-    .footer-top        { grid-template-columns: 1fr; }
-    .footer-btm        { flex-direction: column; align-items: flex-start; }
+    .proof-item      { font-size: 12px; padding: 0 16px; }
+    .result-num      { font-size: 24px; }
+    .result-label    { font-size: 11.5px; }
+    .result-item     { padding: 0 8px; }
+    .case-stats      { grid-template-columns: 1fr 1fr; }
+    .step            { padding: 22px 18px; }
+    .proj-card-img   { height: 150px; }
 
-    /* Proof strip */
-    .proof-item        { font-size: 12px; padding: 0 16px; }
+    /* Scroll-kaarten compacter */
+    .wc-scroll       { gap: 12px; }
+    .wc-card-problem,
+    .wc-card-solution { padding: 14px 16px; }
+    .wc-card-problem p,
+    .wc-card-solution p { font-size: 13px; }
 
-    /* Stats balk */
-    .result-num        { font-size: 24px; }
-    .result-label      { font-size: 11.5px; }
-    .result-item       { padding: 0 8px; }
-
-    /* Cases stats */
-    .case-stats        { grid-template-columns: 1fr 1fr; }
-
-    /* Stappen */
-    .step              { padding: 22px 18px; }
-
-    /* Projectkaarten */
-    .proj-card-img     { height: 150px; }
-
-    /* Vergelijkingstabel nóg compacter */
-    .wc-cell           { padding: 12px 14px; font-size: 13px; line-height: 1.5; }
-    .wc-cell.wc-before { padding-bottom: 4px; }
-    .wc-cell.wc-after  { padding-top: 4px; padding-bottom: 14px; }
-
-    /* Over-ons personen wrappen */
-    .at-people         { flex-wrap: wrap; gap: 16px; }
-    .at-person         { min-width: 80px; }
-    .at-person-img,
-    .at-person-initial { width: 60px; height: 60px; font-size: 17px; }
+    /* Over-ons */
+    .at-people       { flex-wrap: wrap; gap: 16px; }
+    .at-person       { min-width: 80px; }
+    .at-person-img, .at-person-initial { width: 60px; height: 60px; font-size: 17px; }
     .at-person-text strong { font-size: 13px; }
 
-    /* Hero titel */
-    .hero h1           { font-size: clamp(24px, 7vw, 34px); }
+    .hero h1         { font-size: clamp(24px, 7vw, 34px); }
+    .cta-final h2    { font-size: clamp(22px, 6vw, 32px); }
+    .cta-final p     { font-size: 15px; }
+    .cf-row          { grid-template-columns: 1fr; }
+    .cf              { padding: 24px; }
 
-    /* CTA final */
-    .cta-final h2      { font-size: clamp(22px, 6vw, 32px); }
-    .cta-final p       { font-size: 15px; }
-
-    /* Contact form */
-    .cf-row            { grid-template-columns: 1fr; }
-    .cf                { padding: 24px; }
-
-    /* ─── Dashboard panels compacter ─── */
-    .hv-stat-box       { padding: 8px 10px; }
+    /* Dashboard panels compacter */
+    .hv-stat-box     { padding: 8px 10px; }
     .hv-stat-box .value { font-size: 16px; }
     .hv-stat-box .label { font-size: 8px; letter-spacing: .8px; }
     .hv-stat-box .delta { font-size: 9px; }
-    .hv-apt-name       { font-size: 11px; }
-    .hv-apt-time       { font-size: 10px; }
-    .hv-apt-badge      { font-size: 8.5px; padding: 2px 6px; }
-    .hv-dash-body      { padding: 10px; }
-    .hv-dash-header    { padding: 9px 12px; }
-    .hv-result-pill    { font-size: 11px; padding: 6px 12px; }
-
-    /* Shop items */
-    .hv-shop-img       { height: 36px; font-size: 16px; }
-    .hv-shop-name      { font-size: 9.5px; padding: 4px 6px 1px; }
-    .hv-shop-price     { font-size: 11px; padding: 0 6px 5px; }
-    .hv-shop-cart      { padding: 8px 10px; }
+    .hv-apt-name     { font-size: 11px; }
+    .hv-apt-time     { font-size: 10px; }
+    .hv-apt-badge    { font-size: 8.5px; padding: 2px 6px; }
+    .hv-dash-body    { padding: 10px; }
+    .hv-dash-header  { padding: 9px 12px; }
+    .hv-result-pill  { font-size: 11px; padding: 6px 12px; }
+    .hv-shop-img     { height: 36px; font-size: 16px; }
+    .hv-shop-name    { font-size: 9.5px; padding: 4px 6px 1px; }
+    .hv-shop-price   { font-size: 11px; padding: 0 6px 5px; }
+    .hv-shop-cart    { padding: 8px 10px; }
     .hv-shop-cart-total { font-size: 12px; }
-    .hv-shop-cart-btn  { padding: 6px 10px; font-size: 10px; }
-
-    /* Quote velden */
-    .hv-qf-val         { font-size: 11.5px; }
+    .hv-shop-cart-btn { padding: 6px 10px; font-size: 10px; }
+    .hv-qf-val       { font-size: 11.5px; }
     .hv-quote-generate { padding: 8px 12px; font-size: 11px; }
-    .hv-qr-val         { font-size: 20px; }
-
-    /* AI flow */
-    .hv-ai-step-icon   { width: 28px; height: 28px; font-size: 12px; }
-    .hv-ai-step-label  { font-size: 8.5px; }
-    .hv-ai-step-time   { font-size: 8px; }
-    .hv-ai-task        { padding: 7px 9px; gap: 7px; }
-    .hv-ai-task-text   { font-size: 10.5px; }
-    .hv-ai-task-time   { font-size: 9px; }
+    .hv-qr-val       { font-size: 20px; }
+    .hv-ai-step-icon { width: 28px; height: 28px; font-size: 12px; }
+    .hv-ai-step-label { font-size: 8.5px; }
+    .hv-ai-step-time { font-size: 8px; }
+    .hv-ai-task      { padding: 7px 9px; gap: 7px; }
+    .hv-ai-task-text { font-size: 10.5px; }
+    .hv-ai-task-time { font-size: 9px; }
 }
 
 
-/* ── Extra klein (max 360px — Galaxy S8, iPhone SE) ───────── */
+/* ── Extra klein (max 360px) ──────────────────────────────── */
 @media (max-width: 360px) {
-    .hero-inner        { padding: 0 14px; }
-    .wrap              { padding: 0 14px; }
+    .hero-inner      { padding: 0 14px; }
+    .wrap            { padding: 0 14px; }
+    .hero h1         { font-size: 22px; letter-spacing: -0.03em; }
+    .hero-sub        { font-size: 13.5px; }
+    .prob-btn        { width: 115px; padding: 7px 8px; }
+    .prob-btn-title  { font-size: 10.5px; }
+    .prob-btn-icon   { width: 24px; height: 24px; font-size: 11px; }
+    .result-num      { font-size: 22px; }
+    .result-label    { font-size: 11px; }
 
-    .hero h1           { font-size: 22px; letter-spacing: -0.03em; }
-    .hero-sub          { font-size: 13.5px; }
-    .prob-btn          { width: 115px; padding: 7px 8px; }
-    .prob-btn-title    { font-size: 10.5px; }
-    .prob-btn-icon     { width: 24px; height: 24px; font-size: 11px; }
+    .wc-card-problem,
+    .wc-card-solution { padding: 12px 14px; }
+    .wc-card-problem p,
+    .wc-card-solution p { font-size: 12.5px; }
 
-    .result-num        { font-size: 22px; }
-    .result-label      { font-size: 11px; }
-
-    .wc-cell           { padding: 10px 12px; font-size: 12.5px; }
-
-    .at-person-img,
-    .at-person-initial { width: 52px; height: 52px; font-size: 15px; }
-
-    .step              { padding: 20px 16px; }
-    .step h3           { font-size: 15px; }
-    .step p            { font-size: 12.5px; }
-
-    .cta-final h2      { font-size: 20px; }
-    .cta-final p       { font-size: 14px; }
+    .at-person-img, .at-person-initial { width: 52px; height: 52px; font-size: 15px; }
+    .step            { padding: 20px 16px; }
+    .step h3         { font-size: 15px; }
+    .step p          { font-size: 12.5px; }
+    .cta-final h2    { font-size: 20px; }
+    .cta-final p     { font-size: 14px; }
 }
