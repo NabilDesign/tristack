@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VdB Loodgieters &middot; Live Preview &middot; TriStack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Instrument Sans', system-ui, sans-serif;
+            background: #FAFAF8;
+            color: #1A1A1A;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        img  { max-width: 100%; display: block; }
+        a    { text-decoration: none; color: inherit; }
+        button { cursor: pointer; font-family: inherit; border: none; background: none; }
+        ul, ol { list-style: none; }
+
+        :root {
+            --ink:       #1A1A1A;
+            --ink-mid:   #3D3D3D;
+            --ink-soft:  #6B6B6B;
+            --ink-faint: #9B9B9B;
+            --page:      #FAFAF8;
+            --surface:   #F2F1EE;
+            --surface-2: #E8E6E1;
+            --border:    #E0DED9;
+            --accent:    #2563EB;
+            --accent-h:  #1D4ED8;
+            --accent-bg: #EFF6FF;
+            --green:     #16A34A;
+            --green-bg:  #F0FDF4;
+            --green-b:   #BBF7D0;
+            --red:       #DC2626;
+            --red-bg:    #FEF2F2;
+            --red-b:     #FECACA;
+            --r6:   6px;
+            --r10:  10px;
+            --r14:  14px;
+            --r20:  20px;
+            --r28:  28px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            color: var(--ink);
+        }
+
+        .wrap    { max-width: 1160px; margin: 0 auto; padding: 0 5%; }
+        .wrap-sm { max-width: 720px;  margin: 0 auto; padding: 0 5%; }
+
+        section { padding: 96px 0; }
+
+        .sec-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 14px;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1);
+        }
+        .reveal.in { opacity: 1; transform: translateY(0); }
+
+        @keyframes pulseDot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50%       { transform: scale(1.8); opacity: .3; }
+        }
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-8px); }
+        }
+        @keyframes scrollTrack {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ── Preview bar ─────────────────────────────────────── */
+        .preview-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 41px;
+            background: var(--ink);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 1000;
+        }
+        .preview-bar-back {
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(255,255,255,.55);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color .2s;
+        }
+        .preview-bar-back:hover { color: #fff; }
+        .preview-bar-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.3);
+        }
+        .preview-bar-cta {
+            font-size: 12px;
+            font-weight: 600;
+            color: #fff;
+            background: var(--accent);
+            padding: 5px 14px;
+            border-radius: var(--r6);
+            transition: background .2s;
+        }
+        .preview-bar-cta:hover { background: var(--accent-h); }
+
+        /* ── Nav ─────────────────────────────────────────────── */
+        .lp-nav {
+            position: sticky;
+            top: 41px;
+            background: rgba(250,250,248,.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            z-index: 900;
+        }
+        .lp-nav-inner {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 0 5%;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+        }
+        .lp-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 800;
+            font-size: 17px;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+        }
+        .lp-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+        .lp-nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--ink-soft);
+            transition: color .2s;
+        }
+        .lp-nav-links a:hover { color: var(--ink); }
+        .lp-nav-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .badge-24 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--red);
+            background: var(--red-bg);
+            border: 1px solid var(--red-b);
+            padding: 3px 10px;
+            border-radius: var(--r6);
+        }
+        .btn-tel {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #fff;
+            background: var(--red);
+            padding: 8px 16px;
+            border-radius: var(--r10);
+            transition: background .2s;
+        }
+        .btn-tel:hover { background: #B91C1C; }
+
+        /* ── Hero ────────────────────────────────────────────── */
+        .lp-hero {
+            min-height: calc(100vh - 41px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 80px 5%;
+        }
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--green);
+            background: var(--green-bg);
+            border: 1px solid var(--green-b);
+            padding: 5px 12px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+        }
+        .hero-tag-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--green);
+            animation: pulseDot 2s ease-in-out infinite;
+        }
+        .lp-hero h1 {
+            font-size: clamp(38px, 5vw, 64px);
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            line-height: 1.05;
+            color: var(--ink);
+            margin-bottom: 20px;
+        }
+        .lp-hero h1 em {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--red);
+        }
+        .hero-sub {
+            font-size: 17px;
+            color: var(--ink-soft);
+            line-height: 1.8;
+            max-width: 460px;
+            margin-bottom: 36px;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        .btn-red-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            background: var(--red);
+            padding: 13px 24px;
+            border-radius: var(--r10);
+            transition: all .2s;
+        }
+        .btn-red-primary:hover { background: #B91C1C; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(220,38,38,.25); }
+        .btn-outline-dark {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--ink);
+            background: transparent;
+            border: 1.5px solid var(--border);
+            padding: 13px 24px;
+            border-radius: var(--r10);
+            transition: all .2s;
+        }
+        .btn-outline-dark:hover { border-color: var(--ink); }
+        .hero-trust {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--ink-soft);
+        }
+
+        /* Hero card */
+        .hero-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 32px;
+            position: relative;
+            box-shadow: 0 4px 40px rgba(0,0,0,.06);
+        }
+        .hero-card-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--green);
+            background: var(--green-bg);
+            border: 1px solid var(--green-b);
+            padding: 5px 12px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+        }
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--green);
+            animation: pulseDot 2s ease-in-out infinite;
+        }
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+        }
+        .hero-stat {
+            text-align: center;
+        }
+        .hero-stat-val {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: var(--ink);
+            display: block;
+        }
+        .hero-stat-label {
+            font-size: 11px;
+            color: var(--ink-faint);
+            font-weight: 500;
+        }
+        .hero-reviews {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .hero-review-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .review-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            flex-shrink: 0;
+        }
+        .review-body {}
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 2px;
+        }
+        .review-name { font-size: 13px; font-weight: 600; color: var(--ink); }
+        .review-stars { display: flex; gap: 2px; }
+        .review-text { font-size: 12px; color: var(--ink-soft); line-height: 1.5; }
+        .hero-float-pill {
+            position: absolute;
+            bottom: -16px;
+            right: 24px;
+            background: var(--ink);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 8px 24px rgba(0,0,0,.2);
+            animation: floatY 3s ease-in-out infinite;
+        }
+
+        /* ── Proof strip ─────────────────────────────────────── */
+        .proof-strip {
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--surface);
+            padding: 0;
+            overflow: hidden;
+        }
+        .proof-track {
+            display: flex;
+            width: max-content;
+            animation: scrollTrack 24s linear infinite;
+            padding: 14px 0;
+        }
+        .proof-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 32px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--ink-soft);
+            white-space: nowrap;
+            border-right: 1px solid var(--border);
+        }
+        .proof-item:last-child { border-right: none; }
+
+        /* ── Diensten ────────────────────────────────────────── */
+        .diensten-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 56px;
+        }
+        .dienst-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--r14);
+            padding: 28px;
+            transition: box-shadow .2s, transform .2s;
+        }
+        .dienst-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.07); transform: translateY(-3px); }
+        .dienst-card.spoed {
+            border-color: var(--red-b);
+            background: var(--red-bg);
+        }
+        .dienst-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--r10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            background: var(--accent-bg);
+            color: var(--accent);
+        }
+        .dienst-card.spoed .dienst-icon { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-b); }
+        .dienst-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+        .dienst-card p { font-size: 13px; color: var(--ink-soft); line-height: 1.65; margin-bottom: 16px; }
+        .dienst-link {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .dienst-card.spoed .dienst-link { color: var(--red); }
+
+        /* ── Waarom wij ──────────────────────────────────────── */
+        .waarom-sec {
+            background: var(--ink);
+            padding: 96px 0;
+        }
+        .waarom-sec .sec-label { color: rgba(255,255,255,.35); }
+        .waarom-sec h2 { color: #fff; margin-bottom: 56px; }
+        .waarom-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .waarom-card {
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: var(--r14);
+            padding: 28px;
+        }
+        .waarom-card h3 { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+        .waarom-card p { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.7; }
+        .waarom-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--r10);
+            background: rgba(255,255,255,.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            margin-bottom: 18px;
+        }
+
+        /* ── Reviews ─────────────────────────────────────────── */
+        .reviews-sec {
+            background: var(--surface);
+            padding: 96px 0;
+        }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 56px;
+        }
+        .review-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--r14);
+            padding: 28px;
+        }
+        .review-card-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+        .review-card-text { font-size: 14px; color: var(--ink-soft); line-height: 1.75; margin-bottom: 20px; }
+        .review-card-author { display: flex; align-items: center; gap: 10px; }
+        .review-card-name { font-size: 13px; font-weight: 700; color: var(--ink); }
+        .review-card-sub { font-size: 11px; color: var(--ink-faint); }
+        .reviews-score {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 48px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+        .score-num {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            color: var(--ink);
+        }
+        .score-stars { display: flex; gap: 3px; margin-bottom: 4px; }
+        .score-label { font-size: 13px; color: var(--ink-soft); }
+
+        /* ── CTA blok ────────────────────────────────────────── */
+        .cta-sec {
+            background: var(--ink);
+            padding: 96px 0;
+            text-align: center;
+        }
+        .cta-sec h2 { color: #fff; font-size: clamp(28px,3vw,44px); font-weight: 800; margin-bottom: 16px; }
+        .cta-sec p { font-size: 16px; color: rgba(255,255,255,.45); margin-bottom: 40px; }
+        .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .btn-white {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 15px; font-weight: 700;
+            color: var(--ink); background: #fff;
+            padding: 13px 24px; border-radius: var(--r10);
+            transition: all .2s;
+        }
+        .btn-white:hover { background: var(--surface); transform: translateY(-2px); }
+        .btn-ghost-cta {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 15px; font-weight: 600;
+            color: #fff; background: rgba(255,255,255,.1);
+            border: 1.5px solid rgba(255,255,255,.2);
+            padding: 13px 24px; border-radius: var(--r10);
+            transition: all .2s;
+        }
+        .btn-ghost-cta:hover { background: rgba(255,255,255,.18); }
+
+        /* ── Over ons ────────────────────────────────────────── */
+        .over-ons-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 56px;
+        }
+        .over-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .over-stat-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r14);
+            padding: 24px;
+        }
+        .over-stat-val {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            color: var(--ink);
+            display: block;
+        }
+        .over-stat-label { font-size: 13px; color: var(--ink-soft); margin-top: 4px; }
+        .over-text h2 { font-size: clamp(26px, 2.8vw, 38px); margin-bottom: 16px; }
+        .over-text p { font-size: 15px; color: var(--ink-soft); line-height: 1.85; margin-bottom: 24px; }
+        .over-checklist { display: flex; flex-direction: column; gap: 10px; }
+        .over-check {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--ink-soft);
+        }
+
+        /* ── FAQ ─────────────────────────────────────────────── */
+        .faq-sec { background: var(--surface); padding: 96px 0; }
+        .faq-list { margin-top: 56px; display: flex; flex-direction: column; gap: 0; }
+        .faq-item {
+            border-top: 1px solid var(--border);
+        }
+        .faq-item:last-child { border-bottom: 1px solid var(--border); }
+        .faq-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 20px 0;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--ink);
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-family: 'Instrument Sans', sans-serif;
+        }
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: var(--ink-faint);
+            flex-shrink: 0;
+            transition: transform .3s, background .2s, color .2s;
+        }
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+            background: var(--ink);
+            color: #fff;
+            border-color: var(--ink);
+        }
+        .faq-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .4s cubic-bezier(.22,1,.36,1);
+        }
+        .faq-item.open .faq-body { max-height: 300px; }
+        .faq-body p {
+            font-size: 14px;
+            color: var(--ink-soft);
+            line-height: 1.8;
+            padding-bottom: 20px;
+        }
+
+        /* ── Contact ─────────────────────────────────────────── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+            margin-top: 56px;
+        }
+        .contact-items { display: flex; flex-direction: column; gap: 24px; }
+        .contact-item { display: flex; align-items: flex-start; gap: 14px; }
+        .contact-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: var(--r10);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--ink-soft);
+        }
+        .contact-item-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 3px; }
+        .contact-item-val { font-size: 15px; font-weight: 600; color: var(--ink); }
+        .form-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--r14);
+            padding: 36px;
+        }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+        .form-label { font-size: 12px; font-weight: 600; color: var(--ink-soft); }
+        .form-input, .form-select, .form-textarea {
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 14px;
+            color: var(--ink);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r10);
+            padding: 11px 14px;
+            transition: border-color .2s;
+            outline: none;
+            width: 100%;
+        }
+        .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--accent); background: #fff; }
+        .form-textarea { resize: vertical; min-height: 100px; }
+        .btn-submit {
+            width: 100%;
+            font-family: 'Instrument Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            background: var(--red);
+            border: none;
+            border-radius: var(--r10);
+            padding: 13px 24px;
+            cursor: pointer;
+            transition: background .2s, transform .2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-submit:hover { background: #B91C1C; transform: translateY(-2px); }
+        .btn-submit.success { background: var(--green); }
+        .form-success {
+            font-size: 13px;
+            color: var(--green);
+            text-align: center;
+            margin-top: 10px;
+            min-height: 18px;
+        }
+
+        /* ── Footer ──────────────────────────────────────────── */
+        .lp-footer {
+            background: var(--ink);
+            padding: 64px 0 40px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        .footer-col-title {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.25);
+            margin-bottom: 16px;
+        }
+        .footer-links { display: flex; flex-direction: column; gap: 10px; }
+        .footer-links a {
+            font-size: 13px;
+            color: rgba(255,255,255,.45);
+            transition: color .2s;
+        }
+        .footer-links a:hover { color: #fff; }
+        .footer-brand {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .footer-brand-sub {
+            font-size: 13px;
+            color: rgba(255,255,255,.35);
+            line-height: 1.7;
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,.08);
+            padding-top: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .footer-bottom-copy {
+            font-size: 12px;
+            color: rgba(255,255,255,.25);
+        }
+        .footer-bottom-copy a {
+            color: rgba(255,255,255,.45);
+            font-weight: 600;
+            transition: color .2s;
+        }
+        .footer-bottom-copy a:hover { color: #fff; }
+        .footer-bottom-made {
+            font-size: 12px;
+            color: rgba(255,255,255,.25);
+        }
+        .footer-bottom-made a {
+            color: rgba(255,255,255,.5);
+            font-weight: 600;
+            transition: color .2s;
+        }
+        .footer-bottom-made a:hover { color: #fff; }
+
+        /* ── Sticky bel-knop ─────────────────────────────────── */
+        .sticky-bel {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--red);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 8px 24px rgba(220,38,38,.35);
+            z-index: 800;
+            transition: background .2s, transform .2s;
+            cursor: pointer;
+            border: none;
+        }
+        .sticky-bel:hover { background: #B91C1C; transform: translateY(-3px); }
+        .bel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.7);
+            animation: pulseDot 2s ease-in-out infinite;
+        }
+
+        /* ── Responsive ──────────────────────────────────────── */
+        @media (max-width: 1024px) {
+            .over-ons-grid { gap: 48px; }
+        }
+        @media (max-width: 768px) {
+            .lp-hero          { grid-template-columns: 1fr; gap: 48px; min-height: auto; padding-top: 60px; }
+            .hero-card        { display: none; }
+            .diensten-grid    { grid-template-columns: 1fr; }
+            .waarom-grid      { grid-template-columns: 1fr; }
+            .reviews-grid     { grid-template-columns: 1fr; }
+            .over-ons-grid    { grid-template-columns: 1fr; gap: 40px; }
+            .contact-grid     { grid-template-columns: 1fr; gap: 40px; }
+            .footer-grid      { grid-template-columns: 1fr; gap: 32px; }
+            .lp-nav-links     { display: none; }
+            .preview-bar-label { display: none; }
+            .hero-stats       { grid-template-columns: repeat(3,1fr); }
+        }
+        @media (max-width: 480px) {
+            .form-row         { grid-template-columns: 1fr; }
+            .reviews-score    { flex-direction: column; gap: 8px; }
+            .badge-24         { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Preview bar -->
+<div class="preview-bar">
+    <a href="projecten.html" class="preview-bar-back">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M10 7H4M6 4L3 7l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Terug naar projecten
+    </a>
+    <span class="preview-bar-label">Live preview</span>
+    <a href="index.html#contact" class="preview-bar-cta">Wil jij zo&rsquo;n website?</a>
+</div>
+
+<!-- Nav -->
+<nav class="lp-nav">
+    <div class="lp-nav-inner">
+        <a href="#" class="lp-logo">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+                <rect width="22" height="22" rx="6" fill="#1A1A1A"/>
+                <path d="M6 8h4M6 11h6M6 14h4" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M15 7v8M13 9l2-2 2 2" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            VdB Loodgieters
+        </a>
+        <div class="lp-nav-links">
+            <a href="#diensten">Diensten</a>
+            <a href="#over-ons">Over ons</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="lp-nav-right">
+            <span class="badge-24">24/7 bereikbaar</span>
+            <a href="tel:034567890" class="btn-tel">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 2.5C2 2.5 3 5 5 6.5C7 8 9.5 9.5 11.5 11.5C11.5 11.5 10.5 12.5 10 13C9.5 13.5 8.5 13 7 12C5.5 11 3 9 2 7C1 5 1.5 3.5 2 2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                03 456 78 90
+            </a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero -->
+<div class="lp-hero">
+    <div class="hero-left reveal">
+        <div class="hero-tag">
+            <span class="hero-tag-dot"></span>
+            Nu beschikbaar in uw regio
+        </div>
+        <h1>Loodgieter nodig?<br><em>Vandaag nog</em><br>ter plaatse.</h1>
+        <p class="hero-sub">Spoedservice, lekdetectie en onderhoud — snel, eerlijk geprijsd en 24/7 bereikbaar. Al 15 jaar vertrouwen van Antwerpenaars.</p>
+        <div class="hero-btns">
+            <a href="tel:034567890" class="btn-red-primary">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 2.5C2.5 2.5 4 6 6.5 8C9 10 12 12.5 13.5 14C13.5 14 12 15.5 11.5 15.5C11 15.5 9 14.5 7 12.5C5 10.5 2.5 8 1.5 5.5C.5 3 2.5 2.5 2.5 2.5Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Bel direct: 03 456 78 90
+            </a>
+            <a href="#contact" class="btn-outline-dark">
+                Offerte aanvragen
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+        <div class="hero-trust">
+            <div class="trust-item">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4.5" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Geen voorrijkosten voor spoedservice
+            </div>
+            <div class="trust-item">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4.5" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Prijs afgesproken v&oacute;&oacute;r aanvang werk
+            </div>
+            <div class="trust-item">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4.5" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Erkend vakman &mdash; BTW-factuur
+            </div>
+        </div>
+    </div>
+
+    <div class="hero-card reveal">
+        <div class="hero-card-status">
+            <span class="status-dot"></span>
+            Beschikbaar vandaag
+        </div>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <span class="hero-stat-val">24/7</span>
+                <span class="hero-stat-label">Bereikbaar</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat-val">15+</span>
+                <span class="hero-stat-label">Jaar ervaring</span>
+            </div>
+            <div class="hero-stat">
+                <span class="hero-stat-val">98%</span>
+                <span class="hero-stat-label">Tevreden klanten</span>
+            </div>
+        </div>
+        <div class="hero-reviews">
+            <div class="hero-review-item">
+                <div class="review-avatar" style="background:#1E3A5F;">KD</div>
+                <div class="review-body">
+                    <div class="review-header">
+                        <span class="review-name">Kristien D.</span>
+                        <div class="review-stars">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B" aria-hidden="true"><path d="M6 1l1.4 3h3l-2.4 1.8.9 3L6 7.1 3.1 8.8l.9-3L1.6 4h3z"/></svg>
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B" aria-hidden="true"><path d="M6 1l1.4 3h3l-2.4 1.8.9 3L6 7.1 3.1 8.8l.9-3L1.6 4h3z"/></svg>
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B" aria-hidden="true"><path d="M6 1l1.4 3h3l-2.4 1.8.9 3L6 7.1 3.1 8.8l.9-3L1.6 4h3z"/></svg>
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B" aria-hidden="true"><path d="M6 1l1.4 3h3l-2.4 1.8.9 3L6 7.1 3.1 8.8l.9-3L1.6 4h3z"/></svg>
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B" aria-hidden="true"><path d="M6 1l1.4 3h3l-2.4 1.8.9 3L6 7.1 3.1 8.8l.9-3L1.6 4h3z"/></svg>
+                        </div>
+                    </div>
+                    <p class="review-text">"Binnen het uur ter plaatse bij waterleiding lek. Super vakwerk."</p>
+                </div>
+            </div>
+            <div class="hero-review-item">
+                <div class="review-avatar" style="background:#4A1E3A;">PM</div>
+                <div class="review-body">
+                    <div class="review-header">
+                        <span class="review-name">Peter M.</span>
+                        <div class="review-stars">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B" aria-hidden="true"><path d="M6 1l1.4 3h3l-2.4 1.8.9 3L6 7.1 3.1 8.8l.9-3L1.6 4h3z"/></svg>
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B" aria-hidden="true"><path d="M6 1l1.4 3h3l-2.4 1.8.9 3L6 7.1 3.1 8.8l.9-3L1.6 4h3z"/></svg>
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B" aria-hidden="true"><path d="M6 1l1.4 3h3l-2.4 1.8.9 3L6 7.1 3.1 8.8l.9-3L1.6 4h3z"/></svg>
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B" aria-hidden="true"><path d="M6 1l1.4 3h3l-2.4 1.8.9 3L6 7.1 3.1 8.8l.9-3L1.6 4h3z"/></svg>
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="#F59E0B" aria-hidden="true"><path d="M6 1l1.4 3h3l-2.4 1.8.9 3L6 7.1 3.1 8.8l.9-3L1.6 4h3z"/></svg>
+                        </div>
+                    </div>
+                    <p class="review-text">"Eerlijke prijs, netjes gewerkt. Sterk aanbevolen!"</p>
+                </div>
+            </div>
+        </div>
+        <div class="hero-float-pill">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v6l3.5 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/></svg>
+            Gem. responstijd: 47 min
+        </div>
+    </div>
+</div>
+
+<!-- Proof strip -->
+<div class="proof-strip">
+    <div class="proof-track">
+        <div class="proof-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            24/7 spoedservice
+        </div>
+        <div class="proof-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Erkend loodgieter
+        </div>
+        <div class="proof-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Vaste prijsafspraak
+        </div>
+        <div class="proof-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            15+ jaar ervaring
+        </div>
+        <div class="proof-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            287 reviews &mdash; 4.9 ster
+        </div>
+        <div class="proof-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            BTW-factuur altijd
+        </div>
+        <!-- duplicaat voor naadloze loop -->
+        <div class="proof-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            24/7 spoedservice
+        </div>
+        <div class="proof-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Erkend loodgieter
+        </div>
+        <div class="proof-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Vaste prijsafspraak
+        </div>
+        <div class="proof-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            15+ jaar ervaring
+        </div>
+        <div class="proof-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            287 reviews &mdash; 4.9 ster
+        </div>
+        <div class="proof-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            BTW-factuur altijd
+        </div>
+    </div>
+</div>
+
+<!-- Diensten -->
+<section id="diensten">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <p class="sec-label">Onze diensten</p>
+            <h2>Wat we voor u oplossen</h2>
+        </div>
+        <div class="diensten-grid">
+            <div class="dienst-card spoed reveal">
+                <div class="dienst-icon">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M11 3v6l3 2M11 3a8 8 0 1 1 0 16A8 8 0 0 1 11 3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3>Spoeddienst</h3>
+                <p>Waterleiding gesprongen? Kraan lekt? Wij zijn er binnen het uur. Dag en nacht, ook in het weekend en op feestdagen.</p>
+                <a href="#contact" class="dienst-link">
+                    Nu oproepen
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2.5 6.5h8M8 4l2.5 2.5L8 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+            <div class="dienst-card reveal">
+                <div class="dienst-icon">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M11 4v2M11 16v2M4 11h2M16 11h2M6 6l1.4 1.4M14.6 14.6L16 16M6 16l1.4-1.4M14.6 7.4L16 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <h3>Lekdetectie</h3>
+                <p>Met moderne detectieapparatuur vinden we verborgen lekken zonder onnodige breekwerken. Snel en precies.</p>
+                <a href="#contact" class="dienst-link">
+                    Meer info
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2.5 6.5h8M8 4l2.5 2.5L8 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+            <div class="dienst-card reveal">
+                <div class="dienst-icon">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M11 3c0 0-6 4-6 9a6 6 0 0 0 12 0c0-5-6-9-6-9z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 14v-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <h3>Ontstoppingen</h3>
+                <p>Verstopte afvoer, toilet of riool? We reinigen professioneel en zorgen dat alles weer vlot doorstroomt.</p>
+                <a href="#contact" class="dienst-link">
+                    Offerte aanvragen
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2.5 6.5h8M8 4l2.5 2.5L8 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+            <div class="dienst-card reveal">
+                <div class="dienst-icon">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><rect x="4" y="7" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M8 7V5a3 3 0 0 1 6 0v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <h3>CV-onderhoud</h3>
+                <p>Jaarlijks onderhoud van uw centrale verwarming verlengt de levensduur en houdt uw energiefactuur laag.</p>
+                <a href="#contact" class="dienst-link">
+                    Afspraak maken
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2.5 6.5h8M8 4l2.5 2.5L8 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+            <div class="dienst-card reveal">
+                <div class="dienst-icon">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M7 11h8M11 7v8M4 4h14v14H4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3>Sanitair installatie</h3>
+                <p>Van badkamerrenovatie tot nieuwe toilet of douche — we installeren alles netjes en conform de normen.</p>
+                <a href="#contact" class="dienst-link">
+                    Vraag een offerte
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2.5 6.5h8M8 4l2.5 2.5L8 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+            <div class="dienst-card reveal">
+                <div class="dienst-icon">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M4 6c0 0 3-3 7-3s7 3 7 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11 3v4M7 10c0 3 1.5 5 4 6 2.5-1 4-3 4-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3>Hemelwater</h3>
+                <p>Plaatsing of herstelling van regenwaterputten, infiltratiesystemen en hemelwaterinstallaties op maat.</p>
+                <a href="#contact" class="dienst-link">
+                    Meer informatie
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><path d="M2.5 6.5h8M8 4l2.5 2.5L8 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Waarom wij -->
+<section class="waarom-sec">
+    <div class="wrap">
+        <p class="sec-label reveal">Waarom VdB</p>
+        <h2 class="reveal">Loodgieters die u kunt vertrouwen</h2>
+        <div class="waarom-grid">
+            <div class="waarom-card reveal">
+                <div class="waarom-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v5l3 2M10 3a7 7 0 1 1 0 14A7 7 0 0 1 10 3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3>Snelheid</h3>
+                <p>Bij spoedoproepen zijn we gemiddeld binnen 47 minuten ter plaatse. Geen beloftes die we niet nakomen.</p>
+            </div>
+            <div class="waarom-card reveal">
+                <div class="waarom-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3l2 4 4.5.7-3.3 3.2.8 4.5L10 13.2l-4 2.2.8-4.5L3.5 7.7 8 7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3>Transparante prijs</h3>
+                <p>U weet de prijs v&oacute;&oacute;r we beginnen. Geen verrassingen op de factuur, geen verstopte kosten.</p>
+            </div>
+            <div class="waarom-card reveal">
+                <div class="waarom-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3>Ervaring</h3>
+                <p>Meer dan 15 jaar in het vak. We hebben iedere situatie al gezien en lossen elk probleem effici&euml;nt op.</p>
+            </div>
+            <div class="waarom-card reveal">
+                <div class="waarom-icon">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3c0 0 5 2.5 5 7a5 5 0 0 1-10 0c0-4.5 5-7 5-7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3>Garantie</h3>
+                <p>Op al onze werken geven we een garantie van 2 jaar. Probleem terug? We lossen het op, zonder extra kosten.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Reviews -->
+<section class="reviews-sec" id="reviews">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <p class="sec-label">Wat klanten zeggen</p>
+            <h2>287 tevreden klanten</h2>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card reveal">
+                <div class="review-card-stars">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="#F59E0B" aria-hidden="true"><path d="M7 1l1.7 3.5 3.8.6-2.7 2.7 .6 3.8L7 9.8l-3.4 1.8.6-3.8L1.5 5.1l3.8-.6z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="#F59E0B" aria-hidden="true"><path d="M7 1l1.7 3.5 3.8.6-2.7 2.7 .6 3.8L7 9.8l-3.4 1.8.6-3.8L1.5 5.1l3.8-.6z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="#F59E0B" aria-hidden="true"><path d="M7 1l1.7 3.5 3.8.6-2.7 2.7 .6 3.8L7 9.8l-3.4 1.8.6-3.8L1.5 5.1l3.8-.6z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="#F59E0B" aria-hidden="true"><path d="M7 1l1.7 3.5 3.8.6-2.7 2.7 .6 3.8L7 9.8l-3.4 1.8.6-3.8L1.5 5.1l3.8-.6z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="#F59E0B" aria-hidden="true"><path d="M7 1l1.7 3.5 3.8.6-2.7 2.7 .6 3.8L7 9.8l-3.4 1.8.6-3.8L1.5 5.1l3.8-.6z"/></svg>
+                </div>
+                <p class="review-card-text">"Zaterdagnacht om 23u belde ik in paniek. Waterleiding gesprongen in de badkamer. VdB was er binnen het uur, professioneel en rustig. Probleem opgelost, prijs was eerlijk. Echt een topper."</p>
+                <div class="review-card-author">
+                    <div class="review-avatar" style="background:#2E4A1E;width:36px;height:36px;border-radius:50%;font-size:12px;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">SV</div>
+                    <div>
+                        <p class="review-card-name">Sophie V.</p>
+                        <p class="review-card-sub">Antwerpen, spoeddienst</p>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card reveal">
+                <div class="review-card-stars">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="#F59E0B" aria-hidden="true"><path d="M7 1l1.7 3.5 3.8.6-2.7 2.7 .6 3.8L7 9.8l-3.4 1.8.6-3.8L1.5 5.1l3.8-.6z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="#F59E0B" aria-hidden="true"><path d="M7 1l1.7 3.5 3.8.6-2.7 2.7 .6 3.8L7 9.8l-3.4 1.8.6-3.8L1.5 5.1l3.8-.6z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="#F59E0B" aria-hidden="true"><path d="M7 1l1.7 3.5 3.8.6-2.7 2.7 .6 3.8L7 9.8l-3.4 1.8.6-3.8L1.5 5.1l3.8-.6z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="#F59E0B" aria-hidden="true"><path d="M7 1l1.7 3.5 3.8.6-2.7 2.7 .6 3.8L7 9.8l-3.4 1.8.6-3.8L1.5 5.1l3.8-.6z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="#F59E0B" aria-hidden="true"><path d="M7 1l1.7 3.5 3.8.6-2.7 2.7 .6 3.8L7 9.8l-3.4 1.8.6-3.8L1.5 5.1l3.8-.6z"/></svg>
+                </div>
+                <p class="review-card-text">"Al jaren klant. Jaarlijks het CV-onderhoud, altijd stipt op tijd, altijd netjes. De prijs klopt met wat ze zeggen. Geen verrassingen. Dat is tegenwoordig zeldzaam."</p>
+                <div class="review-card-author">
+                    <div class="review-avatar" style="background:#1E3A5F;width:36px;height:36px;border-radius:50%;font-size:12px;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">MH</div>
+                    <div>
+                        <p class="review-card-name">Marc H.</p>
+                        <p class="review-card-sub">Mortsel, CV-onderhoud</p>
+                    </div>
+                </div>
+            </div>
+            <div class="review-card reveal">
+                <div class="review-card-stars">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="#F59E0B" aria-hidden="true"><path d="M7 1l1.7 3.5 3.8.6-2.7 2.7 .6 3.8L7 9.8l-3.4 1.8.6-3.8L1.5 5.1l3.8-.6z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="#F59E0B" aria-hidden="true"><path d="M7 1l1.7 3.5 3.8.6-2.7 2.7 .6 3.8L7 9.8l-3.4 1.8.6-3.8L1.5 5.1l3.8-.6z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="#F59E0B" aria-hidden="true"><path d="M7 1l1.7 3.5 3.8.6-2.7 2.7 .6 3.8L7 9.8l-3.4 1.8.6-3.8L1.5 5.1l3.8-.6z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="#F59E0B" aria-hidden="true"><path d="M7 1l1.7 3.5 3.8.6-2.7 2.7 .6 3.8L7 9.8l-3.4 1.8.6-3.8L1.5 5.1l3.8-.6z"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="#F59E0B" aria-hidden="true"><path d="M7 1l1.7 3.5 3.8.6-2.7 2.7 .6 3.8L7 9.8l-3.4 1.8.6-3.8L1.5 5.1l3.8-.6z"/></svg>
+                </div>
+                <p class="review-card-text">"Badkamerrenovatie volledig door VdB gedaan. Kwaliteitswerk, nette afwerking en ze hielden zich perfect aan de timing. Meer dan tevreden, zeker voor herhaling vatbaar."</p>
+                <div class="review-card-author">
+                    <div class="review-avatar" style="background:#3A1E2E;width:36px;height:36px;border-radius:50%;font-size:12px;font-weight:700;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;">LW</div>
+                    <div>
+                        <p class="review-card-name">Lien W.</p>
+                        <p class="review-card-sub">Schoten, sanitair installatie</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="reviews-score reveal">
+            <span class="score-num">4.9</span>
+            <div>
+                <div class="score-stars">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B" aria-hidden="true"><path d="M10 1l2.4 5 5.4.8-3.9 3.8 .9 5.4-4.8-2.5-4.8 2.5.9-5.4L2.2 6.8l5.4-.8z"/></svg>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B" aria-hidden="true"><path d="M10 1l2.4 5 5.4.8-3.9 3.8 .9 5.4-4.8-2.5-4.8 2.5.9-5.4L2.2 6.8l5.4-.8z"/></svg>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B" aria-hidden="true"><path d="M10 1l2.4 5 5.4.8-3.9 3.8 .9 5.4-4.8-2.5-4.8 2.5.9-5.4L2.2 6.8l5.4-.8z"/></svg>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B" aria-hidden="true"><path d="M10 1l2.4 5 5.4.8-3.9 3.8 .9 5.4-4.8-2.5-4.8 2.5.9-5.4L2.2 6.8l5.4-.8z"/></svg>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="#F59E0B" aria-hidden="true"><path d="M10 1l2.4 5 5.4.8-3.9 3.8 .9 5.4-4.8-2.5-4.8 2.5.9-5.4L2.2 6.8l5.4-.8z"/></svg>
+                </div>
+                <p class="score-label">Gebaseerd op 287 reviews</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA blok -->
+<section class="cta-sec">
+    <div class="wrap">
+        <h2 class="reveal">Klaar om uw probleem op te lossen?</h2>
+        <p class="reveal">Bel direct of vraag een offerte aan &mdash; we reageren binnen het uur.</p>
+        <div class="cta-btns reveal">
+            <a href="tel:034567890" class="btn-white">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.5 2.5C2.5 2.5 4 6 6.5 8C9 10 12 12.5 13.5 14C13.5 14 12 15.5 11.5 15.5C11 15.5 9 14.5 7 12.5C5 10.5 2.5 8 1.5 5.5C.5 3 2.5 2.5 2.5 2.5Z" stroke="#1A1A1A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Bel 03 456 78 90
+            </a>
+            <a href="#contact" class="btn-ghost-cta">
+                Offerte aanvragen
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 7h8M8 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Over ons -->
+<section id="over-ons">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <p class="sec-label">Over ons</p>
+            <h2>Al 15 jaar in het vak</h2>
+        </div>
+        <div class="over-ons-grid">
+            <div class="over-stats reveal">
+                <div class="over-stat-card">
+                    <span class="over-stat-val">2008</span>
+                    <p class="over-stat-label">Opgericht</p>
+                </div>
+                <div class="over-stat-card">
+                    <span class="over-stat-val">15+</span>
+                    <p class="over-stat-label">Jaar ervaring</p>
+                </div>
+                <div class="over-stat-card">
+                    <span class="over-stat-val">1.5K+</span>
+                    <p class="over-stat-label">Tevreden klanten</p>
+                </div>
+                <div class="over-stat-card">
+                    <span class="over-stat-val">24/7</span>
+                    <p class="over-stat-label">Bereikbaar</p>
+                </div>
+            </div>
+            <div class="over-text reveal">
+                <h2>Vakmanschap dat u kunt vertrouwen</h2>
+                <p>Wij zijn een familiebedrijf gevestigd in Antwerpen. Sinds 2008 lossen we loodgietersproblemen op voor particulieren en bedrijven in de regio. Snelheid en eerlijkheid staan centraal in alles wat we doen.</p>
+                <div class="over-checklist">
+                    <div class="over-check">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4.5" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Erkend en verzekerd loodgieter
+                    </div>
+                    <div class="over-check">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4.5" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        BTW-factuur voor elk werk
+                    </div>
+                    <div class="over-check">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4.5" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        2 jaar garantie op alle werken
+                    </div>
+                    <div class="over-check">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4.5" stroke="#16A34A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Geen voorrijkosten spoeddienst
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sec">
+    <div class="wrap-sm">
+        <div class="sec-head reveal">
+            <p class="sec-label">Veelgestelde vragen</p>
+            <h2>Uw vragen beantwoord</h2>
+        </div>
+        <div class="faq-list reveal">
+            <div class="faq-item">
+                <button class="faq-btn" onclick="toggleFaq(this)">
+                    Hoe snel bent u ter plaatse bij een spoed?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-body">
+                    <p>Bij spoedoproepen streven we ernaar binnen 60 minuten ter plaatse te zijn. Gemiddeld zijn we er in 47 minuten. We zijn 24/7 beschikbaar, ook in het weekend en op feestdagen.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-btn" onclick="toggleFaq(this)">
+                    Wat kost een spoedoproep?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-body">
+                    <p>We rekenen geen voorrijkosten voor spoedservice. U betaalt enkel voor het uitgevoerde werk, en de prijs wordt altijd v&oacute;&oacute;r aanvang besproken en goedgekeurd. Geen verrassingen op de factuur.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-btn" onclick="toggleFaq(this)">
+                    Werkt u ook op zaterdag en zondag?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-body">
+                    <p>Ja, we zijn 7 dagen op 7 beschikbaar voor spoedgevallen. Voor geplande werken kunt u ook een weekendafspraak inboeken, afhankelijk van beschikbaarheid.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-btn" onclick="toggleFaq(this)">
+                    Geeft u garantie op uw werken?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-body">
+                    <p>Absoluut. Op alle uitgevoerde werken geven we een garantie van 2 jaar. Mocht er toch iets mislopen, lossen we het op zonder extra kosten.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-btn" onclick="toggleFaq(this)">
+                    In welke gemeenten bent u actief?
+                    <span class="faq-icon">+</span>
+                </button>
+                <div class="faq-body">
+                    <p>We werken in de volledige regio Antwerpen: Antwerpen, Berchem, Deurne, Mortsel, Schoten, Kontich, Edegem en omstreken. Twijfelt u of uw gemeente in het werkgebied valt? Bel ons even.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+    <div class="wrap">
+        <div class="sec-head reveal">
+            <p class="sec-label">Contact</p>
+            <h2>Neem contact op</h2>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-items reveal">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 3C3 3 4.5 7 7 9C9.5 11 13 13.5 15 15.5C15 15.5 13.5 17 13 17C12.5 17 10 16 8 13.5C6 11 3 8.5 2 6C1 3.5 3 3 3 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        <p class="contact-item-label">Telefoon</p>
+                        <a href="tel:034567890" class="contact-item-val">03 456 78 90</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><rect x="2" y="4" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M2 6l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </div>
+                    <div>
+                        <p class="contact-item-label">E-mail</p>
+                        <a href="mailto:info@vdbloodgieters.be" class="contact-item-val">info@vdbloodgieters.be</a>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 2C6.24 2 4 4.24 4 7c0 4 5 9 5 9s5-5 5-9c0-2.76-2.24-5-5-5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                    </div>
+                    <div>
+                        <p class="contact-item-label">Werkgebied</p>
+                        <p class="contact-item-val">Antwerpen &amp; omstreken</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-card reveal">
+                <div class="form-row">
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label class="form-label">Voornaam</label>
+                        <input class="form-input" type="text" placeholder="Jan">
+                    </div>
+                    <div class="form-group" style="margin-bottom:0;">
+                        <label class="form-label">Naam</label>
+                        <input class="form-input" type="text" placeholder="Janssen">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Telefoon</label>
+                    <input class="form-input" type="tel" placeholder="04xx xx xx xx">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Dienst</label>
+                    <select class="form-select">
+                        <option value="">Selecteer een dienst</option>
+                        <option>Spoeddienst</option>
+                        <option>Lekdetectie</option>
+                        <option>Ontstopping</option>
+                        <option>CV-onderhoud</option>
+                        <option>Sanitair installatie</option>
+                        <option>Hemelwater</option>
+                        <option>Andere</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Bericht</label>
+                    <textarea class="form-textarea" placeholder="Beschrijf uw probleem kort..."></textarea>
+                </div>
+                <button class="btn-submit" id="submitBtn" onclick="submitForm(this)">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Aanvraag versturen
+                </button>
+                <p class="form-success" id="formSuccess"></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="lp-footer">
+    <div class="wrap">
+        <div class="footer-grid">
+            <div>
+                <p class="footer-brand">VdB Loodgieters</p>
+                <p class="footer-brand-sub">Uw betrouwbare loodgieter in de<br>regio Antwerpen. 24/7 bereikbaar.</p>
+            </div>
+            <div>
+                <p class="footer-col-title">Diensten</p>
+                <div class="footer-links">
+                    <a href="#diensten">Spoeddienst</a>
+                    <a href="#diensten">Lekdetectie</a>
+                    <a href="#diensten">Ontstoppingen</a>
+                    <a href="#diensten">CV-onderhoud</a>
+                    <a href="#diensten">Sanitair installatie</a>
+                </div>
+            </div>
+            <div>
+                <p class="footer-col-title">Contact</p>
+                <div class="footer-links">
+                    <a href="tel:034567890">03 456 78 90</a>
+                    <a href="mailto:info@vdbloodgieters.be">info@vdbloodgieters.be</a>
+                    <a href="#over-ons">Over ons</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-bottom-copy">&copy; 2025 VdB Loodgieters &mdash; Alle rechten voorbehouden</p>
+            <p class="footer-bottom-made">Website gemaakt door <a href="index.html">TriStack</a></p>
+        </div>
+    </div>
+</footer>
+
+<!-- Sticky bel-knop -->
+<button class="sticky-bel" onclick="window.location.href='tel:034567890'">
+    <span class="bel-dot"></span>
+    Bel direct
+</button>
+
+<script>
+    function toggleFaq(btn) {
+        var item = btn.closest('.faq-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(function(el) {
+            el.classList.remove('open');
+        });
+        if (!isOpen) {
+            item.classList.add('open');
+        }
+    }
+
+    function submitForm(btn) {
+        btn.classList.add('success');
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8l3.5 3.5L13 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Aanvraag verzonden!';
+        document.getElementById('formSuccess').textContent = 'We nemen zo snel mogelijk contact met u op.';
+    }
+
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in');
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(function(el) {
+        observer.observe(el);
+    });
+</script>
+</body>
+</html>
